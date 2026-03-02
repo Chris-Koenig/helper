@@ -202,6 +202,8 @@
                 return;
             }
 
+            resultDiv.innerHTML = '';
+            resultDiv.classList.add('hidden');
             goBtn.disabled = true;
             showResult('<span class="spinner"></span> Capturing and processing...', 'success');
 
