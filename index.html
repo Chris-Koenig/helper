@@ -18,6 +18,7 @@
             background: #000;
             color: #fff;
             height: 100vh;
+            width: 100vw;
             display: flex;
             flex-direction: row;
             overflow: hidden;
@@ -147,6 +148,35 @@
 
         .success {
             color: #10a37f;
+        }
+
+        @media (orientation: landscape) and (max-height: 430px) {
+            #video {
+                height: 40%;
+                width: 78%;
+            }
+
+            .controls {
+                padding: 8px;
+                gap: 8px;
+            }
+
+            #api-key-input {
+                width: 55%;
+                font-size: 12px;
+                padding: 8px 10px;
+                min-width: 0;
+            }
+
+            #go-btn {
+                width: 35%;
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            #result {
+                overflow-x: hidden;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
