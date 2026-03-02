@@ -169,6 +169,7 @@
     <script>
         // Configuration
         const EXTRACTION_PROMPT = 'What is the text in this image? Please extract all text and provide it in a clear format. If there is no text, respond with "No text found."';
+        const VALIDATION_PROMPT = 'Given the text below, decide if it looks like a real question with answer choices or a status message (for example: image too blurry, cannot help, no text found). Reply with exactly "QUESTION" or "STATUS: <short reason>".';
         
         let config = {};
 
@@ -257,6 +258,39 @@
                 const firstData = await firstResponse.json();
                 const extractedText = firstData.choices[0].message.content;
 
+                // Validation call: Check if the extracted text is a question or a status
+                const validationResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-5.2',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: VALIDATION_PROMPT + '\n\nText:\n' + extractedText
+                            }
+                        ],
+                        max_completion_tokens: 60
+                    })
+                });
+
+                if (!validationResponse.ok) {
+                    const error = await validationResponse.json();
+                    throw new Error(error.error?.message || `API error: ${validationResponse.status}`);
+                }
+
+                const validationData = await validationResponse.json();
+                const validationText = validationData.choices[0].message.content.trim();
+
+                if (validationText.toUpperCase().startsWith('STATUS')) {
+                    const statusMessage = validationText.replace(/^STATUS:\s*/i, '').trim() || 'Status message received.';
+                    showResult(`<div><strong>Status:</strong> ${statusMessage}</div>`, 'success');
+                    return;
+                }
+
                 // Second call: Get the answer letter(s)
                 const answerPrompt = 'Take this text and give me the letter of the answer only (like: A or B). It can be possible that there are multiple correct answers. If there are multiple, list them separated by commas.';
                 
@@ -286,8 +320,8 @@
                 const secondData = await secondResponse.json();
                 const answerLetter = secondData.choices[0].message.content;
 
-                // Display both results
-                const combinedResult = `<div style="margin-bottom: 20px;"><strong>📝 Extracted Text:</strong><br>${extractedText}</div><div style="border-top: 1px solid #333; padding-top: 15px;"><strong>✅ Answer:</strong><br><span style="font-size: 24px; color: #10a37f;">${answerLetter}</span></div>`;
+                // Display both results (answer on top)
+                const combinedResult = `<div style="margin-bottom: 20px;"><strong>✅ Answer:</strong><br><span style="font-size: 24px; color: #10a37f;">${answerLetter}</span></div><div style="border-top: 1px solid #333; padding-top: 15px;"><strong>📝 Extracted Text:</strong><br>${extractedText}</div>`;
                 showResult(combinedResult, 'success');
             } catch (err) {
                 showResult(`❌ Error: ${err.message}`, 'error');
