@@ -157,7 +157,7 @@
     </style>
 </head>
 <body>
-    <div id="result" class="hidden"></div>
+    <div id="result"></div>
 
     <div id="video-container">
         <video id="video" playsinline autoplay></video>
@@ -207,7 +207,6 @@
             }
 
             resultDiv.innerHTML = '';
-            resultDiv.classList.add('hidden');
             goBtn.disabled = true;
             showResult('<span class="spinner"></span> Capturing and processing...', 'success');
 
@@ -337,7 +336,6 @@
         function showResult(text, className = '') {
             resultDiv.innerHTML = text;
             resultDiv.className = className;
-            resultDiv.classList.remove('hidden');
         }
 
         // Event listeners
