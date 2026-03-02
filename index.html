@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Camera text extraction with ChatGPT">
+    <title>Text Extractor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        #video-container {
+            width: 50%;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #video {
+            flex: 1;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        .controls {
+            padding: 15px;
+            background: #1a1a1a;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+
+        #go-btn {
+            background: #10a37f;
+            color: white;
+            padding: 16px 32px;
+            font-size: 18px;
+            width: 40%;
+            min-width: auto;
+        }
+
+        #go-btn:active {
+            transform: scale(0.95);
+            background: #0d8b6f;
+        }
+
+        #go-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        #api-key-input {
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            background: #1a1a1a;
+            color: #fff;
+            width: 200px;
+            font-family: monospace;
+        }
+
+        #api-key-input:focus {
+            outline: none;
+            border-color: #10a37f;
+            box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
+        }
+
+        #result {
+            width: 50%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 15px;
+            background: #000;
+            font-size: 14px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-break: break-word;
+            border-left: 1px solid #333;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #666;
+            border-top: 2px solid #10a37f;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        .success {
+            color: #10a37f;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video id="video" playsinline autoplay></video>
+        <canvas id="canvas"></canvas>
+        <div class="controls">
+            <input type="password" id="api-key-input" placeholder="Enter OpenAI API Key">
+            <button id="go-btn">Go</button>
+        </div>
+    </div>
+
+    <div id="result" class="hidden"></div>
+
+
+    <script>
+        // Configuration
+        const EXTRACTION_PROMPT = 'What is the text in this image? Please extract all text and provide it in a clear format. If there is no text, respond with "No text found."';
+        
+        let config = {};
+
+
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const goBtn = document.getElementById('go-btn');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const resultDiv = document.getElementById('result');
+
+        // Initialize
+        async function init() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }
+                });
+                video.srcObject = stream;
+            } catch (err) {
+                showResult('❌ Camera access denied. Please enable camera permissions.', 'error');
+                goBtn.disabled = true;
+            }
+        }
+
+        // Capture and process image
+        async function captureImage() {
+            const apiKey = apiKeyInput.value.trim();
+            
+            if (!apiKey) {
+                showResult('❌ Please enter your OpenAI API key', 'error');
+                return;
+            }
+
+            goBtn.disabled = true;
+            showResult('<span class="spinner"></span> Capturing and processing...', 'success');
+
+            try {
+                // Get video dimensions
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                // Draw current frame
+                ctx.drawImage(video, 0, 0);
+
+                // Convert to base64 JPEG
+                const imageData = canvas.toDataURL('image/jpeg', 0.8);
+                const base64 = imageData.split(',')[1];
+
+                // First call: Extract text from image
+                const firstResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-5.2',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: [
+                                    {
+                                        type: 'text',
+                                        text: EXTRACTION_PROMPT
+                                    },
+                                    {
+                                        type: 'image_url',
+                                        image_url: {
+                                            url: `data:image/jpeg;base64,${base64}`
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        max_completion_tokens: 1024
+                    })
+                });
+
+                if (!firstResponse.ok) {
+                    const error = await firstResponse.json();
+                    throw new Error(error.error?.message || `API error: ${firstResponse.status}`);
+                }
+
+                const firstData = await firstResponse.json();
+                const extractedText = firstData.choices[0].message.content;
+
+                // Second call: Get the answer letter(s)
+                const answerPrompt = 'Take this text and give me the letter of the answer only (like: A or B). It can be possible that there are multiple correct answers. If there are multiple, list them separated by commas.';
+                
+                const secondResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-5.2',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: answerPrompt + '\n\nText:\n' + extractedText
+                            }
+                        ],
+                        max_completion_tokens: 100
+                    })
+                });
+
+                if (!secondResponse.ok) {
+                    const error = await secondResponse.json();
+                    throw new Error(error.error?.message || `API error: ${secondResponse.status}`);
+                }
+
+                const secondData = await secondResponse.json();
+                const answerLetter = secondData.choices[0].message.content;
+
+                // Display both results
+                const combinedResult = `<div style="margin-bottom: 20px;"><strong>📝 Extracted Text:</strong><br>${extractedText}</div><div style="border-top: 1px solid #333; padding-top: 15px;"><strong>✅ Answer:</strong><br><span style="font-size: 24px; color: #10a37f;">${answerLetter}</span></div>`;
+                showResult(combinedResult, 'success');
+            } catch (err) {
+                showResult(`❌ Error: ${err.message}`, 'error');
+            } finally {
+                goBtn.disabled = false;
+            }
+        }
+
+        // Display result
+        function showResult(text, className = '') {
+            resultDiv.innerHTML = text;
+            resultDiv.className = className;
+            resultDiv.classList.remove('hidden');
+        }
+
+        // Event listeners
+        goBtn.addEventListener('click', captureImage);
+
+        // Prevent zoom on double-tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // Start
+        init();
+    </script>
+</body>
+</html>
