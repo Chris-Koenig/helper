@@ -368,7 +368,7 @@
                 const answerLetter = secondData.choices[0].message.content;
 
                 // Display both results (answer on top)
-                const combinedResult = `<div style="margin-bottom: 20px;"><strong>✅ Answer:</strong><br><span style="font-size: 24px; color: #10a37f;">${answerLetter}</span></div><div style="border-top: 1px solid #333; padding-top: 15px;"><strong>📝 Extracted Text:</strong><br>${extractedText}</div>`;
+                const combinedResult = `<div style="margin-bottom: 20px;"><strong>✅ Answer:</strong><br><span style="font-size: 72px; color: #10a37f; font-weight: 700;">${answerLetter}</span></div><div style="border-top: 1px solid #333; padding-top: 15px;"><strong>📝 Extracted Text:</strong><br>${extractedText}</div>`;
                 showResult(combinedResult, 'success');
             } catch (err) {
                 showResult(`❌ Error: ${err.message}`, 'error');
