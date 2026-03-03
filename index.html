@@ -99,6 +99,8 @@
             color: #fff;
             width: 200px;
             font-family: monospace;
+            resize: none;
+            min-height: 60px;
         }
 
         #api-key-input:focus {
@@ -149,6 +151,61 @@
 
         .success {
             color: #10a37f;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #1a1a1a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+
+        .toggle-label {
+            font-size: 12px;
+            color: #aaa;
+            min-width: 50px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background: #444;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+            padding: 0;
+        }
+
+        .toggle-switch.active {
+            background: #10a37f;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 11px;
+            top: 2px;
+            left: 2px;
+            transition: left 0.3s;
+        }
+
+        .toggle-switch.active::after {
+            left: 26px;
+        }
+
+        .provider-label {
+            font-size: 12px;
+            color: #aaa;
+            min-width: 45px;
+            text-align: right;
         }
 
         @media (orientation: landscape) and (max-height: 430px) {
@@ -208,7 +265,12 @@
         <video id="video" playsinline autoplay></video>
         <canvas id="canvas"></canvas>
         <div class="controls">
-            <input type="password" id="api-key-input" placeholder="Enter OpenAI API Key">
+            <div class="toggle-container">
+                <span class="toggle-label">Tool:</span>
+                <button id="provider-toggle" class="toggle-switch active" aria-label="Toggle between OpenAI and Perplexity"></button>
+                <span class="provider-label" id="provider-name">openai</span>
+            </div>
+            <textarea id="api-key-input" placeholder='{"openai": "your-key", "perplexity": "your-key"}'></textarea>
             <button id="go-btn">Go</button>
         </div>
     </div>
@@ -220,6 +282,7 @@
         const VALIDATION_PROMPT = 'Given the text below, decide if it looks like a real question with answer choices or a status message (for example: image too blurry, cannot help, no text found). Reply with exactly "QUESTION" or "STATUS: <short reason>".';
         
         let config = {};
+        let usePerplexity = false;
 
 
         const video = document.getElementById('video');
@@ -228,6 +291,8 @@
         const goBtn = document.getElementById('go-btn');
         const apiKeyInput = document.getElementById('api-key-input');
         const resultDiv = document.getElementById('result');
+        const providerToggle = document.getElementById('provider-toggle');
+        const providerName = document.getElementById('provider-name');
 
         // Initialize
         async function init() {
@@ -242,12 +307,36 @@
             }
         }
 
+        // Toggle provider
+        function toggleProvider() {
+            usePerplexity = !usePerplexity;
+            providerToggle.classList.toggle('active');
+            const provider = usePerplexity ? 'perplexity' : 'openai';
+            providerName.textContent = provider;
+        }
+
         // Capture and process image
         async function captureImage() {
-            const apiKey = apiKeyInput.value.trim();
+            const apiKeyInput = document.getElementById('api-key-input');
+            const inputText = apiKeyInput.value.trim();
+            const provider = usePerplexity ? 'Perplexity' : 'OpenAI';
             
+            if (!inputText) {
+                showResult(`❌ Please enter API keys as JSON`, 'error');
+                return;
+            }
+
+            let apiKeys = {};
+            try {
+                apiKeys = JSON.parse(inputText);
+            } catch (err) {
+                showResult(`❌ Invalid JSON format. Expected: {"openai": "key", "perplexity": "key"}`, 'error');
+                return;
+            }
+
+            const apiKey = usePerplexity ? apiKeys.perplexity : apiKeys.openai;
             if (!apiKey) {
-                showResult('❌ Please enter your OpenAI API key', 'error');
+                showResult(`❌ Missing ${provider} API key in JSON`, 'error');
                 return;
             }
 
@@ -268,13 +357,40 @@
                 const base64 = imageData.split(',')[1];
 
                 // First call: Extract text from image
-                const firstResponse = await fetch('https://api.openai.com/v1/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
-                    body: JSON.stringify({
+                let firstResponse;
+                let firstRequestBody = {};
+                let apiUrl = '';
+                let headers = {
+                    'Content-Type': 'application/json'
+                };
+
+                if (usePerplexity) {
+                    apiUrl = 'https://api.perplexity.ai/chat/completions';
+                    headers['Authorization'] = `Bearer ${apiKey}`;
+                    firstRequestBody = {
+                        model: 'sonar-pro',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: [
+                                    {
+                                        type: 'text',
+                                        text: EXTRACTION_PROMPT
+                                    },
+                                    {
+                                        type: 'image_url',
+                                        image_url: {
+                                            url: `data:image/jpeg;base64,${base64}`
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+                } else {
+                    apiUrl = 'https://api.openai.com/v1/chat/completions';
+                    headers['Authorization'] = `Bearer ${apiKey}`;
+                    firstRequestBody = {
                         model: 'gpt-5.2',
                         messages: [
                             {
@@ -294,7 +410,13 @@
                             }
                         ],
                         max_completion_tokens: 1024
-                    })
+                    };
+                }
+
+                firstResponse = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(firstRequestBody)
                 });
 
                 if (!firstResponse.ok) {
@@ -306,13 +428,28 @@
                 const extractedText = firstData.choices[0].message.content;
 
                 // Validation call: Check if the extracted text is a question or a status
-                const validationResponse = await fetch('https://api.openai.com/v1/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
-                    body: JSON.stringify({
+                let validationRequestBody = {};
+                let validationApiUrl = '';
+                let validationHeaders = {
+                    'Content-Type': 'application/json'
+                };
+
+                if (usePerplexity) {
+                    validationApiUrl = 'https://api.perplexity.ai/chat/completions';
+                    validationHeaders['Authorization'] = `Bearer ${apiKey}`;
+                    validationRequestBody = {
+                        model: 'sonar-pro',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: VALIDATION_PROMPT + '\n\nText:\n' + extractedText
+                            }
+                        ]
+                    };
+                } else {
+                    validationApiUrl = 'https://api.openai.com/v1/chat/completions';
+                    validationHeaders['Authorization'] = `Bearer ${apiKey}`;
+                    validationRequestBody = {
                         model: 'gpt-5.2',
                         messages: [
                             {
@@ -321,7 +458,13 @@
                             }
                         ],
                         max_completion_tokens: 60
-                    })
+                    };
+                }
+
+                const validationResponse = await fetch(validationApiUrl, {
+                    method: 'POST',
+                    headers: validationHeaders,
+                    body: JSON.stringify(validationRequestBody)
                 });
 
                 if (!validationResponse.ok) {
@@ -341,13 +484,28 @@
                 // Second call: Get the answer letter(s)
                 const answerPrompt = 'Take this text and give me the letter of the answer only (like: A or B). It can be possible that there are multiple correct answers. If there are multiple, list them separated by commas.';
                 
-                const secondResponse = await fetch('https://api.openai.com/v1/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
-                    body: JSON.stringify({
+                let secondRequestBody = {};
+                let secondApiUrl = '';
+                let secondHeaders = {
+                    'Content-Type': 'application/json'
+                };
+
+                if (usePerplexity) {
+                    secondApiUrl = 'https://api.perplexity.ai/chat/completions';
+                    secondHeaders['Authorization'] = `Bearer ${apiKey}`;
+                    secondRequestBody = {
+                        model: 'sonar-pro',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: answerPrompt + '\n\nText:\n' + extractedText
+                            }
+                        ]
+                    };
+                } else {
+                    secondApiUrl = 'https://api.openai.com/v1/chat/completions';
+                    secondHeaders['Authorization'] = `Bearer ${apiKey}`;
+                    secondRequestBody = {
                         model: 'gpt-5.2',
                         messages: [
                             {
@@ -356,7 +514,13 @@
                             }
                         ],
                         max_completion_tokens: 100
-                    })
+                    };
+                }
+                
+                const secondResponse = await fetch(secondApiUrl, {
+                    method: 'POST',
+                    headers: secondHeaders,
+                    body: JSON.stringify(secondRequestBody)
                 });
 
                 if (!secondResponse.ok) {
@@ -385,6 +549,7 @@
 
         // Event listeners
         goBtn.addEventListener('click', captureImage);
+        providerToggle.addEventListener('click', toggleProvider);
 
         // Prevent zoom on double-tap
         let lastTouchEnd = 0;
