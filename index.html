@@ -318,7 +318,7 @@
         // Capture and process image
         async function captureImage() {
             const apiKeyInput = document.getElementById('api-key-input');
-            const inputText = apiKeyInput.value.trim();
+            let inputText = apiKeyInput.value.trim();
             const provider = usePerplexity ? 'Perplexity' : 'OpenAI';
             
             if (!inputText) {
@@ -326,11 +326,16 @@
                 return;
             }
 
+            // Clean up input - remove BOM, normalize whitespace
+            inputText = inputText.replace(/^\uFEFF/, ''); // Remove BOM
+            inputText = inputText.replace(/[\r\n]+/g, ''); // Remove line breaks
+            inputText = inputText.trim();
+
             let apiKeys = {};
             try {
                 apiKeys = JSON.parse(inputText);
             } catch (err) {
-                showResult(`❌ Invalid JSON format. Expected: {"openai": "key", "perplexity": "key"}`, 'error');
+                showResult(`❌ Invalid JSON format. Expected: {"openai": "key", "perplexity": "key"}<br><br>Error: ${err.message}`, 'error');
                 return;
             }
 
