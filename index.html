@@ -511,6 +511,13 @@
                     secondRequestBody = {
                         model: 'sonar-pro',
                         temperature: 0,
+                        top_p: 1,
+
+                        web_search_options: {
+                            search_context_size: "high"
+                        },
+
+                        return_citations: true,
                         messages: [
                             {
                                 role: 'user',
