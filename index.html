@@ -510,6 +510,7 @@
                     secondHeaders['Authorization'] = `Bearer ${apiKey}`;
                     secondRequestBody = {
                         model: 'sonar-pro',
+                        temperature: 0,
                         messages: [
                             {
                                 role: 'user',
