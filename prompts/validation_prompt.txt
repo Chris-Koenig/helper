@@ -1,0 +1,1 @@
+Given the text below, decide if it looks like a real question with answer choices or a status message (for example: image too blurry, cannot help, no text found). Reply with exactly "QUESTION" or "STATUS: <short reason>".
