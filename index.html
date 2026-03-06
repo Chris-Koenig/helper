@@ -288,11 +288,13 @@
 
     <script>
         // Configuration
-        <!-- const EXTRACTION_PROMPT = 'What is the text in this image? Please extract all text and provide it in a clear format. If there is no text, respond with "No text found."'; -->
+        // const EXTRACTION_PROMPT = 'What is the text in this image? Please extract all text and provide it in a clear format. If there is no text, respond with "No text found."';
         const VALIDATION_PROMPT = 'Given the text below, decide if it looks like a real question with answer choices or a status message (for example: image too blurry, cannot help, no text found). Reply with exactly "QUESTION" or "STATUS: <short reason>".';
        
-
-        const EXTRACTION_PROMPT = "Extract all visible text from this image as accurately as possible.\n\nThe image may contain:\n- a single-choice multiple choice question\n- a multiple-choice question with several correct answers\n- a question containing code snippets or numbered code lines\n- a scenario with statements and dropdown answer options\n\nInstructions:\n- preserve the original wording as closely as possible\n- keep the structure clear\n- keep answer options grouped under the related question\n- if code is shown, preserve line order, indentation, and formatting as well as possible\n- if dropdown options are visible, list the statement first and then the visible dropdown choices\n- do not solve the question\n- do not summarize\n- do not explain anything\n- if some text is unclear, include your best reading\n- if there is no readable text, reply exactly: No text found.\n\nReturn only the extracted text in a clean, readable format."
+        // const answerPrompt = 'Take this text and give me the letter of the answer only (like: A or B). It can be possible that there are multiple correct answers. If there are multiple, list them separated by commas.';
+        
+        const answerPrompt = "You will receive the extracted text of a question.\n\nDetermine the correct answer(s) based on the content.\n\nPossible question formats include: \n - single - choice multiple choice(A, B, C, D) \n - multiple - choice with several correct answers\n - selecting specific numbered code lines(for example choose 3 of 5 lines) \n - statements with dropdown answers\n\nReturn the answer in the following format depending on the question type: \n\n1.If answers are labeled with letters: \nReturn only the letter(s).\nExamples: \nA\nB\nA, C\nB, C, D\n\n2.If the task is to select numbered lines of code: \nReturn only the line numbers separated by commas.\nExample: \n1, 3, 4\n\n3.If the task is to choose from dropdown answers: \nReturn only the correct dropdown answer text for each statement, separated by semicolons if there are multiple.\nExample: \nINNER JOIN; WHERE; IS NULL\n\nRules: \n - Do not explain your reasoning\n - Do not repeat the question\n - Do not output full sentences\n - Output only the final answer(s)"
+        const EXTRACTION_PROMPT = "Extract all visible text from this image as accurately as possible.\n\nThe image may contain:\n- a single-choice multiple choice question\n- a multiple-choice question with several correct answers\n- a question containing code snippets or numbered code lines\n- a scenario with statements and dropdown answer options\n\nInstructions:\n- preserve the original wording as closely as possible\n- keep the structure clear\n- keep answer options grouped under the related question\n- if code is shown, preserve line order, indentation, and formatting as well as possible\n- if dropdown options are visible, list the statement first and then the visible dropdown choices\n- do not solve the question\n- do not summarize\n- do not explain anything\n- if some text is unclear, include your best reading\n- if there is no readable text, reply exactly: No text found.\n\nReturn only the extracted text in a clean, readable format.";
       
         
         let config = {};
@@ -501,8 +503,8 @@
                 }
 
                 // Second call: Get the answer letter(s)
-                const answerPrompt = 'Take this text and give me the letter of the answer only (like: A or B). It can be possible that there are multiple correct answers. If there are multiple, list them separated by commas.';
-                
+                // const answerPrompt = 'Take this text and give me the letter of the answer only (like: A or B). It can be possible that there are multiple correct answers. If there are multiple, list them separated by commas.';
+                 
                 let secondRequestBody = {};
                 let secondApiUrl = '';
                 let secondHeaders = {
