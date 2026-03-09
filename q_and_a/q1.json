@@ -1,9 +1,19 @@
 {
-  "batch": 1,
+  "dataset_name": "fabric_exam_screenshot_matching_master",
+  "version": "1.0",
+  "question_count": 67,
+  "matching_notes": {
+    "purpose": "OCR and screenshot matching",
+    "fields_to_match_first": [
+      "normalized_question",
+      "question_keywords",
+      "answer_keywords"
+    ],
+    "recommended_strategy": "First fuzzy-match on normalized_question, then rerank with keyword overlap and answer structure."
+  },
   "questions": [
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.15.32.png",
-      "question_id": null,
+      "question_id": 1,
       "question_type": "single_choice",
       "question_text": "Security in Fabric must meet the following requirements: The data engineers must have read and write access to all the lakehouses, including the underlying files. The data analysts must only have read access to the Delta tables in the gold layer. The data analysts must NOT have access to the data in the bronze and silver layers. The data engineers must be able to commit changes to source control in WorkspaceA. You need to ensure that the data analysts can access the gold layer lakehouse. What should you do?",
       "options": [
@@ -25,18 +35,63 @@
         }
       ],
       "answer": {
-        "correct_option_ids": ["C"]
-      }
+        "correct_option_ids": [
+          "C"
+        ]
+      },
+      "normalized_question": "security in fabric must meet the following requirements the data engineers must have read and write access to all the lakehouses including the underlying files the data analysts must only have read access to the delta tables in the gold layer the data analysts must not have access to the data in the bronze and silver layers the data engineers must be able to commit changes to source control in workspacea you need to ensure that the data analysts can access the gold layer lakehouse what should you do",
+      "question_keywords": [
+        "security",
+        "fabric",
+        "meet",
+        "requirements",
+        "data",
+        "engineers",
+        "read",
+        "write",
+        "access",
+        "lakehouses",
+        "including",
+        "underlying",
+        "files",
+        "analysts",
+        "delta",
+        "tables",
+        "gold",
+        "layer",
+        "bronze",
+        "silver",
+        "layers",
+        "able",
+        "commit",
+        "changes",
+        "source"
+      ],
+      "answer_keywords": [
+        "add",
+        "dataanalyst",
+        "group",
+        "viewer",
+        "role",
+        "share",
+        "lakehouse",
+        "dataanalysts",
+        "grant",
+        "C"
+      ]
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.15.45.png",
-      "question_id": 6,
+      "question_id": 2,
       "question_type": "hotspot",
       "question_text": "You have a Fabric workspace that contains a warehouse named DW1. DW1 contains the following tables and columns: SalesOrderDetail.ProductID contains the product ID of the ordered product. SalesOrderDetail.ModifiedDate contains the date of an order. SalesOrderDetail.OrderQty contains the order quantity. Product.ProductID contains the unique ID of a product. Product.Name contains a product name. You need to create an output that presents the summarized values of all the order quantities by year and product. The results must include a summary of the order quantities at the year level for all the products. How should you complete the code? To answer, select the appropriate options in the answer area.",
       "fields": [
         {
           "name": "OrderDate expression",
-          "options": ["SELECT CAST", "SELECT CONVERT", "SELECT YEAR"],
+          "options": [
+            "SELECT CAST",
+            "SELECT CONVERT",
+            "SELECT YEAR"
+          ],
           "answer": "SELECT YEAR"
         },
         {
@@ -49,11 +104,49 @@
           ],
           "answer": "ROLLUP(YEAR(SO.ModifiedDate), P.Name)"
         }
+      ],
+      "normalized_question": "you have a fabric workspace that contains a warehouse named dw1 dw1 contains the following tables and columns salesorderdetail productid contains the product id of the ordered product salesorderdetail modifieddate contains the date of an order salesorderdetail orderqty contains the order quantity product productid contains the unique id of a product product name contains a product name you need to create an output that presents the summarized values of all the order quantities by year and product the results must include a summary of the order quantities at the year level for all the products how should you complete the code to answer select the appropriate options in the answer area",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "dw1",
+        "tables",
+        "columns",
+        "salesorderdetail",
+        "productid",
+        "product",
+        "ordered",
+        "modifieddate",
+        "date",
+        "order",
+        "orderqty",
+        "quantity",
+        "unique",
+        "name",
+        "create",
+        "output",
+        "presents",
+        "summarized",
+        "values",
+        "quantities",
+        "year",
+        "results",
+        "include"
+      ],
+      "answer_keywords": [
+        "year",
+        "cast",
+        "convert",
+        "rollup",
+        "modifieddate",
+        "name",
+        "cube",
+        "grouping",
+        "sets"
       ]
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.12.png",
-      "question_id": 11,
+      "question_id": 3,
       "question_type": "yes_no_matrix",
       "question_text": "You have a Fabric workspace named Workspace1_DEV that contains the following items: 10 reports, four notebooks, three lakehouses, two data pipelines, two Dataflow Gen1 dataflows, three Dataflow Gen2 dataflows, and five semantic models that each has a scheduled refresh policy. You create a deployment pipeline named Pipeline1 to move items from Workspace1_DEV to a new workspace named Workspace1_TEST. You deploy all the items from Workspace1_DEV to Workspace1_TEST. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
       "statements": [
@@ -69,11 +162,39 @@
           "statement": "The scheduled refresh policies will be deployed to the target stage.",
           "answer": "No"
         }
-      ]
+      ],
+      "normalized_question": "you have a fabric workspace named workspace1 dev that contains the following items 10 reports four notebooks three lakehouses two data pipelines two dataflow gen1 dataflows three dataflow gen2 dataflows and five semantic models that each has a scheduled refresh policy you create a deployment pipeline named pipeline1 to move items from workspace1 dev to a new workspace named workspace1 test you deploy all the items from workspace1 dev to workspace1 test for each of the following statements select yes if the statement is true otherwise select no",
+      "question_keywords": [
+        "fabric",
+        "workspace1",
+        "dev",
+        "items",
+        "reports",
+        "four",
+        "notebooks",
+        "three",
+        "lakehouses",
+        "two",
+        "data",
+        "pipelines",
+        "dataflow",
+        "gen1",
+        "dataflows",
+        "gen2",
+        "five",
+        "semantic",
+        "models",
+        "has",
+        "scheduled",
+        "refresh",
+        "policy",
+        "create",
+        "deployment"
+      ],
+      "answer_keywords": []
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.36.png",
-      "question_id": null,
+      "question_id": 4,
       "question_type": "hotspot",
       "question_text": "You have a Fabric workspace named Workspace1 that contains the following items: Notebook1, Notebook2, Lakehouse1, Pipeline1, and Model1. For Model1, the Keep your Direct Lake data up to date option is disabled. You need to configure the execution of the items to meet the following requirements: Notebook1 must execute every weekday at 8:00 AM. Notebook2 must execute when a file is saved to an Azure Blob Storage container. Model1 must refresh when Notebook1 has executed successfully. How should you orchestrate each item? To answer, select the appropriate options in the answer area.",
       "fields": [
@@ -113,11 +234,57 @@
           ],
           "answer": "Add Model1 to Pipeline1."
         }
+      ],
+      "normalized_question": "you have a fabric workspace named workspace1 that contains the following items notebook1 notebook2 lakehouse1 pipeline1 and model1 for model1 the keep your direct lake data up to date option is disabled you need to configure the execution of the items to meet the following requirements notebook1 must execute every weekday at 8 00 am notebook2 must execute when a file is saved to an azure blob storage container model1 must refresh when notebook1 has executed successfully how should you orchestrate each item to answer select the appropriate options in the answer area",
+      "question_keywords": [
+        "fabric",
+        "workspace1",
+        "items",
+        "notebook1",
+        "notebook2",
+        "lakehouse1",
+        "pipeline1",
+        "model1",
+        "keep",
+        "your",
+        "direct",
+        "lake",
+        "data",
+        "date",
+        "option",
+        "disabled",
+        "configure",
+        "execution",
+        "meet",
+        "requirements",
+        "execute",
+        "every",
+        "weekday",
+        "when",
+        "file"
+      ],
+      "answer_keywords": [
+        "add",
+        "notebook1",
+        "pipeline1",
+        "apache",
+        "spark",
+        "real",
+        "time",
+        "hub",
+        "configure",
+        "execution",
+        "notebook2",
+        "schedule",
+        "model1",
+        "set",
+        "keep",
+        "your",
+        "direct"
       ]
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.48.png",
-      "question_id": null,
+      "question_id": 5,
       "question_type": "drag_drop",
       "question_text": "You are implementing the following data entities in a Fabric environment: Entity1 is available in a lakehouse and contains data that will be used as a core organization entity. Entity2 is available in a semantic model and contains data that meets organizational standards. Entity3 is available in a Microsoft Power BI report and contains data that is ready for sharing and reuse. Entity4 is available in a Power BI dashboard and contains approved data for executive-level decision making. Your company requires that specific governance processes be implemented for the data. You need to apply endorsement badges to the entities based on each entity's use case. Which badge should you apply to each entity?",
       "option_pool": [
@@ -131,11 +298,46 @@
         "Entity2": "Certified",
         "Entity3": "Promoted",
         "Entity4": "Cannot be endorsed"
-      }
+      },
+      "normalized_question": "you are implementing the following data entities in a fabric environment entity1 is available in a lakehouse and contains data that will be used as a core organization entity entity2 is available in a semantic model and contains data that meets organizational standards entity3 is available in a microsoft power bi report and contains data that is ready for sharing and reuse entity4 is available in a power bi dashboard and contains approved data for executive level decision making your company requires that specific governance processes be implemented for the data you need to apply endorsement badges to the entities based on each entity s use case which badge should you apply to each entity",
+      "question_keywords": [
+        "implementing",
+        "data",
+        "entities",
+        "fabric",
+        "environment",
+        "entity1",
+        "available",
+        "lakehouse",
+        "will",
+        "used",
+        "core",
+        "organization",
+        "entity",
+        "entity2",
+        "semantic",
+        "model",
+        "meets",
+        "organizational",
+        "standards",
+        "entity3",
+        "microsoft",
+        "power",
+        "report",
+        "ready",
+        "sharing"
+      ],
+      "answer_keywords": [
+        "certified",
+        "master",
+        "data",
+        "promoted",
+        "cannot",
+        "endorsed"
+      ]
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.56.png",
-      "question_id": null,
+      "question_id": 6,
       "question_type": "yes_no_matrix",
       "question_text": "You have three users named User1, User2, and User3. You have the Fabric workspaces shown in the following table: Workspace1 has User1 as workspace admin. Workspace2 has User2 as workspace admin. You have a security group named Group1 that contains User1 and User3. The Fabric admin creates the domains shown in the following table: Domain1 has User1 as domain admin. Domain2 has User2 as domain admin. User1 creates a new workspace named Workspace3. You add Group1 to the default domain of Domain1. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
       "statements": [
@@ -151,11 +353,39 @@
           "statement": "User2 has Contributor role access to Workspace3.",
           "answer": "No"
         }
-      ]
+      ],
+      "normalized_question": "you have three users named user1 user2 and user3 you have the fabric workspaces shown in the following table workspace1 has user1 as workspace admin workspace2 has user2 as workspace admin you have a security group named group1 that contains user1 and user3 the fabric admin creates the domains shown in the following table domain1 has user1 as domain admin domain2 has user2 as domain admin user1 creates a new workspace named workspace3 you add group1 to the default domain of domain1 for each of the following statements select yes if the statement is true otherwise select no",
+      "question_keywords": [
+        "three",
+        "users",
+        "user1",
+        "user2",
+        "user3",
+        "fabric",
+        "workspaces",
+        "shown",
+        "table",
+        "workspace1",
+        "has",
+        "admin",
+        "workspace2",
+        "security",
+        "group",
+        "group1",
+        "creates",
+        "domains",
+        "domain1",
+        "domain",
+        "domain2",
+        "new",
+        "workspace3",
+        "add",
+        "default"
+      ],
+      "answer_keywords": []
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.15.png",
-      "question_id": null,
+      "question_id": 7,
       "question_type": "drag_drop_order",
       "question_text": "Your company has a team of developers. The team creates Python libraries of reusable code that is used to transform data. You create a Fabric workspace named Workspace1 that will be used to develop extract, transform, and load (ETL) solutions by using notebooks. You need to ensure that the libraries are available by default to new notebooks in Workspace1. Which three actions should you perform in sequence?",
       "option_pool": [
@@ -169,11 +399,50 @@
         "Create an environment.",
         "Install the libraries.",
         "Set the default environment."
+      ],
+      "normalized_question": "your company has a team of developers the team creates python libraries of reusable code that is used to transform data you create a fabric workspace named workspace1 that will be used to develop extract transform and load etl solutions by using notebooks you need to ensure that the libraries are available by default to new notebooks in workspace1 which three actions should you perform in sequence",
+      "question_keywords": [
+        "your",
+        "company",
+        "has",
+        "team",
+        "developers",
+        "creates",
+        "python",
+        "libraries",
+        "reusable",
+        "code",
+        "used",
+        "transform",
+        "data",
+        "create",
+        "fabric",
+        "workspace1",
+        "will",
+        "develop",
+        "extract",
+        "load",
+        "etl",
+        "solutions",
+        "notebooks",
+        "ensure",
+        "available"
+      ],
+      "answer_keywords": [
+        "change",
+        "runtime",
+        "version",
+        "install",
+        "libraries",
+        "create",
+        "pool",
+        "environment",
+        "set",
+        "default"
       ]
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.26.png",
-      "question_id": null,
+      "question_id": 8,
       "question_type": "drag_drop_order",
       "question_text": "You have a Fabric workspace that contains a warehouse named Warehouse1. In Warehouse1, you create a table named DimCustomer by running the following statement: CREATE TABLE dbo.DimCustomer ( CustomerKey VARCHAR(255) NOT NULL, Name VARCHAR(255) NOT NULL, Email VARCHAR(255) NOT NULL ). You need to set the CustomerKey column as a primary key of the DimCustomer table. Which three code segments should you run in sequence?",
       "option_pool": [
@@ -188,11 +457,48 @@
         "ALTER TABLE dbo.DimCustomer",
         "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
         "NOT ENFORCED"
+      ],
+      "normalized_question": "you have a fabric workspace that contains a warehouse named warehouse1 in warehouse1 you create a table named dimcustomer by running the following statement create table dbo dimcustomer customerkey varchar 255 not null name varchar 255 not null email varchar 255 not null you need to set the customerkey column as a primary key of the dimcustomer table which three code segments should you run in sequence",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "warehouse1",
+        "create",
+        "table",
+        "dimcustomer",
+        "running",
+        "statement",
+        "dbo",
+        "customerkey",
+        "varchar",
+        "255",
+        "null",
+        "name",
+        "email",
+        "set",
+        "column",
+        "primary",
+        "key",
+        "three",
+        "code",
+        "segments",
+        "run",
+        "sequence"
+      ],
+      "answer_keywords": [
+        "drop",
+        "constraint",
+        "dimcustomer",
+        "add",
+        "primary",
+        "enforced",
+        "alter",
+        "table",
+        "dbo"
       ]
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.40.png",
-      "question_id": 33,
+      "question_id": 9,
       "question_type": "single_choice",
       "question_text": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. You have a Fabric eventstream that loads data into a table named Bike_Location in a KQL database. The table contains the following columns: BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. You need to apply transformation and filter logic to prepare the data for consumption. The solution must return data for a neighbourhood named Sands End when No_Bikes is at least 15. The results must be ordered by No_Bikes in ascending order. Solution: bike_location | filter Neighbourhood == \"Sands End\" and No_Bikes >= 15 | sort by No_Bikes | project BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp | project BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. Does this meet the goal?",
       "options": [
@@ -206,12 +512,45 @@
         }
       ],
       "answer": {
-        "correct_option_ids": ["B"]
-      }
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "note this question is part of a series of questions that present the same scenario each question in the series contains a unique solution that might meet the stated goals you have a fabric eventstream that loads data into a table named bike location in a kql database the table contains the following columns bikepointid street neighbourhood no bikes no empty docks timestamp you need to apply transformation and filter logic to prepare the data for consumption the solution must return data for a neighbourhood named sands end when no bikes is at least 15 the results must be ordered by no bikes in ascending order solution bike location filter neighbourhood sands end and no bikes 15 sort by no bikes project bikepointid street neighbourhood no bikes no empty docks timestamp project bikepointid street neighbourhood no bikes no empty docks timestamp does this meet the goal",
+      "question_keywords": [
+        "note",
+        "question",
+        "series",
+        "questions",
+        "present",
+        "same",
+        "scenario",
+        "unique",
+        "solution",
+        "might",
+        "meet",
+        "stated",
+        "goals",
+        "fabric",
+        "eventstream",
+        "loads",
+        "data",
+        "table",
+        "bike",
+        "location",
+        "kql",
+        "database",
+        "columns",
+        "bikepointid",
+        "street"
+      ],
+      "answer_keywords": [
+        "yes",
+        "B"
+      ]
     },
     {
-      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.47.png",
-      "question_id": 34,
+      "question_id": 10,
       "question_type": "single_choice",
       "question_text": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. You have a Fabric eventstream that loads data into a table named Bike_Location in a KQL database. The table contains the following columns: BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. You need to apply transformation and filter logic to prepare the data for consumption. The solution must return data for a neighbourhood named Sands End when No_Bikes is at least 15. The results must be ordered by No_Bikes in ascending order. Solution: bike_location | filter Neighbourhood == \"Sands End\" and No_Bikes >= 15 | order by No_Bikes | project BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. Does this meet the goal?",
       "options": [
@@ -225,8 +564,3376 @@
         }
       ],
       "answer": {
-        "correct_option_ids": ["B"]
-      }
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "note this question is part of a series of questions that present the same scenario each question in the series contains a unique solution that might meet the stated goals you have a fabric eventstream that loads data into a table named bike location in a kql database the table contains the following columns bikepointid street neighbourhood no bikes no empty docks timestamp you need to apply transformation and filter logic to prepare the data for consumption the solution must return data for a neighbourhood named sands end when no bikes is at least 15 the results must be ordered by no bikes in ascending order solution bike location filter neighbourhood sands end and no bikes 15 order by no bikes project bikepointid street neighbourhood no bikes no empty docks timestamp does this meet the goal",
+      "question_keywords": [
+        "note",
+        "question",
+        "series",
+        "questions",
+        "present",
+        "same",
+        "scenario",
+        "unique",
+        "solution",
+        "might",
+        "meet",
+        "stated",
+        "goals",
+        "fabric",
+        "eventstream",
+        "loads",
+        "data",
+        "table",
+        "bike",
+        "location",
+        "kql",
+        "database",
+        "columns",
+        "bikepointid",
+        "street"
+      ],
+      "answer_keywords": [
+        "yes",
+        "B"
+      ]
+    },
+    {
+      "question_id": 11,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace. You have semi-structured data. You need to read the data by using T-SQL, KQL, and Apache Spark. The data will only be written by using Spark. What should you use to store the data?",
+      "options": [
+        {
+          "id": "A",
+          "text": "a lakehouse"
+        },
+        {
+          "id": "B",
+          "text": "an eventhouse"
+        },
+        {
+          "id": "C",
+          "text": "a datamart"
+        },
+        {
+          "id": "D",
+          "text": "a warehouse"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace you have semi structured data you need to read the data by using t sql kql and apache spark the data will only be written by using spark what should you use to store the data",
+      "question_keywords": [
+        "fabric",
+        "semi",
+        "structured",
+        "data",
+        "read",
+        "sql",
+        "kql",
+        "apache",
+        "spark",
+        "will",
+        "written",
+        "store"
+      ],
+      "answer_keywords": [
+        "lakehouse",
+        "eventhouse",
+        "datamart",
+        "warehouse",
+        "A"
+      ]
+    },
+    {
+      "question_id": 12,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a warehouse named Warehouse1. You have an on-premises Microsoft SQL Server database named Database1 that is accessed by using an on-premises data gateway. You need to copy data from Database1 to Warehouse1. Which item should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "a Dataflow Gen1 dataflow"
+        },
+        {
+          "id": "B",
+          "text": "a data pipeline"
+        },
+        {
+          "id": "C",
+          "text": "a KQL queryset"
+        },
+        {
+          "id": "D",
+          "text": "a notebook"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains a warehouse named warehouse1 you have an on premises microsoft sql server database named database1 that is accessed by using an on premises data gateway you need to copy data from database1 to warehouse1 which item should you use",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "warehouse1",
+        "premises",
+        "microsoft",
+        "sql",
+        "server",
+        "database",
+        "database1",
+        "accessed",
+        "data",
+        "gateway",
+        "copy",
+        "item"
+      ],
+      "answer_keywords": [
+        "dataflow",
+        "gen1",
+        "data",
+        "pipeline",
+        "kql",
+        "queryset",
+        "notebook",
+        "B"
+      ]
+    },
+    {
+      "question_id": 13,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a warehouse named Warehouse1. You have an on-premises Microsoft SQL Server database named Database1 that is accessed by using an on-premises data gateway. You need to copy data from Database1 to Warehouse1. Which item should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "an Apache Spark job definition"
+        },
+        {
+          "id": "B",
+          "text": "a data pipeline"
+        },
+        {
+          "id": "C",
+          "text": "a Dataflow Gen1 dataflow"
+        },
+        {
+          "id": "D",
+          "text": "an eventstream"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains a warehouse named warehouse1 you have an on premises microsoft sql server database named database1 that is accessed by using an on premises data gateway you need to copy data from database1 to warehouse1 which item should you use",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "warehouse1",
+        "premises",
+        "microsoft",
+        "sql",
+        "server",
+        "database",
+        "database1",
+        "accessed",
+        "data",
+        "gateway",
+        "copy",
+        "item"
+      ],
+      "answer_keywords": [
+        "apache",
+        "spark",
+        "job",
+        "definition",
+        "data",
+        "pipeline",
+        "dataflow",
+        "gen1",
+        "eventstream",
+        "B"
+      ]
+    },
+    {
+      "question_id": 14,
+      "question_type": "yes_no_matrix",
+      "question_text": "You are building a data loading pattern for Fabric notebook workloads by using Delta Lake. The notebook logic first tries to find the target Delta table. If the table does not exist, the source DataFrame is written in overwrite mode to create the table. Then a merge operation is defined and executed to update matching rows and insert non-matching rows. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "statements": [
+        {
+          "statement": "The target table will always be overwritten.",
+          "answer": "No"
+        },
+        {
+          "statement": "The merge operation will always run.",
+          "answer": "No"
+        },
+        {
+          "statement": "The loading pattern supports both full and incremental loading requirements.",
+          "answer": "Yes"
+        }
+      ],
+      "normalized_question": "you are building a data loading pattern for fabric notebook workloads by using delta lake the notebook logic first tries to find the target delta table if the table does not exist the source dataframe is written in overwrite mode to create the table then a merge operation is defined and executed to update matching rows and insert non matching rows for each of the following statements select yes if the statement is true otherwise select no",
+      "question_keywords": [
+        "building",
+        "data",
+        "loading",
+        "pattern",
+        "fabric",
+        "notebook",
+        "workloads",
+        "delta",
+        "lake",
+        "logic",
+        "first",
+        "tries",
+        "find",
+        "target",
+        "table",
+        "does",
+        "exist",
+        "source",
+        "dataframe",
+        "written",
+        "overwrite",
+        "mode",
+        "create",
+        "then",
+        "merge"
+      ],
+      "answer_keywords": []
+    },
+    {
+      "question_id": 15,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric workspace that contains two lakehouses named Lakehouse1 and Lakehouse2. Lakehouse1 contains staging data in a Delta table named Orderlines. Lakehouse2 contains a Type 2 slowly changing dimension (SCD) table named Dim_Customer. You need to build a query that combines data from Orderlines and Dim_Customer to create a new fact table named Fact_Orders. The new table must support analysis of customer orders based on historical attributes and current attributes. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "First date condition",
+          "options": [
+            "c.is_current = 1",
+            "o.OrderDate > c.valid_to_datetime",
+            "o.OrderDate >= c.valid_from_datetime"
+          ],
+          "answer": "o.OrderDate >= c.valid_from_datetime"
+        },
+        {
+          "name": "Second date condition",
+          "options": [
+            "c.is_current = 1",
+            "o.OrderDate < c.valid_to_datetime",
+            "o.OrderDate <= c.valid_from_datetime"
+          ],
+          "answer": "o.OrderDate < c.valid_to_datetime"
+        }
+      ],
+      "normalized_question": "you have a fabric workspace that contains two lakehouses named lakehouse1 and lakehouse2 lakehouse1 contains staging data in a delta table named orderlines lakehouse2 contains a type 2 slowly changing dimension scd table named dim customer you need to build a query that combines data from orderlines and dim customer to create a new fact table named fact orders the new table must support analysis of customer orders based on historical attributes and current attributes how should you complete the statement",
+      "question_keywords": [
+        "fabric",
+        "two",
+        "lakehouses",
+        "lakehouse1",
+        "lakehouse2",
+        "staging",
+        "data",
+        "delta",
+        "table",
+        "orderlines",
+        "type",
+        "slowly",
+        "changing",
+        "dimension",
+        "scd",
+        "dim",
+        "customer",
+        "build",
+        "query",
+        "combines",
+        "create",
+        "new",
+        "fact",
+        "orders",
+        "support"
+      ],
+      "answer_keywords": [
+        "orderdate",
+        "valid",
+        "datetime",
+        "current"
+      ]
+    },
+    {
+      "question_id": 16,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a lakehouse named Lakehouse1. In an external data source, you have data files that are 500 GB each. A new file is added every day. You need to ingest the data into Lakehouse1 without applying any transformations. The solution must meet the following requirements: Trigger the process when a new file is added. Provide the highest throughput. Which type of item should you use to ingest the data?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Eventstream"
+        },
+        {
+          "id": "B",
+          "text": "Dataflow Gen2"
+        },
+        {
+          "id": "C",
+          "text": "Streaming dataset"
+        },
+        {
+          "id": "D",
+          "text": "Data pipeline"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains a lakehouse named lakehouse1 in an external data source you have data files that are 500 gb each a new file is added every day you need to ingest the data into lakehouse1 without applying any transformations the solution must meet the following requirements trigger the process when a new file is added provide the highest throughput which type of item should you use to ingest the data",
+      "question_keywords": [
+        "fabric",
+        "lakehouse",
+        "lakehouse1",
+        "external",
+        "data",
+        "source",
+        "files",
+        "500",
+        "new",
+        "file",
+        "added",
+        "every",
+        "day",
+        "ingest",
+        "without",
+        "applying",
+        "any",
+        "transformations",
+        "solution",
+        "meet",
+        "requirements",
+        "trigger",
+        "process",
+        "when",
+        "provide"
+      ],
+      "answer_keywords": [
+        "eventstream",
+        "dataflow",
+        "gen2",
+        "streaming",
+        "dataset",
+        "data",
+        "pipeline",
+        "D"
+      ]
+    },
+    {
+      "question_id": 17,
+      "question_type": "multi_select",
+      "question_text": "You have a Fabric workspace that contains an eventhouse and a KQL database named Database1. Database1 contains a table named Table1, a table named Table2, and an update policy named Policy1. Policy1 sends data from Table1 to Table2. Recently, the following actions were performed on Table1: An additional element named temperature was added to the StreamData column. The data type of the Timestamp column was changed to date. The data type of the DeviceId column was changed to string. You plan to load additional records to Table1. Which two records will load from Table1 to Table2? Each correct answer presents a complete solution.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Record A"
+        },
+        {
+          "id": "B",
+          "text": "Record B"
+        },
+        {
+          "id": "C",
+          "text": "Record C"
+        },
+        {
+          "id": "D",
+          "text": "Record D"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A",
+          "D"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains an eventhouse and a kql database named database1 database1 contains a table named table1 a table named table2 and an update policy named policy1 policy1 sends data from table1 to table2 recently the following actions were performed on table1 an additional element named temperature was added to the streamdata column the data type of the timestamp column was changed to date the data type of the deviceid column was changed to string you plan to load additional records to table1 which two records will load from table1 to table2 each correct answer presents a complete solution",
+      "question_keywords": [
+        "fabric",
+        "eventhouse",
+        "kql",
+        "database",
+        "database1",
+        "table",
+        "table1",
+        "table2",
+        "update",
+        "policy",
+        "policy1",
+        "sends",
+        "data",
+        "recently",
+        "actions",
+        "were",
+        "performed",
+        "additional",
+        "element",
+        "temperature",
+        "was",
+        "added",
+        "streamdata",
+        "column",
+        "type"
+      ],
+      "answer_keywords": [
+        "record",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "question_id": 18,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric workspace. You are debugging a T-SQL statement and discover the following issues: Sometimes the statement fails to return all the expected rows. The PurchaseDate output column is NOT in the expected format of mmm dd, yy. You need to resolve the issues. The solution must ensure that the data types of the results are retained. The results can contain blank cells. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "ItemName expression",
+          "options": [
+            "convert(varchar(20), item_name)",
+            "convert(varchar(max), item_name)",
+            "try_cast(item_name as varchar(20))"
+          ],
+          "answer": "try_cast(item_name as varchar(20))"
+        },
+        {
+          "name": "PurchaseDate expression",
+          "options": [
+            "convert(varchar, purchase_date, 7)",
+            "convert(varchar, purchase_date, 109)",
+            "convert(varchar, purchase_date, 112)"
+          ],
+          "answer": "convert(varchar, purchase_date, 7)"
+        }
+      ],
+      "normalized_question": "you have a fabric workspace you are debugging a t sql statement and discover the following issues sometimes the statement fails to return all the expected rows the purchasedate output column is not in the expected format of mmm dd yy you need to resolve the issues the solution must ensure that the data types of the results are retained the results can contain blank cells how should you complete the statement",
+      "question_keywords": [
+        "fabric",
+        "debugging",
+        "sql",
+        "statement",
+        "discover",
+        "issues",
+        "sometimes",
+        "fails",
+        "return",
+        "expected",
+        "rows",
+        "purchasedate",
+        "output",
+        "column",
+        "format",
+        "mmm",
+        "resolve",
+        "solution",
+        "ensure",
+        "data",
+        "types",
+        "results",
+        "retained",
+        "can",
+        "blank"
+      ],
+      "answer_keywords": [
+        "try",
+        "cast",
+        "item",
+        "name",
+        "varchar",
+        "convert",
+        "max",
+        "purchase",
+        "date"
+      ]
+    },
+    {
+      "question_id": 19,
+      "question_type": "single_choice",
+      "question_text": "You are developing a data pipeline named Pipeline1. You need to add a Copy data activity that will copy data from a Snowflake data source to a Fabric warehouse. What should you configure?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Degree of copy parallelism"
+        },
+        {
+          "id": "B",
+          "text": "Fault tolerance"
+        },
+        {
+          "id": "C",
+          "text": "Enable staging"
+        },
+        {
+          "id": "D",
+          "text": "Enable logging"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "C"
+        ]
+      },
+      "normalized_question": "you are developing a data pipeline named pipeline1 you need to add a copy data activity that will copy data from a snowflake data source to a fabric warehouse what should you configure",
+      "question_keywords": [
+        "developing",
+        "data",
+        "pipeline",
+        "pipeline1",
+        "add",
+        "copy",
+        "activity",
+        "will",
+        "snowflake",
+        "source",
+        "fabric",
+        "warehouse",
+        "configure"
+      ],
+      "answer_keywords": [
+        "degree",
+        "copy",
+        "parallelism",
+        "fault",
+        "tolerance",
+        "enable",
+        "staging",
+        "logging",
+        "C"
+      ]
+    },
+    {
+      "question_id": 20,
+      "question_type": "multi_select",
+      "question_text": "You need to populate the MAR1 data in the bronze layer. Which two types of activities should you include in the pipeline? Each correct answer presents part of the solution.",
+      "options": [
+        {
+          "id": "A",
+          "text": "ForEach"
+        },
+        {
+          "id": "B",
+          "text": "Copy data"
+        },
+        {
+          "id": "C",
+          "text": "WebHook"
+        },
+        {
+          "id": "D",
+          "text": "Stored procedure"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A",
+          "B"
+        ]
+      },
+      "normalized_question": "you need to populate the mar1 data in the bronze layer which two types of activities should you include in the pipeline each correct answer presents part of the solution",
+      "question_keywords": [
+        "populate",
+        "mar1",
+        "data",
+        "bronze",
+        "layer",
+        "two",
+        "types",
+        "activities",
+        "include",
+        "pipeline",
+        "presents",
+        "solution"
+      ],
+      "answer_keywords": [
+        "foreach",
+        "copy",
+        "data",
+        "webhook",
+        "stored",
+        "procedure",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "question_id": 21,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a warehouse named DW1 that is modeled by using MD5 hash surrogate keys. DW1 contains a single fact table that has grown from 200 million rows to 500 million rows during the past year. You have Microsoft Power BI reports that are based on Direct Lake. The reports show year-over-year values. Users report that the performance of some of the reports has degraded over time and some visuals show errors. You need to resolve the performance issues. The solution must meet the following requirements: Provide the best query performance and minimize operational costs. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create views."
+        },
+        {
+          "id": "B",
+          "text": "Modify the surrogate keys to use a different data type."
+        },
+        {
+          "id": "C",
+          "text": "Change the MD5 hash to SHA256."
+        },
+        {
+          "id": "D",
+          "text": "Increase the capacity."
+        },
+        {
+          "id": "E",
+          "text": "Disable V-Order on the warehouse."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains a warehouse named dw1 that is modeled by using md5 hash surrogate keys dw1 contains a single fact table that has grown from 200 million rows to 500 million rows during the past year you have microsoft power bi reports that are based on direct lake the reports show year over year values users report that the performance of some of the reports has degraded over time and some visuals show errors you need to resolve the performance issues the solution must meet the following requirements provide the best query performance and minimize operational costs what should you do",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "dw1",
+        "modeled",
+        "md5",
+        "hash",
+        "surrogate",
+        "keys",
+        "single",
+        "fact",
+        "table",
+        "has",
+        "grown",
+        "200",
+        "million",
+        "rows",
+        "500",
+        "during",
+        "past",
+        "year",
+        "microsoft",
+        "power",
+        "reports",
+        "based",
+        "direct"
+      ],
+      "answer_keywords": [
+        "create",
+        "views",
+        "modify",
+        "surrogate",
+        "keys",
+        "different",
+        "data",
+        "change",
+        "md5",
+        "hash",
+        "sha256",
+        "increase",
+        "capacity",
+        "disable",
+        "order",
+        "warehouse",
+        "D"
+      ]
+    },
+    {
+      "question_id": 22,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace named Workspace1 that contains a warehouse named Warehouse1. You plan to deploy Warehouse1 to a new workspace named Workspace2. As part of the deployment process, you need to verify whether Warehouse1 contains invalid references. The solution must minimize development effort and provide detailed information about the invalid references. What should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "a dbt project"
+        },
+        {
+          "id": "B",
+          "text": "a deployment pipeline"
+        },
+        {
+          "id": "C",
+          "text": "a Python script"
+        },
+        {
+          "id": "D",
+          "text": "a database project"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace named workspace1 that contains a warehouse named warehouse1 you plan to deploy warehouse1 to a new workspace named workspace2 as part of the deployment process you need to verify whether warehouse1 contains invalid references the solution must minimize development effort and provide detailed information about the invalid references what should you use",
+      "question_keywords": [
+        "fabric",
+        "workspace1",
+        "warehouse",
+        "warehouse1",
+        "plan",
+        "deploy",
+        "new",
+        "workspace2",
+        "deployment",
+        "process",
+        "verify",
+        "whether",
+        "invalid",
+        "references",
+        "solution",
+        "minimize",
+        "development",
+        "effort",
+        "provide",
+        "detailed",
+        "information",
+        "about"
+      ],
+      "answer_keywords": [
+        "dbt",
+        "project",
+        "deployment",
+        "pipeline",
+        "python",
+        "script",
+        "database",
+        "B"
+      ]
+    },
+    {
+      "question_id": 23,
+      "question_type": "drag_drop_order",
+      "question_text": "You have a Fabric deployment pipeline that has Development, Test, and Production stages. In the Development workspace, you build a new feature named Feature1. You need to deploy Feature1 to the Test workspace. The solution must ensure that only a pipeline is deployed. Which four actions should you perform in sequence?",
+      "option_pool": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "Select Deploy.",
+        "From Deploy from, select Development.",
+        "From Deploy from, select Production.",
+        "Select the Development stage."
+      ],
+      "answer_sequence": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "From Deploy from, select Development.",
+        "Select Deploy."
+      ],
+      "normalized_question": "you have a fabric deployment pipeline that has development test and production stages in the development workspace you build a new feature named feature1 you need to deploy feature1 to the test workspace the solution must ensure that only a pipeline is deployed which four actions should you perform in sequence",
+      "question_keywords": [
+        "fabric",
+        "deployment",
+        "pipeline",
+        "has",
+        "development",
+        "test",
+        "production",
+        "stages",
+        "build",
+        "new",
+        "feature",
+        "feature1",
+        "deploy",
+        "solution",
+        "ensure",
+        "deployed",
+        "four",
+        "actions",
+        "perform",
+        "sequence"
+      ],
+      "answer_keywords": [
+        "pipeline1",
+        "test",
+        "stage",
+        "deploy",
+        "development",
+        "production"
+      ]
+    },
+    {
+      "question_id": 24,
+      "question_type": "single_choice",
+      "question_text": "Litware recently signed a contract to receive book reviews. The provider of the reviews exposes the data in Amazon Simple Storage Service (Amazon S3) buckets. Litware must make the book reviews available in the lakehouse but must NOT store a duplicate copy of the data in OneLake. What should you implement?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a Dataflow Gen2 dataflow."
+        },
+        {
+          "id": "B",
+          "text": "Create a shortcut."
+        },
+        {
+          "id": "C",
+          "text": "Enable external data sharing."
+        },
+        {
+          "id": "D",
+          "text": "Create a data pipeline."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "litware recently signed a contract to receive book reviews the provider of the reviews exposes the data in amazon simple storage service amazon s3 buckets litware must make the book reviews available in the lakehouse but must not store a duplicate copy of the data in onelake what should you implement",
+      "question_keywords": [
+        "litware",
+        "recently",
+        "signed",
+        "contract",
+        "receive",
+        "book",
+        "reviews",
+        "provider",
+        "exposes",
+        "data",
+        "amazon",
+        "simple",
+        "storage",
+        "service",
+        "buckets",
+        "make",
+        "available",
+        "lakehouse",
+        "but",
+        "store",
+        "duplicate",
+        "copy",
+        "onelake",
+        "implement"
+      ],
+      "answer_keywords": [
+        "create",
+        "dataflow",
+        "gen2",
+        "shortcut",
+        "enable",
+        "external",
+        "data",
+        "sharing",
+        "pipeline",
+        "B"
+      ]
+    },
+    {
+      "question_id": 25,
+      "question_type": "single_choice",
+      "question_text": "Litware identifies the following data requirements: Process the SEO data in near-real-time (NRT). Make the book reviews available in the lakehouse without making a copy of the data. When a new book cover image arrives in the Files folder, process the image as soon as possible. You need to resolve the sales data issue while minimizing the amount of data transferred. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Split the dataflow into two dataflows."
+        },
+        {
+          "id": "B",
+          "text": "Configure scheduled refresh for the dataflow."
+        },
+        {
+          "id": "C",
+          "text": "Configure incremental refresh for the dataflow. Set Store rows from the past to 1 Month."
+        },
+        {
+          "id": "D",
+          "text": "Configure incremental refresh for the dataflow. Set Refresh rows from the past to 1 Year."
+        },
+        {
+          "id": "E",
+          "text": "Configure incremental refresh for the dataflow. Set Refresh rows from the past to 1 Month."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "E"
+        ]
+      },
+      "normalized_question": "litware identifies the following data requirements process the seo data in near real time nrt make the book reviews available in the lakehouse without making a copy of the data when a new book cover image arrives in the files folder process the image as soon as possible you need to resolve the sales data issue while minimizing the amount of data transferred what should you do",
+      "question_keywords": [
+        "litware",
+        "identifies",
+        "data",
+        "requirements",
+        "process",
+        "seo",
+        "near",
+        "real",
+        "time",
+        "nrt",
+        "make",
+        "book",
+        "reviews",
+        "available",
+        "lakehouse",
+        "without",
+        "making",
+        "copy",
+        "when",
+        "new",
+        "cover",
+        "image",
+        "arrives",
+        "files",
+        "folder"
+      ],
+      "answer_keywords": [
+        "split",
+        "dataflow",
+        "two",
+        "dataflows",
+        "configure",
+        "scheduled",
+        "refresh",
+        "incremental",
+        "set",
+        "E"
+      ]
+    },
+    {
+      "question_id": 26,
+      "question_type": "hotspot",
+      "question_text": "You need to recommend a method to populate the POS1 data to the lakehouse medallion architecture layers. What should you recommend for each layer?",
+      "fields": [
+        {
+          "name": "Bronze layer",
+          "options": [
+            "A Dataflow Gen2 dataflow",
+            "A notebook",
+            "A pipeline Copy activity",
+            "A pipeline stored procedure"
+          ],
+          "answer": "A pipeline Copy activity"
+        },
+        {
+          "name": "Silver layer",
+          "options": [
+            "A Dataflow Gen2 dataflow",
+            "A notebook",
+            "A pipeline Copy activity",
+            "A pipeline stored procedure"
+          ],
+          "answer": "A notebook"
+        }
+      ],
+      "normalized_question": "you need to recommend a method to populate the pos1 data to the lakehouse medallion architecture layers what should you recommend for each layer",
+      "question_keywords": [
+        "recommend",
+        "method",
+        "populate",
+        "pos1",
+        "data",
+        "lakehouse",
+        "medallion",
+        "architecture",
+        "layers",
+        "layer"
+      ],
+      "answer_keywords": [
+        "pipeline",
+        "copy",
+        "activity",
+        "dataflow",
+        "gen2",
+        "notebook",
+        "stored",
+        "procedure"
+      ]
+    },
+    {
+      "question_id": 27,
+      "question_type": "single_choice",
+      "question_text": "You need to ensure that usage of the data in the Amazon S3 bucket meets the technical requirements. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a workspace identity and enable high concurrency for the notebooks."
+        },
+        {
+          "id": "B",
+          "text": "Create a shortcut and ensure that caching is disabled for the workspace."
+        },
+        {
+          "id": "C",
+          "text": "Create a workspace identity and use the identity in a data pipeline."
+        },
+        {
+          "id": "D",
+          "text": "Create a shortcut and ensure that caching is enabled for the workspace."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you need to ensure that usage of the data in the amazon s3 bucket meets the technical requirements what should you do",
+      "question_keywords": [
+        "ensure",
+        "usage",
+        "data",
+        "amazon",
+        "bucket",
+        "meets",
+        "technical",
+        "requirements"
+      ],
+      "answer_keywords": [
+        "create",
+        "identity",
+        "enable",
+        "high",
+        "concurrency",
+        "shortcut",
+        "ensure",
+        "caching",
+        "disabled",
+        "data",
+        "pipeline",
+        "enabled",
+        "D"
+      ]
+    },
+    {
+      "question_id": 28,
+      "question_type": "hotspot",
+      "question_text": "You need to create the product dimension by using Apache Spark SQL. Products must include only active products and must exclude categories or subcategories that are not assigned to any product. How should you complete the query?",
+      "fields": [
+        {
+          "name": "Join type between Products and ProductSubcategories",
+          "options": [
+            "FULL JOIN",
+            "INNER JOIN",
+            "LEFT ANTI JOIN",
+            "LEFT OUTER JOIN",
+            "OUTER JOIN"
+          ],
+          "answer": "INNER JOIN"
+        },
+        {
+          "name": "Join type between ProductSubcategories and ProductCategories",
+          "options": [
+            "FULL JOIN",
+            "INNER JOIN",
+            "LEFT ANTI JOIN",
+            "LEFT OUTER JOIN",
+            "OUTER JOIN"
+          ],
+          "answer": "INNER JOIN"
+        },
+        {
+          "name": "WHERE clause",
+          "options": [
+            "CategoryID = 1",
+            "CategoryName is not null",
+            "IsActive = 1",
+            "IsActive is not null",
+            "ProductNumber is not null",
+            "SubCategoryID = 1",
+            "SubCategoryName is not null"
+          ],
+          "answer": "IsActive = 1"
+        }
+      ],
+      "normalized_question": "you need to create the product dimension by using apache spark sql products must include only active products and must exclude categories or subcategories that are not assigned to any product how should you complete the query",
+      "question_keywords": [
+        "create",
+        "product",
+        "dimension",
+        "apache",
+        "spark",
+        "sql",
+        "products",
+        "include",
+        "active",
+        "exclude",
+        "categories",
+        "subcategories",
+        "assigned",
+        "any",
+        "how",
+        "complete",
+        "query"
+      ],
+      "answer_keywords": [
+        "inner",
+        "join",
+        "full",
+        "left",
+        "anti",
+        "outer",
+        "isactive",
+        "categoryid",
+        "categoryname",
+        "null",
+        "productnumber",
+        "subcategoryid",
+        "subcategoryname"
+      ]
+    },
+    {
+      "question_id": 29,
+      "question_type": "multi_select",
+      "question_text": "You need to populate the MAR1 data in the bronze layer. Which two types of activities should you include in the pipeline?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ForEach"
+        },
+        {
+          "id": "B",
+          "text": "Copy data"
+        },
+        {
+          "id": "C",
+          "text": "WebHook"
+        },
+        {
+          "id": "D",
+          "text": "Stored procedure"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A",
+          "B"
+        ]
+      },
+      "normalized_question": "you need to populate the mar1 data in the bronze layer which two types of activities should you include in the pipeline",
+      "question_keywords": [
+        "populate",
+        "mar1",
+        "data",
+        "bronze",
+        "layer",
+        "two",
+        "types",
+        "activities",
+        "include",
+        "pipeline"
+      ],
+      "answer_keywords": [
+        "foreach",
+        "copy",
+        "data",
+        "webhook",
+        "stored",
+        "procedure",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "question_id": 30,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric warehouse named Warehouse1. Warehouse1 contains the following tables and columns: Employee(EmployeeID, EmployeeName, EmployeePosition) and Contract(EmployeeID, ContractType, StartDate, EndDate). You need to denormalize the tables and include ContractType and StartDate columns in the Employee table. The result must show the total number of employees per contract type for contract types that have more than two employees. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "Date conversion",
+          "options": [
+            "CAST",
+            "CONVERT",
+            "REPLACE",
+            "SUBSTRING"
+          ],
+          "answer": "CAST"
+        },
+        {
+          "name": "Join type",
+          "options": [
+            "CROSS JOIN",
+            "INNER JOIN",
+            "LEFT OUTER JOIN",
+            "RIGHT OUTER JOIN"
+          ],
+          "answer": "LEFT OUTER JOIN"
+        },
+        {
+          "name": "Filtering clause",
+          "options": [
+            "CONTAINS",
+            "HAVING",
+            "LIMIT",
+            "WHERE"
+          ],
+          "answer": "HAVING"
+        }
+      ],
+      "normalized_question": "you have a fabric warehouse named warehouse1 warehouse1 contains the following tables and columns employee employeeid employeename employeeposition and contract employeeid contracttype startdate enddate you need to denormalize the tables and include contracttype and startdate columns in the employee table the result must show the total number of employees per contract type for contract types that have more than two employees how should you complete the statement",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "warehouse1",
+        "tables",
+        "columns",
+        "employee",
+        "employeeid",
+        "employeename",
+        "employeeposition",
+        "contract",
+        "contracttype",
+        "startdate",
+        "enddate",
+        "denormalize",
+        "include",
+        "table",
+        "result",
+        "show",
+        "total",
+        "number",
+        "employees",
+        "per",
+        "type",
+        "types",
+        "more"
+      ],
+      "answer_keywords": [
+        "cast",
+        "convert",
+        "replace",
+        "substring",
+        "left",
+        "outer",
+        "join",
+        "cross",
+        "inner",
+        "right",
+        "having",
+        "limit",
+        "where"
+      ]
+    },
+    {
+      "question_id": 31,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace named Workspace1 that contains a warehouse named DW1 and a data pipeline named Pipeline1. You add a user named User3. User3 must be able to view all items in Workspace1 and update tables in DW1. The solution must follow the principle of least privilege. Which workspace role should you assign to User3?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Admin"
+        },
+        {
+          "id": "B",
+          "text": "Member"
+        },
+        {
+          "id": "C",
+          "text": "Viewer"
+        },
+        {
+          "id": "D",
+          "text": "Contributor"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace named workspace1 that contains a warehouse named dw1 and a data pipeline named pipeline1 you add a user named user3 user3 must be able to view all items in workspace1 and update tables in dw1 the solution must follow the principle of least privilege which workspace role should you assign to user3",
+      "question_keywords": [
+        "fabric",
+        "workspace1",
+        "warehouse",
+        "dw1",
+        "data",
+        "pipeline",
+        "pipeline1",
+        "add",
+        "user",
+        "user3",
+        "able",
+        "view",
+        "items",
+        "update",
+        "tables",
+        "solution",
+        "follow",
+        "principle",
+        "least",
+        "privilege",
+        "role",
+        "assign"
+      ],
+      "answer_keywords": [
+        "admin",
+        "member",
+        "viewer",
+        "contributor",
+        "D"
+      ]
+    },
+    {
+      "question_id": 32,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a lakehouse named Lakehouse1. A user must query table data by using SQL but must NOT use Apache Spark to query the underlying files and must not access other workspace items. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Share Lakehouse1 with the user and grant Read all SQL endpoint data permission."
+        },
+        {
+          "id": "B",
+          "text": "Assign the Viewer role and share Lakehouse1."
+        },
+        {
+          "id": "C",
+          "text": "Share Lakehouse1 and grant Build reports permission."
+        },
+        {
+          "id": "D",
+          "text": "Assign the Member role and share Lakehouse1."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains a lakehouse named lakehouse1 a user must query table data by using sql but must not use apache spark to query the underlying files and must not access other workspace items what should you do",
+      "question_keywords": [
+        "fabric",
+        "lakehouse",
+        "lakehouse1",
+        "user",
+        "query",
+        "table",
+        "data",
+        "sql",
+        "but",
+        "apache",
+        "spark",
+        "underlying",
+        "files",
+        "access",
+        "other",
+        "items"
+      ],
+      "answer_keywords": [
+        "share",
+        "lakehouse1",
+        "user",
+        "grant",
+        "read",
+        "assign",
+        "viewer",
+        "role",
+        "build",
+        "reports",
+        "member",
+        "A"
+      ]
+    },
+    {
+      "question_id": 33,
+      "question_type": "drag_drop",
+      "question_text": "You must apply endorsement badges to the following Fabric items based on governance rules.",
+      "option_pool": [
+        "Certified",
+        "Promoted",
+        "Master data",
+        "Cannot be endorsed"
+      ],
+      "answer": {
+        "Entity1": "Master data",
+        "Entity2": "Certified",
+        "Entity3": "Promoted",
+        "Entity4": "Cannot be endorsed"
+      },
+      "normalized_question": "you must apply endorsement badges to the following fabric items based on governance rules",
+      "question_keywords": [
+        "apply",
+        "endorsement",
+        "badges",
+        "fabric",
+        "items",
+        "based",
+        "governance",
+        "rules"
+      ],
+      "answer_keywords": [
+        "certified",
+        "promoted",
+        "master",
+        "data",
+        "cannot",
+        "endorsed"
+      ]
+    },
+    {
+      "question_id": 34,
+      "question_type": "yes_no_matrix",
+      "question_text": "Evaluate the following statements about workspace, domain, and user permissions in Microsoft Fabric.",
+      "statements": [
+        {
+          "statement": "User3 has Viewer role access to Workspace3.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "User3 has Domain contributor access to Domain1.",
+          "answer": "No"
+        },
+        {
+          "statement": "User2 has Contributor role access to Workspace3.",
+          "answer": "No"
+        }
+      ],
+      "normalized_question": "evaluate the following statements about workspace domain and user permissions in microsoft fabric",
+      "question_keywords": [
+        "evaluate",
+        "statements",
+        "about",
+        "domain",
+        "user",
+        "permissions",
+        "microsoft",
+        "fabric"
+      ],
+      "answer_keywords": []
+    },
+    {
+      "question_id": 35,
+      "question_type": "single_choice",
+      "question_text": "You have two Fabric workspaces named Workspace1 and Workspace2 and a deployment pipeline that deploys items from Workspace1 to Workspace2. Some items have matching names and are paired. You need to ensure items in Workspace1 overwrite corresponding items in Workspace2 with minimal effort. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Delete all the items in Workspace2 and run the deployment pipeline."
+        },
+        {
+          "id": "B",
+          "text": "Rename the items in Workspace2 to match Workspace1."
+        },
+        {
+          "id": "C",
+          "text": "Back up items in Workspace2 and run the deployment pipeline."
+        },
+        {
+          "id": "D",
+          "text": "Run the deployment pipeline without modifying the items."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you have two fabric workspaces named workspace1 and workspace2 and a deployment pipeline that deploys items from workspace1 to workspace2 some items have matching names and are paired you need to ensure items in workspace1 overwrite corresponding items in workspace2 with minimal effort what should you do",
+      "question_keywords": [
+        "two",
+        "fabric",
+        "workspaces",
+        "workspace1",
+        "workspace2",
+        "deployment",
+        "pipeline",
+        "deploys",
+        "items",
+        "some",
+        "matching",
+        "names",
+        "paired",
+        "ensure",
+        "overwrite",
+        "corresponding",
+        "minimal",
+        "effort"
+      ],
+      "answer_keywords": [
+        "delete",
+        "items",
+        "workspace2",
+        "run",
+        "deployment",
+        "rename",
+        "match",
+        "workspace1",
+        "back",
+        "pipeline",
+        "without",
+        "modifying",
+        "D"
+      ]
+    },
+    {
+      "question_id": 36,
+      "question_type": "single_choice",
+      "question_text": "You restructure Workspace1 by adding a folder and moving a pipeline into the folder. You deploy the changes by using a deployment pipeline. What happens in Workspace2?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The folder is created, the pipeline moves to the folder, and the lakehouse is deployed."
+        },
+        {
+          "id": "B",
+          "text": "Only the pipeline and lakehouse are deployed."
+        },
+        {
+          "id": "C",
+          "text": "The folder is created and all items move to the folder."
+        },
+        {
+          "id": "D",
+          "text": "Only the folder is created and the pipeline moves."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A"
+        ]
+      },
+      "normalized_question": "you restructure workspace1 by adding a folder and moving a pipeline into the folder you deploy the changes by using a deployment pipeline what happens in workspace2",
+      "question_keywords": [
+        "restructure",
+        "workspace1",
+        "adding",
+        "folder",
+        "moving",
+        "pipeline",
+        "deploy",
+        "changes",
+        "deployment",
+        "happens",
+        "workspace2"
+      ],
+      "answer_keywords": [
+        "folder",
+        "created",
+        "pipeline",
+        "moves",
+        "lakehouse",
+        "deployed",
+        "items",
+        "move",
+        "A"
+      ]
+    },
+    {
+      "question_id": 37,
+      "question_type": "drag_drop_order",
+      "question_text": "Ensure Python libraries are available by default for notebooks in Workspace1. Which three actions should you perform in sequence?",
+      "option_pool": [
+        "Create an environment",
+        "Install the libraries",
+        "Set the default environment",
+        "Create a Spark pool",
+        "Change runtime version"
+      ],
+      "answer_sequence": [
+        "Create an environment",
+        "Install the libraries",
+        "Set the default environment"
+      ],
+      "normalized_question": "ensure python libraries are available by default for notebooks in workspace1 which three actions should you perform in sequence",
+      "question_keywords": [
+        "ensure",
+        "python",
+        "libraries",
+        "available",
+        "default",
+        "notebooks",
+        "workspace1",
+        "three",
+        "actions",
+        "perform",
+        "sequence"
+      ],
+      "answer_keywords": [
+        "create",
+        "environment",
+        "install",
+        "libraries",
+        "set",
+        "default",
+        "spark",
+        "pool",
+        "change",
+        "runtime",
+        "version"
+      ]
+    },
+    {
+      "question_id": 38,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace containing a lakehouse and a notebook that reads data into a DataFrame and writes the results to a Delta table. You need to consolidate the underlying Parquet files in the Delta table. Which command should you run?",
+      "options": [
+        {
+          "id": "A",
+          "text": "VACUUM"
+        },
+        {
+          "id": "B",
+          "text": "BROADCAST"
+        },
+        {
+          "id": "C",
+          "text": "OPTIMIZE"
+        },
+        {
+          "id": "D",
+          "text": "CACHE"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "C"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace containing a lakehouse and a notebook that reads data into a dataframe and writes the results to a delta table you need to consolidate the underlying parquet files in the delta table which command should you run",
+      "question_keywords": [
+        "fabric",
+        "containing",
+        "lakehouse",
+        "notebook",
+        "reads",
+        "data",
+        "dataframe",
+        "writes",
+        "results",
+        "delta",
+        "table",
+        "consolidate",
+        "underlying",
+        "parquet",
+        "files",
+        "command",
+        "run"
+      ],
+      "answer_keywords": [
+        "vacuum",
+        "broadcast",
+        "optimize",
+        "cache",
+        "C"
+      ]
+    },
+    {
+      "question_id": 39,
+      "question_type": "single_choice",
+      "question_text": "You are monitoring execution of Fabric items by using Monitoring hub. You need to identify in which workspace a specific item runs. Which column should you view?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Start time"
+        },
+        {
+          "id": "B",
+          "text": "Capacity"
+        },
+        {
+          "id": "C",
+          "text": "Activity name"
+        },
+        {
+          "id": "D",
+          "text": "Submitter"
+        },
+        {
+          "id": "E",
+          "text": "Item type"
+        },
+        {
+          "id": "F",
+          "text": "Job type"
+        },
+        {
+          "id": "G",
+          "text": "Location"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "G"
+        ]
+      },
+      "normalized_question": "you are monitoring execution of fabric items by using monitoring hub you need to identify in which workspace a specific item runs which column should you view",
+      "question_keywords": [
+        "monitoring",
+        "execution",
+        "fabric",
+        "items",
+        "hub",
+        "identify",
+        "specific",
+        "item",
+        "runs",
+        "column",
+        "view"
+      ],
+      "answer_keywords": [
+        "start",
+        "time",
+        "capacity",
+        "activity",
+        "name",
+        "submitter",
+        "item",
+        "type",
+        "job",
+        "location",
+        "G"
+      ]
+    },
+    {
+      "question_id": 40,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace containing a warehouse named DW1 that is loaded by a notebook. You must identify which version of Delta was used when the notebook executed. What should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Real-Time hub"
+        },
+        {
+          "id": "B",
+          "text": "OneLake data hub"
+        },
+        {
+          "id": "C",
+          "text": "Admin monitoring workspace"
+        },
+        {
+          "id": "D",
+          "text": "Fabric Monitor"
+        },
+        {
+          "id": "E",
+          "text": "Fabric Capacity Metrics app"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace containing a warehouse named dw1 that is loaded by a notebook you must identify which version of delta was used when the notebook executed what should you use",
+      "question_keywords": [
+        "fabric",
+        "containing",
+        "warehouse",
+        "dw1",
+        "loaded",
+        "notebook",
+        "identify",
+        "version",
+        "delta",
+        "was",
+        "used",
+        "when",
+        "executed"
+      ],
+      "answer_keywords": [
+        "real",
+        "time",
+        "hub",
+        "onelake",
+        "data",
+        "admin",
+        "monitoring",
+        "fabric",
+        "monitor",
+        "capacity",
+        "metrics",
+        "app",
+        "D"
+      ]
+    },
+    {
+      "question_id": 41,
+      "question_type": "single_choice",
+      "question_text": "You need to retrieve a registered application ID and secret from Azure Key Vault in a Fabric notebook. Solution: Use notebookutils.credentials.getSecret and specify the key vault URL and the secret name. Does this meet the goal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes"
+        },
+        {
+          "id": "B",
+          "text": "No"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "you need to retrieve a registered application id and secret from azure key vault in a fabric notebook solution use notebookutils credentials getsecret and specify the key vault url and the secret name does this meet the goal",
+      "question_keywords": [
+        "retrieve",
+        "registered",
+        "application",
+        "secret",
+        "azure",
+        "key",
+        "vault",
+        "fabric",
+        "notebook",
+        "solution",
+        "notebookutils",
+        "credentials",
+        "getsecret",
+        "specify",
+        "url",
+        "name",
+        "does",
+        "meet",
+        "goal"
+      ],
+      "answer_keywords": [
+        "yes",
+        "B"
+      ]
+    },
+    {
+      "question_id": 42,
+      "question_type": "single_choice",
+      "question_text": "You need to retrieve a registered application ID and secret from Azure Key Vault in a Fabric notebook. Solution: Use notebookutils.credentials.putSecret and specify the key vault URL and the secret. Does this meet the goal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes"
+        },
+        {
+          "id": "B",
+          "text": "No"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "you need to retrieve a registered application id and secret from azure key vault in a fabric notebook solution use notebookutils credentials putsecret and specify the key vault url and the secret does this meet the goal",
+      "question_keywords": [
+        "retrieve",
+        "registered",
+        "application",
+        "secret",
+        "azure",
+        "key",
+        "vault",
+        "fabric",
+        "notebook",
+        "solution",
+        "notebookutils",
+        "credentials",
+        "putsecret",
+        "specify",
+        "url",
+        "does",
+        "meet",
+        "goal"
+      ],
+      "answer_keywords": [
+        "yes",
+        "B"
+      ]
+    },
+    {
+      "question_id": 43,
+      "question_type": "single_choice",
+      "question_text": "You need to retrieve a registered application ID and secret from Azure Key Vault in a Fabric notebook. Solution: Use notebookutils.credentials.getSecret and specify the key vault URL and the name of a linked service. Does this meet the goal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes"
+        },
+        {
+          "id": "B",
+          "text": "No"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "you need to retrieve a registered application id and secret from azure key vault in a fabric notebook solution use notebookutils credentials getsecret and specify the key vault url and the name of a linked service does this meet the goal",
+      "question_keywords": [
+        "retrieve",
+        "registered",
+        "application",
+        "secret",
+        "azure",
+        "key",
+        "vault",
+        "fabric",
+        "notebook",
+        "solution",
+        "notebookutils",
+        "credentials",
+        "getsecret",
+        "specify",
+        "url",
+        "name",
+        "linked",
+        "service",
+        "does",
+        "meet",
+        "goal"
+      ],
+      "answer_keywords": [
+        "yes",
+        "B"
+      ]
+    },
+    {
+      "question_id": 44,
+      "question_type": "drag_drop",
+      "question_text": "You have two Fabric notebooks named Load_Salesperson and Load_Orders that read data from Parquet files and write to Delta tables. Load_Orders depends on the successful execution of Load_Salesperson. You need to dynamically execute the notebooks in the correct order by using a notebook DAG pattern. How should you complete the code?",
+      "option_pool": [
+        "activities",
+        "dependencies",
+        "runMultiple",
+        "run",
+        "jobs"
+      ],
+      "answer": {
+        "DAG_collection": "activities",
+        "dependency_property": "dependencies",
+        "execution_method": "runMultiple"
+      },
+      "normalized_question": "you have two fabric notebooks named load salesperson and load orders that read data from parquet files and write to delta tables load orders depends on the successful execution of load salesperson you need to dynamically execute the notebooks in the correct order by using a notebook dag pattern how should you complete the code",
+      "question_keywords": [
+        "two",
+        "fabric",
+        "notebooks",
+        "load",
+        "salesperson",
+        "orders",
+        "read",
+        "data",
+        "parquet",
+        "files",
+        "write",
+        "delta",
+        "tables",
+        "depends",
+        "successful",
+        "execution",
+        "dynamically",
+        "execute",
+        "order",
+        "notebook",
+        "dag",
+        "pattern",
+        "how",
+        "complete",
+        "code"
+      ],
+      "answer_keywords": [
+        "activities",
+        "dependencies",
+        "runmultiple",
+        "run",
+        "jobs"
+      ]
+    },
+    {
+      "question_id": 45,
+      "question_type": "hotspot",
+      "question_text": "You are building a Fabric data pipeline named Dynamic Data Copy. The pipeline must receive a list of tables to copy by using a ForEach activity. The table names will be retrieved from a lookup activity. How should you complete the pipeline expression?",
+      "fields": [
+        {
+          "name": "Lookup activity",
+          "options": [
+            "Lookup Tables",
+            "Lookup Schema and Table",
+            "Get Table List",
+            "Fetch Tables"
+          ],
+          "answer": "Lookup Schema and Table"
+        },
+        {
+          "name": "Output property",
+          "options": [
+            "output.value",
+            "output.rows",
+            "output.tables",
+            "output.data"
+          ],
+          "answer": "output.value"
+        }
+      ],
+      "normalized_question": "you are building a fabric data pipeline named dynamic data copy the pipeline must receive a list of tables to copy by using a foreach activity the table names will be retrieved from a lookup activity how should you complete the pipeline expression",
+      "question_keywords": [
+        "building",
+        "fabric",
+        "data",
+        "pipeline",
+        "dynamic",
+        "copy",
+        "receive",
+        "list",
+        "tables",
+        "foreach",
+        "activity",
+        "table",
+        "names",
+        "will",
+        "retrieved",
+        "lookup",
+        "how",
+        "complete",
+        "expression"
+      ],
+      "answer_keywords": [
+        "lookup",
+        "schema",
+        "table",
+        "tables",
+        "get",
+        "list",
+        "fetch",
+        "output",
+        "value",
+        "rows",
+        "data"
+      ]
+    },
+    {
+      "question_id": 46,
+      "question_type": "hotspot",
+      "question_text": "You must configure dynamic data masking in a Fabric warehouse so that BirthDate always displays the value 1900-01-01 and EmailAddress only shows the first and last characters of the value.",
+      "fields": [
+        {
+          "name": "BirthDate masking function",
+          "options": [
+            "default()",
+            "random(1900-01-01,1900-01-01)",
+            "partial()",
+            "email()"
+          ],
+          "answer": "random(1900-01-01,1900-01-01)"
+        },
+        {
+          "name": "EmailAddress masking function",
+          "options": [
+            "partial(1,\"@\",5)",
+            "email()",
+            "default()",
+            "random()"
+          ],
+          "answer": "partial(1,\"@\",5)"
+        }
+      ],
+      "normalized_question": "you must configure dynamic data masking in a fabric warehouse so that birthdate always displays the value 1900 01 01 and emailaddress only shows the first and last characters of the value",
+      "question_keywords": [
+        "configure",
+        "dynamic",
+        "data",
+        "masking",
+        "fabric",
+        "warehouse",
+        "birthdate",
+        "always",
+        "displays",
+        "value",
+        "1900",
+        "emailaddress",
+        "shows",
+        "first",
+        "last",
+        "characters"
+      ],
+      "answer_keywords": [
+        "random",
+        "1900",
+        "default",
+        "partial",
+        "email"
+      ]
+    },
+    {
+      "question_id": 47,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains the following items: Report1, Dashboard1, Model1, Lakehouse1. Which items can be endorsed in Fabric?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Lakehouse1, Model1 and Dashboard1 only"
+        },
+        {
+          "id": "B",
+          "text": "Lakehouse1, Model1, Report1 and Dashboard1"
+        },
+        {
+          "id": "C",
+          "text": "Report1 and Dashboard1 only"
+        },
+        {
+          "id": "D",
+          "text": "Model1, Report1 and Dashboard1 only"
+        },
+        {
+          "id": "E",
+          "text": "Lakehouse1, Model1 and Report1 only"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "E"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains the following items report1 dashboard1 model1 lakehouse1 which items can be endorsed in fabric",
+      "question_keywords": [
+        "fabric",
+        "items",
+        "report1",
+        "dashboard1",
+        "model1",
+        "lakehouse1",
+        "can",
+        "endorsed"
+      ],
+      "answer_keywords": [
+        "lakehouse1",
+        "model1",
+        "dashboard1",
+        "report1",
+        "E"
+      ]
+    },
+    {
+      "question_id": 48,
+      "question_type": "single_choice",
+      "question_text": "You configure source control for a Fabric workspace by using GitHub. Which permissions are required to commit code while following the principle of least privilege?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Actions (Read and write) and Contents (Read and write)"
+        },
+        {
+          "id": "B",
+          "text": "Actions (Read and write) only"
+        },
+        {
+          "id": "C",
+          "text": "Contents (Read and write) only"
+        },
+        {
+          "id": "D",
+          "text": "Contents (Read) and Commit statuses (Read and write)"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "C"
+        ]
+      },
+      "normalized_question": "you configure source control for a fabric workspace by using github which permissions are required to commit code while following the principle of least privilege",
+      "question_keywords": [
+        "configure",
+        "source",
+        "control",
+        "fabric",
+        "github",
+        "permissions",
+        "required",
+        "commit",
+        "code",
+        "while",
+        "principle",
+        "least",
+        "privilege"
+      ],
+      "answer_keywords": [
+        "actions",
+        "read",
+        "write",
+        "contents",
+        "commit",
+        "statuses",
+        "C"
+      ]
+    },
+    {
+      "question_id": 49,
+      "question_type": "single_choice",
+      "question_text": "You configure Git integration for a Fabric workspace by using an Azure DevOps Git repository. Which details are required for the integration?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Organization, project, repository, and branch"
+        },
+        {
+          "id": "B",
+          "text": "PAT token and repository URL"
+        },
+        {
+          "id": "C",
+          "text": "Project, repository, branch, and folder"
+        },
+        {
+          "id": "D",
+          "text": "Repository URL and folder"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A"
+        ]
+      },
+      "normalized_question": "you configure git integration for a fabric workspace by using an azure devops git repository which details are required for the integration",
+      "question_keywords": [
+        "configure",
+        "git",
+        "integration",
+        "fabric",
+        "azure",
+        "devops",
+        "repository",
+        "details",
+        "required"
+      ],
+      "answer_keywords": [
+        "organization",
+        "project",
+        "repository",
+        "branch",
+        "pat",
+        "token",
+        "url",
+        "folder",
+        "A"
+      ]
+    },
+    {
+      "question_id": 50,
+      "question_type": "multi_select",
+      "question_text": "You must run a notebook daily at 07:00 UTC, retry twice if it fails, and refresh a semantic model after the notebook completes successfully. Which three actions should you perform?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Link refresh activity using On success"
+        },
+        {
+          "id": "B",
+          "text": "Set pipeline schedule timezone to UTC"
+        },
+        {
+          "id": "C",
+          "text": "Set notebook retry to 2"
+        },
+        {
+          "id": "D",
+          "text": "Set notebook schedule timezone to UTC"
+        },
+        {
+          "id": "E",
+          "text": "Set refresh activity retry to 2"
+        },
+        {
+          "id": "F",
+          "text": "Link refresh using On completion"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "normalized_question": "you must run a notebook daily at 07 00 utc retry twice if it fails and refresh a semantic model after the notebook completes successfully which three actions should you perform",
+      "question_keywords": [
+        "run",
+        "notebook",
+        "daily",
+        "utc",
+        "retry",
+        "twice",
+        "fails",
+        "refresh",
+        "semantic",
+        "model",
+        "after",
+        "completes",
+        "successfully",
+        "three",
+        "actions",
+        "perform"
+      ],
+      "answer_keywords": [
+        "link",
+        "refresh",
+        "activity",
+        "success",
+        "set",
+        "pipeline",
+        "schedule",
+        "timezone",
+        "utc",
+        "notebook",
+        "retry",
+        "completion",
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "question_id": 51,
+      "question_type": "multi_select",
+      "question_text": "You are building a Fabric notebook named MasterNotebook1 that contains a DAG configuration to execute other notebooks. The notebooks must execute in the following order: Notebook_03 → Notebook_01 → Notebook_02. Which two actions should you perform to achieve the required execution order?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Move the declaration of Notebook_02 to the bottom of the DAG definition."
+        },
+        {
+          "id": "B",
+          "text": "Add dependencies to the execution of Notebook_03."
+        },
+        {
+          "id": "C",
+          "text": "Split the DAG definition into three separate definitions."
+        },
+        {
+          "id": "D",
+          "text": "Add dependencies to the execution of Notebook_02."
+        },
+        {
+          "id": "E",
+          "text": "Change the concurrency value to 3."
+        },
+        {
+          "id": "F",
+          "text": "Move the declaration of Notebook_03 to the top of the DAG definition."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D",
+          "F"
+        ]
+      },
+      "normalized_question": "you are building a fabric notebook named masternotebook1 that contains a dag configuration to execute other notebooks the notebooks must execute in the following order notebook 03 notebook 01 notebook 02 which two actions should you perform to achieve the required execution order",
+      "question_keywords": [
+        "building",
+        "fabric",
+        "notebook",
+        "masternotebook1",
+        "dag",
+        "configuration",
+        "execute",
+        "other",
+        "notebooks",
+        "order",
+        "two",
+        "actions",
+        "perform",
+        "achieve",
+        "required",
+        "execution"
+      ],
+      "answer_keywords": [
+        "move",
+        "declaration",
+        "notebook",
+        "bottom",
+        "dag",
+        "add",
+        "dependencies",
+        "execution",
+        "split",
+        "definition",
+        "three",
+        "separate",
+        "change",
+        "concurrency",
+        "value",
+        "top",
+        "D",
+        "F"
+      ]
+    },
+    {
+      "question_id": 52,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a data pipeline named Pipeline1. Pipeline1 contains two activities named Copy_kdi and Execute procedure1. What will occur the next time Pipeline1 runs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Copy_kdi runs first, then Execute procedure1."
+        },
+        {
+          "id": "B",
+          "text": "Execute procedure1 runs first, then Copy_kdi."
+        },
+        {
+          "id": "C",
+          "text": "Execute procedure1 runs and Copy_kdi is skipped."
+        },
+        {
+          "id": "D",
+          "text": "Copy_kdi runs and Execute procedure1 is skipped."
+        },
+        {
+          "id": "E",
+          "text": "Both activities run simultaneously."
+        },
+        {
+          "id": "F",
+          "text": "Both activities are skipped."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you have a fabric workspace that contains a data pipeline named pipeline1 pipeline1 contains two activities named copy kdi and execute procedure1 what will occur the next time pipeline1 runs",
+      "question_keywords": [
+        "fabric",
+        "data",
+        "pipeline",
+        "pipeline1",
+        "two",
+        "activities",
+        "copy",
+        "kdi",
+        "execute",
+        "procedure1",
+        "will",
+        "occur",
+        "next",
+        "time",
+        "runs"
+      ],
+      "answer_keywords": [
+        "copy",
+        "kdi",
+        "runs",
+        "first",
+        "then",
+        "execute",
+        "procedure1",
+        "both",
+        "activities",
+        "run",
+        "simultaneously",
+        "skipped",
+        "D"
+      ]
+    },
+    {
+      "question_id": 53,
+      "question_type": "multi_select",
+      "question_text": "You need to ensure that WorkspaceA can be configured for source control in Fabric. Which two actions should you perform?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Enable the 'Users can synchronize workspace items with their Git repositories' setting in Tenant settings."
+        },
+        {
+          "id": "B",
+          "text": "Enable the 'Users can sync workspace items with GitHub repositories' setting in Tenant settings."
+        },
+        {
+          "id": "C",
+          "text": "Configure WorkspaceA to use a Premium Per User (PPU) license."
+        },
+        {
+          "id": "D",
+          "text": "Assign WorkspaceA to Cap1."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A",
+          "D"
+        ]
+      },
+      "normalized_question": "you need to ensure that workspacea can be configured for source control in fabric which two actions should you perform",
+      "question_keywords": [
+        "ensure",
+        "workspacea",
+        "can",
+        "configured",
+        "source",
+        "control",
+        "fabric",
+        "two",
+        "actions",
+        "perform"
+      ],
+      "answer_keywords": [
+        "enable",
+        "users",
+        "can",
+        "synchronize",
+        "items",
+        "sync",
+        "configure",
+        "workspacea",
+        "premium",
+        "per",
+        "user",
+        "assign",
+        "cap1",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "question_id": 54,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric warehouse that contains a table named Customer. The table includes a column named CreditCard. You need to grant a user named User1 access to the Customer table while preventing access to the CreditCard column. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "Permission",
+          "options": [
+            "SELECT",
+            "UPDATE",
+            "DELETE",
+            "ALTER"
+          ],
+          "answer": "SELECT"
+        },
+        {
+          "name": "Principal",
+          "options": [
+            "[User1]",
+            "[Customer]",
+            "[dbo]",
+            "[Public]"
+          ],
+          "answer": "[User1]"
+        }
+      ],
+      "normalized_question": "you have a fabric warehouse that contains a table named customer the table includes a column named creditcard you need to grant a user named user1 access to the customer table while preventing access to the creditcard column how should you complete the statement",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "table",
+        "customer",
+        "includes",
+        "column",
+        "creditcard",
+        "grant",
+        "user",
+        "user1",
+        "access",
+        "while",
+        "preventing",
+        "how",
+        "complete",
+        "statement"
+      ],
+      "answer_keywords": [
+        "update",
+        "delete",
+        "alter",
+        "user1",
+        "customer",
+        "dbo",
+        "public"
+      ]
+    },
+    {
+      "question_id": 55,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric deployment pipeline that contains Dev, Test, and Prod workspaces. You must deploy an Eventhouse as part of the deployment process. What should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Azure DevOps pipeline"
+        },
+        {
+          "id": "B",
+          "text": "Eventstream"
+        },
+        {
+          "id": "C",
+          "text": "GitHub Actions"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A"
+        ]
+      },
+      "normalized_question": "you have a fabric deployment pipeline that contains dev test and prod workspaces you must deploy an eventhouse as part of the deployment process what should you use",
+      "question_keywords": [
+        "fabric",
+        "deployment",
+        "pipeline",
+        "dev",
+        "test",
+        "prod",
+        "workspaces",
+        "deploy",
+        "eventhouse",
+        "process"
+      ],
+      "answer_keywords": [
+        "azure",
+        "devops",
+        "pipeline",
+        "eventstream",
+        "github",
+        "actions",
+        "A"
+      ]
+    },
+    {
+      "question_id": 56,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric warehouse that stores sales data. You must implement row-level security so that sales representatives can see only their own sales records. Which warehouse object is required to implement the rule logic?",
+      "options": [
+        {
+          "id": "A",
+          "text": "TRIGGER"
+        },
+        {
+          "id": "B",
+          "text": "SCHEMA"
+        },
+        {
+          "id": "C",
+          "text": "FUNCTION"
+        },
+        {
+          "id": "D",
+          "text": "DATABASE ROLE"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "C"
+        ]
+      },
+      "normalized_question": "you have a fabric warehouse that stores sales data you must implement row level security so that sales representatives can see only their own sales records which warehouse object is required to implement the rule logic",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "stores",
+        "sales",
+        "data",
+        "implement",
+        "row",
+        "level",
+        "security",
+        "representatives",
+        "can",
+        "see",
+        "own",
+        "records",
+        "object",
+        "required",
+        "rule",
+        "logic"
+      ],
+      "answer_keywords": [
+        "trigger",
+        "schema",
+        "function",
+        "database",
+        "role",
+        "C"
+      ]
+    },
+    {
+      "question_id": 57,
+      "question_type": "single_choice",
+      "question_text": "You must complete the row-level security implementation in a Fabric warehouse. Which warehouse object is required to define the security rule?",
+      "options": [
+        {
+          "id": "A",
+          "text": "SECURITY POLICY"
+        },
+        {
+          "id": "B",
+          "text": "TABLE"
+        },
+        {
+          "id": "C",
+          "text": "TRIGGER"
+        },
+        {
+          "id": "D",
+          "text": "STORED PROCEDURE"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A"
+        ]
+      },
+      "normalized_question": "you must complete the row level security implementation in a fabric warehouse which warehouse object is required to define the security rule",
+      "question_keywords": [
+        "complete",
+        "row",
+        "level",
+        "security",
+        "implementation",
+        "fabric",
+        "warehouse",
+        "object",
+        "required",
+        "define",
+        "rule"
+      ],
+      "answer_keywords": [
+        "security",
+        "policy",
+        "table",
+        "trigger",
+        "stored",
+        "procedure",
+        "A"
+      ]
+    },
+    {
+      "question_id": 58,
+      "question_type": "single_choice",
+      "question_text": "A Fabric warehouse fact table has grown from 200 million rows to 500 million rows and Direct Lake reports show degraded performance. What should you do to improve performance with minimal operational cost?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create views."
+        },
+        {
+          "id": "B",
+          "text": "Change the surrogate key data type."
+        },
+        {
+          "id": "C",
+          "text": "Change MD5 to SHA256."
+        },
+        {
+          "id": "D",
+          "text": "Increase the capacity."
+        },
+        {
+          "id": "E",
+          "text": "Disable V-Order."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "a fabric warehouse fact table has grown from 200 million rows to 500 million rows and direct lake reports show degraded performance what should you do to improve performance with minimal operational cost",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "fact",
+        "table",
+        "has",
+        "grown",
+        "200",
+        "million",
+        "rows",
+        "500",
+        "direct",
+        "lake",
+        "reports",
+        "show",
+        "degraded",
+        "performance",
+        "improve",
+        "minimal",
+        "operational",
+        "cost"
+      ],
+      "answer_keywords": [
+        "create",
+        "views",
+        "change",
+        "surrogate",
+        "key",
+        "data",
+        "type",
+        "md5",
+        "sha256",
+        "increase",
+        "capacity",
+        "disable",
+        "order",
+        "D"
+      ]
+    },
+    {
+      "question_id": 59,
+      "question_type": "single_choice",
+      "question_text": "You must deploy a Fabric warehouse to another workspace and verify whether it contains invalid references while minimizing development effort. What should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "dbt project"
+        },
+        {
+          "id": "B",
+          "text": "Deployment pipeline"
+        },
+        {
+          "id": "C",
+          "text": "Python script"
+        },
+        {
+          "id": "D",
+          "text": "Database project"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "you must deploy a fabric warehouse to another workspace and verify whether it contains invalid references while minimizing development effort what should you use",
+      "question_keywords": [
+        "deploy",
+        "fabric",
+        "warehouse",
+        "another",
+        "verify",
+        "whether",
+        "invalid",
+        "references",
+        "while",
+        "minimizing",
+        "development",
+        "effort"
+      ],
+      "answer_keywords": [
+        "dbt",
+        "project",
+        "deployment",
+        "pipeline",
+        "python",
+        "script",
+        "database",
+        "B"
+      ]
+    },
+    {
+      "question_id": 60,
+      "question_type": "drag_drop_order",
+      "question_text": "You need to deploy Feature1 from the Development workspace to the Test workspace by using a deployment pipeline. Which steps should you perform in sequence?",
+      "option_pool": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "From Deploy from, select Development.",
+        "Select Deploy.",
+        "Select the Production stage.",
+        "Select the Development stage."
+      ],
+      "answer_sequence": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "From Deploy from, select Development.",
+        "Select Deploy."
+      ],
+      "normalized_question": "you need to deploy feature1 from the development workspace to the test workspace by using a deployment pipeline which steps should you perform in sequence",
+      "question_keywords": [
+        "deploy",
+        "feature1",
+        "development",
+        "test",
+        "deployment",
+        "pipeline",
+        "steps",
+        "perform",
+        "sequence"
+      ],
+      "answer_keywords": [
+        "pipeline1",
+        "test",
+        "stage",
+        "deploy",
+        "development",
+        "production"
+      ]
+    },
+    {
+      "question_id": 61,
+      "question_type": "single_choice",
+      "question_text": "Litware recently signed a contract to receive book reviews from an external provider. The provider exposes the reviews in Amazon Simple Storage Service (Amazon S3) buckets. Litware must make the book reviews available in the lakehouse but must NOT store a duplicate copy of the data in OneLake. What should you implement?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a Dataflow Gen2 dataflow."
+        },
+        {
+          "id": "B",
+          "text": "Create a shortcut."
+        },
+        {
+          "id": "C",
+          "text": "Enable external data sharing."
+        },
+        {
+          "id": "D",
+          "text": "Create a data pipeline."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "B"
+        ]
+      },
+      "normalized_question": "litware recently signed a contract to receive book reviews from an external provider the provider exposes the reviews in amazon simple storage service amazon s3 buckets litware must make the book reviews available in the lakehouse but must not store a duplicate copy of the data in onelake what should you implement",
+      "question_keywords": [
+        "litware",
+        "recently",
+        "signed",
+        "contract",
+        "receive",
+        "book",
+        "reviews",
+        "external",
+        "provider",
+        "exposes",
+        "amazon",
+        "simple",
+        "storage",
+        "service",
+        "buckets",
+        "make",
+        "available",
+        "lakehouse",
+        "but",
+        "store",
+        "duplicate",
+        "copy",
+        "data",
+        "onelake",
+        "implement"
+      ],
+      "answer_keywords": [
+        "create",
+        "dataflow",
+        "gen2",
+        "shortcut",
+        "enable",
+        "external",
+        "data",
+        "sharing",
+        "pipeline",
+        "B"
+      ]
+    },
+    {
+      "question_id": 62,
+      "question_type": "single_choice",
+      "question_text": "Litware identifies the following data requirements: Process the SEO data in near-real-time (NRT). Make the book reviews available in the lakehouse without making a copy of the data. When a new book cover image arrives in the Files folder, process the image as soon as possible. You need to resolve the sales data issue while minimizing the amount of data transferred. What should you configure in the dataflow?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Split the dataflow into two dataflows."
+        },
+        {
+          "id": "B",
+          "text": "Configure scheduled refresh for the dataflow."
+        },
+        {
+          "id": "C",
+          "text": "Configure incremental refresh and set Store rows from the past to 1 month."
+        },
+        {
+          "id": "D",
+          "text": "Configure incremental refresh and set Refresh rows from the past to 1 year."
+        },
+        {
+          "id": "E",
+          "text": "Configure incremental refresh and set Refresh rows from the past to 1 month."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "E"
+        ]
+      },
+      "normalized_question": "litware identifies the following data requirements process the seo data in near real time nrt make the book reviews available in the lakehouse without making a copy of the data when a new book cover image arrives in the files folder process the image as soon as possible you need to resolve the sales data issue while minimizing the amount of data transferred what should you configure in the dataflow",
+      "question_keywords": [
+        "litware",
+        "identifies",
+        "data",
+        "requirements",
+        "process",
+        "seo",
+        "near",
+        "real",
+        "time",
+        "nrt",
+        "make",
+        "book",
+        "reviews",
+        "available",
+        "lakehouse",
+        "without",
+        "making",
+        "copy",
+        "when",
+        "new",
+        "cover",
+        "image",
+        "arrives",
+        "files",
+        "folder"
+      ],
+      "answer_keywords": [
+        "split",
+        "dataflow",
+        "two",
+        "dataflows",
+        "configure",
+        "scheduled",
+        "refresh",
+        "incremental",
+        "set",
+        "store",
+        "rows",
+        "E"
+      ]
+    },
+    {
+      "question_id": 63,
+      "question_type": "hotspot",
+      "question_text": "You need to recommend a method to populate the POS1 data to the lakehouse medallion architecture layers. What should you recommend for each layer?",
+      "fields": [
+        {
+          "name": "Bronze layer ingestion method",
+          "options": [
+            "A Dataflow Gen2 dataflow",
+            "A notebook",
+            "A pipeline Copy activity",
+            "A pipeline stored procedure"
+          ],
+          "answer": "A pipeline Copy activity"
+        },
+        {
+          "name": "Silver layer transformation method",
+          "options": [
+            "A Dataflow Gen2 dataflow",
+            "A notebook",
+            "A pipeline Copy activity",
+            "A pipeline stored procedure"
+          ],
+          "answer": "A notebook"
+        }
+      ],
+      "normalized_question": "you need to recommend a method to populate the pos1 data to the lakehouse medallion architecture layers what should you recommend for each layer",
+      "question_keywords": [
+        "recommend",
+        "method",
+        "populate",
+        "pos1",
+        "data",
+        "lakehouse",
+        "medallion",
+        "architecture",
+        "layers",
+        "layer"
+      ],
+      "answer_keywords": [
+        "pipeline",
+        "copy",
+        "activity",
+        "dataflow",
+        "gen2",
+        "notebook",
+        "stored",
+        "procedure"
+      ]
+    },
+    {
+      "question_id": 64,
+      "question_type": "single_choice",
+      "question_text": "You must ensure that the use of email interaction data stored in an Amazon S3 bucket meets the following requirements: Minimize cross-cloud egress costs and prevent storing an additional copy of the raw data in the lakehouse. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a workspace identity and enable high concurrency."
+        },
+        {
+          "id": "B",
+          "text": "Create a shortcut and disable caching."
+        },
+        {
+          "id": "C",
+          "text": "Create a workspace identity and use a data pipeline."
+        },
+        {
+          "id": "D",
+          "text": "Create a shortcut and enable caching."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "D"
+        ]
+      },
+      "normalized_question": "you must ensure that the use of email interaction data stored in an amazon s3 bucket meets the following requirements minimize cross cloud egress costs and prevent storing an additional copy of the raw data in the lakehouse what should you do",
+      "question_keywords": [
+        "ensure",
+        "email",
+        "interaction",
+        "data",
+        "stored",
+        "amazon",
+        "bucket",
+        "meets",
+        "requirements",
+        "minimize",
+        "cross",
+        "cloud",
+        "egress",
+        "costs",
+        "prevent",
+        "storing",
+        "additional",
+        "copy",
+        "raw",
+        "lakehouse"
+      ],
+      "answer_keywords": [
+        "create",
+        "identity",
+        "enable",
+        "high",
+        "concurrency",
+        "shortcut",
+        "disable",
+        "caching",
+        "data",
+        "pipeline",
+        "D"
+      ]
+    },
+    {
+      "question_id": 65,
+      "question_type": "hotspot",
+      "question_text": "You need to create the product dimension by using Apache Spark SQL. Products must include only active products and must exclude categories or subcategories that are not assigned to any product. How should you complete the query?",
+      "fields": [
+        {
+          "name": "Join between Products and ProductSubcategories",
+          "options": [
+            "FULL JOIN",
+            "INNER JOIN",
+            "LEFT ANTI JOIN",
+            "LEFT OUTER JOIN",
+            "OUTER JOIN"
+          ],
+          "answer": "INNER JOIN"
+        },
+        {
+          "name": "Join between ProductSubcategories and ProductCategories",
+          "options": [
+            "FULL JOIN",
+            "INNER JOIN",
+            "LEFT ANTI JOIN",
+            "LEFT OUTER JOIN",
+            "OUTER JOIN"
+          ],
+          "answer": "INNER JOIN"
+        },
+        {
+          "name": "Filter condition",
+          "options": [
+            "CategoryID = 1",
+            "CategoryName is not null",
+            "IsActive = 1",
+            "IsActive is not null",
+            "ProductNumber is not null",
+            "SubCategoryID = 1",
+            "SubCategoryName is not null"
+          ],
+          "answer": "IsActive = 1"
+        }
+      ],
+      "normalized_question": "you need to create the product dimension by using apache spark sql products must include only active products and must exclude categories or subcategories that are not assigned to any product how should you complete the query",
+      "question_keywords": [
+        "create",
+        "product",
+        "dimension",
+        "apache",
+        "spark",
+        "sql",
+        "products",
+        "include",
+        "active",
+        "exclude",
+        "categories",
+        "subcategories",
+        "assigned",
+        "any",
+        "how",
+        "complete",
+        "query"
+      ],
+      "answer_keywords": [
+        "inner",
+        "join",
+        "full",
+        "left",
+        "anti",
+        "outer",
+        "isactive",
+        "categoryid",
+        "categoryname",
+        "null",
+        "productnumber",
+        "subcategoryid",
+        "subcategoryname"
+      ]
+    },
+    {
+      "question_id": 66,
+      "question_type": "multi_select",
+      "question_text": "You must populate the MAR1 marketing application data in the bronze layer of Lakehouse1. Data from MAR1 is retrieved by calling REST API endpoints. The pipeline must process multiple entities in parallel. Which two activities should you include in the pipeline?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ForEach"
+        },
+        {
+          "id": "B",
+          "text": "Copy data"
+        },
+        {
+          "id": "C",
+          "text": "WebHook"
+        },
+        {
+          "id": "D",
+          "text": "Stored procedure"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": [
+          "A",
+          "B"
+        ]
+      },
+      "normalized_question": "you must populate the mar1 marketing application data in the bronze layer of lakehouse1 data from mar1 is retrieved by calling rest api endpoints the pipeline must process multiple entities in parallel which two activities should you include in the pipeline",
+      "question_keywords": [
+        "populate",
+        "mar1",
+        "marketing",
+        "application",
+        "data",
+        "bronze",
+        "layer",
+        "lakehouse1",
+        "retrieved",
+        "calling",
+        "rest",
+        "api",
+        "endpoints",
+        "pipeline",
+        "process",
+        "multiple",
+        "entities",
+        "parallel",
+        "two",
+        "activities",
+        "include"
+      ],
+      "answer_keywords": [
+        "foreach",
+        "copy",
+        "data",
+        "webhook",
+        "stored",
+        "procedure",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "question_id": 67,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric warehouse named Warehouse1. Warehouse1 contains two tables: Employee(EmployeeID, EmployeeName, EmployeePosition) and Contract(EmployeeID, ContractType, StartDate, EndDate). You need to denormalize the tables so that the Employee table includes ContractType and StartDate values. The query must return the total number of employees per contract type but only for contract types that have more than two employees. How should you complete the SQL statement?",
+      "fields": [
+        {
+          "name": "Date conversion function",
+          "options": [
+            "CAST",
+            "CONVERT",
+            "REPLACE",
+            "SUBSTRING"
+          ],
+          "answer": "CAST"
+        },
+        {
+          "name": "Join type",
+          "options": [
+            "CROSS JOIN",
+            "INNER JOIN",
+            "LEFT OUTER JOIN",
+            "RIGHT OUTER JOIN"
+          ],
+          "answer": "LEFT OUTER JOIN"
+        },
+        {
+          "name": "Aggregation filter clause",
+          "options": [
+            "CONTAINS",
+            "HAVING",
+            "LIMIT",
+            "WHERE"
+          ],
+          "answer": "HAVING"
+        }
+      ],
+      "normalized_question": "you have a fabric warehouse named warehouse1 warehouse1 contains two tables employee employeeid employeename employeeposition and contract employeeid contracttype startdate enddate you need to denormalize the tables so that the employee table includes contracttype and startdate values the query must return the total number of employees per contract type but only for contract types that have more than two employees how should you complete the sql statement",
+      "question_keywords": [
+        "fabric",
+        "warehouse",
+        "warehouse1",
+        "two",
+        "tables",
+        "employee",
+        "employeeid",
+        "employeename",
+        "employeeposition",
+        "contract",
+        "contracttype",
+        "startdate",
+        "enddate",
+        "denormalize",
+        "table",
+        "includes",
+        "values",
+        "query",
+        "return",
+        "total",
+        "number",
+        "employees",
+        "per",
+        "type",
+        "but"
+      ],
+      "answer_keywords": [
+        "cast",
+        "convert",
+        "replace",
+        "substring",
+        "left",
+        "outer",
+        "join",
+        "cross",
+        "inner",
+        "right",
+        "having",
+        "limit",
+        "where"
+      ]
     }
   ]
 }
