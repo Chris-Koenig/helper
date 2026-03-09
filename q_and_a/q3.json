@@ -1,0 +1,218 @@
+{
+  "batch": 3,
+  "questions": [
+    {
+      "question_id": 21,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a warehouse named DW1 that is modeled by using MD5 hash surrogate keys. DW1 contains a single fact table that has grown from 200 million rows to 500 million rows during the past year. You have Microsoft Power BI reports that are based on Direct Lake. The reports show year-over-year values. Users report that the performance of some of the reports has degraded over time and some visuals show errors. You need to resolve the performance issues. The solution must meet the following requirements: Provide the best query performance and minimize operational costs. What should you do?",
+      "options": [
+        { "id": "A", "text": "Create views." },
+        {
+          "id": "B",
+          "text": "Modify the surrogate keys to use a different data type."
+        },
+        { "id": "C", "text": "Change the MD5 hash to SHA256." },
+        { "id": "D", "text": "Increase the capacity." },
+        { "id": "E", "text": "Disable V-Order on the warehouse." }
+      ],
+      "answer": { "correct_option_ids": ["D"] }
+    },
+    {
+      "question_id": 22,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace named Workspace1 that contains a warehouse named Warehouse1. You plan to deploy Warehouse1 to a new workspace named Workspace2. As part of the deployment process, you need to verify whether Warehouse1 contains invalid references. The solution must minimize development effort and provide detailed information about the invalid references. What should you use?",
+      "options": [
+        { "id": "A", "text": "a dbt project" },
+        { "id": "B", "text": "a deployment pipeline" },
+        { "id": "C", "text": "a Python script" },
+        { "id": "D", "text": "a database project" }
+      ],
+      "answer": { "correct_option_ids": ["B"] }
+    },
+    {
+      "question_id": 23,
+      "question_type": "drag_drop_order",
+      "question_text": "You have a Fabric deployment pipeline that has Development, Test, and Production stages. In the Development workspace, you build a new feature named Feature1. You need to deploy Feature1 to the Test workspace. The solution must ensure that only a pipeline is deployed. Which four actions should you perform in sequence?",
+      "option_pool": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "Select Deploy.",
+        "From Deploy from, select Development.",
+        "From Deploy from, select Production.",
+        "Select the Development stage."
+      ],
+      "answer_sequence": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "From Deploy from, select Development.",
+        "Select Deploy."
+      ]
+    },
+    {
+      "question_id": 24,
+      "question_type": "single_choice",
+      "question_text": "Litware recently signed a contract to receive book reviews. The provider of the reviews exposes the data in Amazon Simple Storage Service (Amazon S3) buckets. Litware plans to manage Search Engine Optimization (SEO) for the authors. The SEO data will be streamed from a REST API. You must implement a solution for the book reviews that allows the data to be available in the lakehouse without making a copy of the data. What should you do?",
+      "options": [
+        { "id": "A", "text": "Create a Dataflow Gen2 dataflow." },
+        { "id": "B", "text": "Create a shortcut." },
+        { "id": "C", "text": "Enable external data sharing." },
+        { "id": "D", "text": "Create a data pipeline." }
+      ],
+      "answer": { "correct_option_ids": ["B"] }
+    },
+    {
+      "question_id": 25,
+      "question_type": "single_choice",
+      "question_text": "Litware identifies the following data requirements: Process the SEO data in near-real-time (NRT). Make the book reviews available in the lakehouse without making a copy of the data. When a new book cover image arrives in the Files folder, process the image as soon as possible. You need to resolve the sales data issue while minimizing the amount of data transferred. What should you do?",
+      "options": [
+        { "id": "A", "text": "Split the dataflow into two dataflows." },
+        { "id": "B", "text": "Configure scheduled refresh for the dataflow." },
+        {
+          "id": "C",
+          "text": "Configure incremental refresh for the dataflow. Set Store rows from the past to 1 Month."
+        },
+        {
+          "id": "D",
+          "text": "Configure incremental refresh for the dataflow. Set Refresh rows from the past to 1 Year."
+        },
+        {
+          "id": "E",
+          "text": "Configure incremental refresh for the dataflow. Set Refresh rows from the past to 1 Month."
+        }
+      ],
+      "answer": { "correct_option_ids": ["E"] }
+    },
+    {
+      "question_id": 26,
+      "question_type": "hotspot",
+      "question_text": "You need to recommend a method to populate the POS1 data to the lakehouse medallion layers. What should you recommend for each layer?",
+      "fields": [
+        {
+          "name": "Bronze layer",
+          "options": [
+            "A Dataflow Gen2 dataflow",
+            "A notebook",
+            "A pipeline Copy activity",
+            "A pipeline stored procedure"
+          ],
+          "answer": "A pipeline Copy activity"
+        },
+        {
+          "name": "Silver layer",
+          "options": [
+            "A Dataflow Gen2 dataflow",
+            "A notebook",
+            "A pipeline Copy activity",
+            "A pipeline stored procedure"
+          ],
+          "answer": "A notebook"
+        }
+      ]
+    },
+    {
+      "question_id": 27,
+      "question_type": "single_choice",
+      "question_text": "You need to ensure that usage of the data in the Amazon S3 bucket meets the technical requirements. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a workspace identity and enable high concurrency for the notebooks."
+        },
+        {
+          "id": "B",
+          "text": "Create a shortcut and ensure that caching is disabled for the workspace."
+        },
+        {
+          "id": "C",
+          "text": "Create a workspace identity and use the identity in a data pipeline."
+        },
+        {
+          "id": "D",
+          "text": "Create a shortcut and ensure that caching is enabled for the workspace."
+        }
+      ],
+      "answer": { "correct_option_ids": ["D"] }
+    },
+    {
+      "question_id": 28,
+      "question_type": "hotspot",
+      "question_text": "You need to create the product dimension. How should you complete the Apache Spark SQL code?",
+      "fields": [
+        {
+          "name": "Join type between Products and ProductSubCategories",
+          "options": [
+            "FULL JOIN",
+            "INNER JOIN",
+            "LEFT ANTI JOIN",
+            "LEFT OUTER JOIN",
+            "OUTER JOIN"
+          ],
+          "answer": "INNER JOIN"
+        },
+        {
+          "name": "Join type between ProductSubCategories and ProductCategories",
+          "options": [
+            "FULL JOIN",
+            "INNER JOIN",
+            "LEFT ANTI JOIN",
+            "LEFT OUTER JOIN",
+            "OUTER JOIN"
+          ],
+          "answer": "INNER JOIN"
+        },
+        {
+          "name": "WHERE clause",
+          "options": [
+            "CategoryID = 1",
+            "CategoryName is not null",
+            "IsActive = 1",
+            "IsActive is not null",
+            "ProductNumber is not null",
+            "SubCategoryID = 1",
+            "SubCategoryName is not null"
+          ],
+          "answer": "IsActive = 1"
+        }
+      ]
+    },
+    {
+      "question_id": 29,
+      "question_type": "multi_select",
+      "question_text": "You need to populate the MAR1 data in the bronze layer. Which two types of activities should you include in the pipeline?",
+      "options": [
+        { "id": "A", "text": "ForEach" },
+        { "id": "B", "text": "Copy data" },
+        { "id": "C", "text": "WebHook" },
+        { "id": "D", "text": "Stored procedure" }
+      ],
+      "answer": { "correct_option_ids": ["A", "B"] }
+    },
+    {
+      "question_id": 30,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric warehouse named Warehouse1. Warehouse1 contains the following tables and columns: Employee(EmployeeID, EmployeeName, EmployeePosition) and Contract(EmployeeID, ContractType, StartDate, EndDate). You need to denormalize the tables and include ContractType and StartDate columns in the Employee table. The result must show the total number of employees per contract type for contract types that have more than two employees. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "Date conversion",
+          "options": ["CAST", "CONVERT", "REPLACE", "SUBSTRING"],
+          "answer": "CAST"
+        },
+        {
+          "name": "Join type",
+          "options": [
+            "CROSS JOIN",
+            "INNER JOIN",
+            "LEFT OUTER JOIN",
+            "RIGHT OUTER JOIN"
+          ],
+          "answer": "LEFT OUTER JOIN"
+        },
+        {
+          "name": "Filtering clause",
+          "options": ["CONTAINS", "HAVING", "LIMIT", "WHERE"],
+          "answer": "HAVING"
+        }
+      ]
+    }
+  ]
+}

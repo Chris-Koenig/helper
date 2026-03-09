@@ -1,0 +1,256 @@
+{
+  "batch": 2,
+  "questions": [
+    {
+      "question_id": 11,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace. You have semi-structured data. You need to read the data by using T-SQL, KQL, and Apache Spark. The data will only be written by using Spark. What should you use to store the data?",
+      "options": [
+        {
+          "id": "A",
+          "text": "a lakehouse"
+        },
+        {
+          "id": "B",
+          "text": "an eventhouse"
+        },
+        {
+          "id": "C",
+          "text": "a datamart"
+        },
+        {
+          "id": "D",
+          "text": "a warehouse"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["A"]
+      }
+    },
+    {
+      "question_id": 12,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a warehouse named Warehouse1. You have an on-premises Microsoft SQL Server database named Database1 that is accessed by using an on-premises data gateway. You need to copy data from Database1 to Warehouse1. Which item should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "a Dataflow Gen1 dataflow"
+        },
+        {
+          "id": "B",
+          "text": "a data pipeline"
+        },
+        {
+          "id": "C",
+          "text": "a KQL queryset"
+        },
+        {
+          "id": "D",
+          "text": "a notebook"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["B"]
+      }
+    },
+    {
+      "question_id": 13,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a warehouse named Warehouse1. You have an on-premises Microsoft SQL Server database named Database1 that is accessed by using an on-premises data gateway. You need to copy data from Database1 to Warehouse1. Which item should you use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "an Apache Spark job definition"
+        },
+        {
+          "id": "B",
+          "text": "a data pipeline"
+        },
+        {
+          "id": "C",
+          "text": "a Dataflow Gen1 dataflow"
+        },
+        {
+          "id": "D",
+          "text": "an eventstream"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["B"]
+      }
+    },
+    {
+      "question_id": 14,
+      "question_type": "yes_no_matrix",
+      "question_text": "You are building a data loading pattern for Fabric notebook workloads by using Delta Lake. The notebook logic first tries to find the target Delta table. If the table does not exist, the source DataFrame is written in overwrite mode to create the table. Then a merge operation is defined and executed to update matching rows and insert non-matching rows. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "statements": [
+        {
+          "statement": "The target table will always be overwritten.",
+          "answer": "No"
+        },
+        {
+          "statement": "The merge operation will always run.",
+          "answer": "No"
+        },
+        {
+          "statement": "The loading pattern supports both full and incremental loading requirements.",
+          "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "question_id": 15,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric workspace that contains two lakehouses named Lakehouse1 and Lakehouse2. Lakehouse1 contains staging data in a Delta table named Orderlines. Lakehouse2 contains a Type 2 slowly changing dimension (SCD) table named Dim_Customer. You need to build a query that combines data from Orderlines and Dim_Customer to create a new fact table named Fact_Orders. The new table must support analysis of customer orders based on historical attributes and current attributes. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "First date condition",
+          "options": [
+            "c.is_current = 1",
+            "o.OrderDate > c.valid_to_datetime",
+            "o.OrderDate >= c.valid_from_datetime"
+          ],
+          "answer": "o.OrderDate >= c.valid_from_datetime"
+        },
+        {
+          "name": "Second date condition",
+          "options": [
+            "c.is_current = 1",
+            "o.OrderDate < c.valid_to_datetime",
+            "o.OrderDate <= c.valid_from_datetime"
+          ],
+          "answer": "o.OrderDate < c.valid_to_datetime"
+        }
+      ]
+    },
+    {
+      "question_id": 16,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a lakehouse named Lakehouse1. In an external data source, you have data files that are 500 GB each. A new file is added every day. You need to ingest the data into Lakehouse1 without applying any transformations. The solution must meet the following requirements: Trigger the process when a new file is added. Provide the highest throughput. Which type of item should you use to ingest the data?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Eventstream"
+        },
+        {
+          "id": "B",
+          "text": "Dataflow Gen2"
+        },
+        {
+          "id": "C",
+          "text": "Streaming dataset"
+        },
+        {
+          "id": "D",
+          "text": "Data pipeline"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["D"]
+      }
+    },
+    {
+      "question_id": 17,
+      "question_type": "multi_select",
+      "question_text": "You have a Fabric workspace that contains an eventhouse and a KQL database named Database1. Database1 contains a table named Table1, a table named Table2, and an update policy named Policy1. Policy1 sends data from Table1 to Table2. Recently, the following actions were performed on Table1: An additional element named temperature was added to the StreamData column. The data type of the Timestamp column was changed to date. The data type of the DeviceId column was changed to string. You plan to load additional records to Table1. Which two records will load from Table1 to Table2? Each correct answer presents a complete solution.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Record A"
+        },
+        {
+          "id": "B",
+          "text": "Record B"
+        },
+        {
+          "id": "C",
+          "text": "Record C"
+        },
+        {
+          "id": "D",
+          "text": "Record D"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["A", "D"]
+      }
+    },
+    {
+      "question_id": 18,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric workspace. You are debugging a T-SQL statement and discover the following issues: Sometimes the statement fails to return all the expected rows. The PurchaseDate output column is NOT in the expected format of mmm dd, yy. You need to resolve the issues. The solution must ensure that the data types of the results are retained. The results can contain blank cells. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "ItemName expression",
+          "options": [
+            "convert(varchar(20), item_name)",
+            "convert(varchar(max), item_name)",
+            "try_cast(item_name as varchar(20))"
+          ],
+          "answer": "try_cast(item_name as varchar(20))"
+        },
+        {
+          "name": "PurchaseDate expression",
+          "options": [
+            "convert(varchar, purchase_date, 7)",
+            "convert(varchar, purchase_date, 109)",
+            "convert(varchar, purchase_date, 112)"
+          ],
+          "answer": "convert(varchar, purchase_date, 7)"
+        }
+      ]
+    },
+    {
+      "question_id": 19,
+      "question_type": "single_choice",
+      "question_text": "You are developing a data pipeline named Pipeline1. You need to add a Copy data activity that will copy data from a Snowflake data source to a Fabric warehouse. What should you configure?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Degree of copy parallelism"
+        },
+        {
+          "id": "B",
+          "text": "Fault tolerance"
+        },
+        {
+          "id": "C",
+          "text": "Enable staging"
+        },
+        {
+          "id": "D",
+          "text": "Enable logging"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["C"]
+      }
+    },
+    {
+      "question_id": 20,
+      "question_type": "multi_select",
+      "question_text": "You need to populate the MAR1 data in the bronze layer. Which two types of activities should you include in the pipeline? Each correct answer presents part of the solution.",
+      "options": [
+        {
+          "id": "A",
+          "text": "ForEach"
+        },
+        {
+          "id": "B",
+          "text": "Copy data"
+        },
+        {
+          "id": "C",
+          "text": "WebHook"
+        },
+        {
+          "id": "D",
+          "text": "Stored procedure"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["A", "B"]
+      }
+    }
+  ]
+}

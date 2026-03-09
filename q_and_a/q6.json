@@ -1,0 +1,190 @@
+{
+  "batch": 6,
+  "questions": [
+    {
+      "question_id": 51,
+      "question_type": "multi_select",
+      "question_text": "You are building a Fabric notebook named MasterNotebook1 that contains a DAG configuration to execute other notebooks. The notebooks must execute in the following order: Notebook_03 → Notebook_01 → Notebook_02. Which two actions should you perform to achieve the required execution order?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Move the declaration of Notebook_02 to the bottom of the DAG definition."
+        },
+        {
+          "id": "B",
+          "text": "Add dependencies to the execution of Notebook_03."
+        },
+        {
+          "id": "C",
+          "text": "Split the DAG definition into three separate definitions."
+        },
+        {
+          "id": "D",
+          "text": "Add dependencies to the execution of Notebook_02."
+        },
+        { "id": "E", "text": "Change the concurrency value to 3." },
+        {
+          "id": "F",
+          "text": "Move the declaration of Notebook_03 to the top of the DAG definition."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["D", "F"]
+      }
+    },
+    {
+      "question_id": 52,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains a data pipeline named Pipeline1. Pipeline1 contains two activities named Copy_kdi and Execute procedure1. What will occur the next time Pipeline1 runs?",
+      "options": [
+        { "id": "A", "text": "Copy_kdi runs first, then Execute procedure1." },
+        { "id": "B", "text": "Execute procedure1 runs first, then Copy_kdi." },
+        {
+          "id": "C",
+          "text": "Execute procedure1 runs and Copy_kdi is skipped."
+        },
+        {
+          "id": "D",
+          "text": "Copy_kdi runs and Execute procedure1 is skipped."
+        },
+        { "id": "E", "text": "Both activities run simultaneously." },
+        { "id": "F", "text": "Both activities are skipped." }
+      ],
+      "answer": {
+        "correct_option_ids": ["D"]
+      }
+    },
+    {
+      "question_id": 53,
+      "question_type": "multi_select",
+      "question_text": "You need to ensure that WorkspaceA can be configured for source control in Fabric. Which two actions should you perform?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Enable the 'Users can synchronize workspace items with their Git repositories' setting in Tenant settings."
+        },
+        {
+          "id": "B",
+          "text": "Enable the 'Users can sync workspace items with GitHub repositories' setting in Tenant settings."
+        },
+        {
+          "id": "C",
+          "text": "Configure WorkspaceA to use a Premium Per User (PPU) license."
+        },
+        {
+          "id": "D",
+          "text": "Assign WorkspaceA to Cap1."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["A", "D"]
+      }
+    },
+    {
+      "question_id": 54,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric warehouse that contains a table named Customer. The table includes a column named CreditCard. You need to grant a user named User1 access to the Customer table while preventing access to the CreditCard column. How should you complete the statement?",
+      "fields": [
+        {
+          "name": "Permission",
+          "options": ["SELECT", "UPDATE", "DELETE", "ALTER"],
+          "answer": "SELECT"
+        },
+        {
+          "name": "Principal",
+          "options": ["[User1]", "[Customer]", "[dbo]", "[Public]"],
+          "answer": "[User1]"
+        }
+      ]
+    },
+    {
+      "question_id": 55,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric deployment pipeline that contains Dev, Test, and Prod workspaces. You must deploy an Eventhouse as part of the deployment process. What should you use?",
+      "options": [
+        { "id": "A", "text": "Azure DevOps pipeline" },
+        { "id": "B", "text": "Eventstream" },
+        { "id": "C", "text": "GitHub Actions" }
+      ],
+      "answer": {
+        "correct_option_ids": ["A"]
+      }
+    },
+    {
+      "question_id": 56,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric warehouse that stores sales data. You must implement row-level security so that sales representatives can see only their own sales records. Which warehouse object is required to implement the rule logic?",
+      "options": [
+        { "id": "A", "text": "TRIGGER" },
+        { "id": "B", "text": "SCHEMA" },
+        { "id": "C", "text": "FUNCTION" },
+        { "id": "D", "text": "DATABASE ROLE" }
+      ],
+      "answer": {
+        "correct_option_ids": ["C"]
+      }
+    },
+    {
+      "question_id": 57,
+      "question_type": "single_choice",
+      "question_text": "You must complete the row-level security implementation in a Fabric warehouse. Which warehouse object is required to define the security rule?",
+      "options": [
+        { "id": "A", "text": "SECURITY POLICY" },
+        { "id": "B", "text": "TABLE" },
+        { "id": "C", "text": "TRIGGER" },
+        { "id": "D", "text": "STORED PROCEDURE" }
+      ],
+      "answer": {
+        "correct_option_ids": ["A"]
+      }
+    },
+    {
+      "question_id": 58,
+      "question_type": "single_choice",
+      "question_text": "A Fabric warehouse fact table has grown from 200 million rows to 500 million rows and Direct Lake reports show degraded performance. What should you do to improve performance with minimal operational cost?",
+      "options": [
+        { "id": "A", "text": "Create views." },
+        { "id": "B", "text": "Change the surrogate key data type." },
+        { "id": "C", "text": "Change MD5 to SHA256." },
+        { "id": "D", "text": "Increase the capacity." },
+        { "id": "E", "text": "Disable V-Order." }
+      ],
+      "answer": {
+        "correct_option_ids": ["D"]
+      }
+    },
+    {
+      "question_id": 59,
+      "question_type": "single_choice",
+      "question_text": "You must deploy a Fabric warehouse to another workspace and verify whether it contains invalid references while minimizing development effort. What should you use?",
+      "options": [
+        { "id": "A", "text": "dbt project" },
+        { "id": "B", "text": "Deployment pipeline" },
+        { "id": "C", "text": "Python script" },
+        { "id": "D", "text": "Database project" }
+      ],
+      "answer": {
+        "correct_option_ids": ["B"]
+      }
+    },
+    {
+      "question_id": 60,
+      "question_type": "drag_drop_order",
+      "question_text": "You need to deploy Feature1 from the Development workspace to the Test workspace by using a deployment pipeline. Which steps should you perform in sequence?",
+      "option_pool": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "From Deploy from, select Development.",
+        "Select Deploy.",
+        "Select the Production stage.",
+        "Select the Development stage."
+      ],
+      "answer_sequence": [
+        "Select pipeline1.",
+        "Select the Test stage.",
+        "From Deploy from, select Development.",
+        "Select Deploy."
+      ]
+    }
+  ]
+}

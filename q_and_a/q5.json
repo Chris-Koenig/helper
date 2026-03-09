@@ -1,0 +1,158 @@
+{
+  "batch": 5,
+  "questions": [
+    {
+      "question_id": 41,
+      "question_type": "single_choice",
+      "question_text": "You need to retrieve a registered application ID and secret from Azure Key Vault in a Fabric notebook. Solution: Use notebookutils.credentials.getSecret and specify the key vault URL and the secret name. Does this meet the goal?",
+      "options": [
+        { "id": "A", "text": "Yes" },
+        { "id": "B", "text": "No" }
+      ],
+      "answer": { "correct_option_ids": ["B"] }
+    },
+    {
+      "question_id": 42,
+      "question_type": "single_choice",
+      "question_text": "You need to retrieve a registered application ID and secret from Azure Key Vault in a Fabric notebook. Solution: Use notebookutils.credentials.putSecret and specify the key vault URL and the secret. Does this meet the goal?",
+      "options": [
+        { "id": "A", "text": "Yes" },
+        { "id": "B", "text": "No" }
+      ],
+      "answer": { "correct_option_ids": ["B"] }
+    },
+    {
+      "question_id": 43,
+      "question_type": "single_choice",
+      "question_text": "You need to retrieve a registered application ID and secret from Azure Key Vault in a Fabric notebook. Solution: Use notebookutils.credentials.getSecret and specify the key vault URL and the name of a linked service. Does this meet the goal?",
+      "options": [
+        { "id": "A", "text": "Yes" },
+        { "id": "B", "text": "No" }
+      ],
+      "answer": { "correct_option_ids": ["B"] }
+    },
+    {
+      "question_id": 44,
+      "question_type": "drag_drop",
+      "question_text": "You have two Fabric notebooks named Load_Salesperson and Load_Orders that read data from Parquet files and write to Delta tables. Load_Orders depends on the successful execution of Load_Salesperson. You need to dynamically execute the notebooks in the correct order by using a notebook DAG pattern. How should you complete the code?",
+      "option_pool": [
+        "activities",
+        "dependencies",
+        "runMultiple",
+        "run",
+        "jobs"
+      ],
+      "answer": {
+        "DAG_collection": "activities",
+        "dependency_property": "dependencies",
+        "execution_method": "runMultiple"
+      }
+    },
+    {
+      "question_id": 45,
+      "question_type": "hotspot",
+      "question_text": "You are building a Fabric data pipeline named Dynamic Data Copy. The pipeline must receive a list of tables to copy by using a ForEach activity. The table names will be retrieved from a lookup activity. How should you complete the pipeline expression?",
+      "fields": [
+        {
+          "name": "Lookup activity",
+          "options": [
+            "Lookup Tables",
+            "Lookup Schema and Table",
+            "Get Table List",
+            "Fetch Tables"
+          ],
+          "answer": "Lookup Schema and Table"
+        },
+        {
+          "name": "Output property",
+          "options": [
+            "output.value",
+            "output.rows",
+            "output.tables",
+            "output.data"
+          ],
+          "answer": "output.value"
+        }
+      ]
+    },
+    {
+      "question_id": 46,
+      "question_type": "hotspot",
+      "question_text": "You must configure dynamic data masking in a Fabric warehouse so that BirthDate always displays the value 1900-01-01 and EmailAddress only shows the first and last characters of the value.",
+      "fields": [
+        {
+          "name": "BirthDate masking function",
+          "options": [
+            "default()",
+            "random(1900-01-01,1900-01-01)",
+            "partial()",
+            "email()"
+          ],
+          "answer": "random(1900-01-01,1900-01-01)"
+        },
+        {
+          "name": "EmailAddress masking function",
+          "options": ["partial(1,\"@\",5)", "email()", "default()", "random()"],
+          "answer": "partial(1,\"@\",5)"
+        }
+      ]
+    },
+    {
+      "question_id": 47,
+      "question_type": "single_choice",
+      "question_text": "You have a Fabric workspace that contains the following items: Report1, Dashboard1, Model1, Lakehouse1. Which items can be endorsed in Fabric?",
+      "options": [
+        { "id": "A", "text": "Lakehouse1, Model1 and Dashboard1 only" },
+        { "id": "B", "text": "Lakehouse1, Model1, Report1 and Dashboard1" },
+        { "id": "C", "text": "Report1 and Dashboard1 only" },
+        { "id": "D", "text": "Model1, Report1 and Dashboard1 only" },
+        { "id": "E", "text": "Lakehouse1, Model1 and Report1 only" }
+      ],
+      "answer": { "correct_option_ids": ["E"] }
+    },
+    {
+      "question_id": 48,
+      "question_type": "single_choice",
+      "question_text": "You configure source control for a Fabric workspace by using GitHub. Which permissions are required to commit code while following the principle of least privilege?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Actions (Read and write) and Contents (Read and write)"
+        },
+        { "id": "B", "text": "Actions (Read and write) only" },
+        { "id": "C", "text": "Contents (Read and write) only" },
+        {
+          "id": "D",
+          "text": "Contents (Read) and Commit statuses (Read and write)"
+        }
+      ],
+      "answer": { "correct_option_ids": ["C"] }
+    },
+    {
+      "question_id": 49,
+      "question_type": "single_choice",
+      "question_text": "You configure Git integration for a Fabric workspace by using an Azure DevOps Git repository. Which details are required for the integration?",
+      "options": [
+        { "id": "A", "text": "Organization, project, repository, and branch" },
+        { "id": "B", "text": "PAT token and repository URL" },
+        { "id": "C", "text": "Project, repository, branch, and folder" },
+        { "id": "D", "text": "Repository URL and folder" }
+      ],
+      "answer": { "correct_option_ids": ["A"] }
+    },
+    {
+      "question_id": 50,
+      "question_type": "multi_select",
+      "question_text": "You must run a notebook daily at 07:00 UTC, retry twice if it fails, and refresh a semantic model after the notebook completes successfully. Which three actions should you perform?",
+      "options": [
+        { "id": "A", "text": "Link refresh activity using On success" },
+        { "id": "B", "text": "Set pipeline schedule timezone to UTC" },
+        { "id": "C", "text": "Set notebook retry to 2" },
+        { "id": "D", "text": "Set notebook schedule timezone to UTC" },
+        { "id": "E", "text": "Set refresh activity retry to 2" },
+        { "id": "F", "text": "Link refresh using On completion" }
+      ],
+      "answer": { "correct_option_ids": ["A", "B", "C"] }
+    }
+  ]
+}

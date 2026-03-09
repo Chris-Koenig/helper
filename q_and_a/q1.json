@@ -1,0 +1,232 @@
+{
+  "batch": 1,
+  "questions": [
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.15.32.png",
+      "question_id": null,
+      "question_type": "single_choice",
+      "question_text": "Security in Fabric must meet the following requirements: The data engineers must have read and write access to all the lakehouses, including the underlying files. The data analysts must only have read access to the Delta tables in the gold layer. The data analysts must NOT have access to the data in the bronze and silver layers. The data engineers must be able to commit changes to source control in WorkspaceA. You need to ensure that the data analysts can access the gold layer lakehouse. What should you do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Add the DataAnalyst group to the Viewer role for WorkspaceA."
+        },
+        {
+          "id": "B",
+          "text": "Share the lakehouse with the DataAnalysts group and grant the Build reports on the default semantic model permission."
+        },
+        {
+          "id": "C",
+          "text": "Share the lakehouse with the DataAnalysts group and grant the Read all SQL Endpoint data permission."
+        },
+        {
+          "id": "D",
+          "text": "Share the lakehouse with the DataAnalysts group and grant the Read all Apache Spark permission."
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["C"]
+      }
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.15.45.png",
+      "question_id": 6,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric workspace that contains a warehouse named DW1. DW1 contains the following tables and columns: SalesOrderDetail.ProductID contains the product ID of the ordered product. SalesOrderDetail.ModifiedDate contains the date of an order. SalesOrderDetail.OrderQty contains the order quantity. Product.ProductID contains the unique ID of a product. Product.Name contains a product name. You need to create an output that presents the summarized values of all the order quantities by year and product. The results must include a summary of the order quantities at the year level for all the products. How should you complete the code? To answer, select the appropriate options in the answer area.",
+      "fields": [
+        {
+          "name": "OrderDate expression",
+          "options": ["SELECT CAST", "SELECT CONVERT", "SELECT YEAR"],
+          "answer": "SELECT YEAR"
+        },
+        {
+          "name": "GROUP BY expression",
+          "options": [
+            "CUBE(YEAR(SO.ModifiedDate), P.Name)",
+            "GROUPING SETS ((YEAR(SO.ModifiedDate), P.Name), (YEAR(SO.ModifiedDate)))",
+            "ROLLUP(YEAR(SO.ModifiedDate), P.Name)",
+            "YEAR(SO.ModifiedDate), P.Name"
+          ],
+          "answer": "ROLLUP(YEAR(SO.ModifiedDate), P.Name)"
+        }
+      ]
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.12.png",
+      "question_id": 11,
+      "question_type": "yes_no_matrix",
+      "question_text": "You have a Fabric workspace named Workspace1_DEV that contains the following items: 10 reports, four notebooks, three lakehouses, two data pipelines, two Dataflow Gen1 dataflows, three Dataflow Gen2 dataflows, and five semantic models that each has a scheduled refresh policy. You create a deployment pipeline named Pipeline1 to move items from Workspace1_DEV to a new workspace named Workspace1_TEST. You deploy all the items from Workspace1_DEV to Workspace1_TEST. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "statements": [
+        {
+          "statement": "Data from the semantic models will be deployed to the target stage.",
+          "answer": "No"
+        },
+        {
+          "statement": "The Dataflow Gen1 dataflows will be deployed to the target stage.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "The scheduled refresh policies will be deployed to the target stage.",
+          "answer": "No"
+        }
+      ]
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.36.png",
+      "question_id": null,
+      "question_type": "hotspot",
+      "question_text": "You have a Fabric workspace named Workspace1 that contains the following items: Notebook1, Notebook2, Lakehouse1, Pipeline1, and Model1. For Model1, the Keep your Direct Lake data up to date option is disabled. You need to configure the execution of the items to meet the following requirements: Notebook1 must execute every weekday at 8:00 AM. Notebook2 must execute when a file is saved to an Azure Blob Storage container. Model1 must refresh when Notebook1 has executed successfully. How should you orchestrate each item? To answer, select the appropriate options in the answer area.",
+      "fields": [
+        {
+          "name": "Notebook1",
+          "options": [
+            "Add Notebook1 to an Apache Spark job definition.",
+            "Add Notebook1 to Pipeline1.",
+            "From Real-Time hub, configure the execution of Notebook1."
+          ],
+          "answer": "Add Notebook1 to Pipeline1."
+        },
+        {
+          "name": "Notebook2",
+          "options": [
+            "Add Notebook2 to an Apache Spark job definition.",
+            "Add Notebook2 to Pipeline1.",
+            "From Real-Time hub, configure the execution of Notebook2."
+          ],
+          "answer": "From Real-Time hub, configure the execution of Notebook2."
+        },
+        {
+          "name": "Pipeline1",
+          "options": [
+            "Add Pipeline1 to an Apache Spark job definition.",
+            "Configure the execution of Pipeline1 by using a schedule.",
+            "From Real-Time hub, configure the execution of Pipeline1."
+          ],
+          "answer": "Configure the execution of Pipeline1 by using a schedule."
+        },
+        {
+          "name": "Model1",
+          "options": [
+            "Add Model1 to Pipeline1.",
+            "From Real-Time hub, configure Model1 to refresh.",
+            "Set Keep your Direct Lake data up to date to On."
+          ],
+          "answer": "Add Model1 to Pipeline1."
+        }
+      ]
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.48.png",
+      "question_id": null,
+      "question_type": "drag_drop",
+      "question_text": "You are implementing the following data entities in a Fabric environment: Entity1 is available in a lakehouse and contains data that will be used as a core organization entity. Entity2 is available in a semantic model and contains data that meets organizational standards. Entity3 is available in a Microsoft Power BI report and contains data that is ready for sharing and reuse. Entity4 is available in a Power BI dashboard and contains approved data for executive-level decision making. Your company requires that specific governance processes be implemented for the data. You need to apply endorsement badges to the entities based on each entity's use case. Which badge should you apply to each entity?",
+      "option_pool": [
+        "Certified",
+        "Master data",
+        "Promoted",
+        "Cannot be endorsed"
+      ],
+      "answer": {
+        "Entity1": "Master data",
+        "Entity2": "Certified",
+        "Entity3": "Promoted",
+        "Entity4": "Cannot be endorsed"
+      }
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.16.56.png",
+      "question_id": null,
+      "question_type": "yes_no_matrix",
+      "question_text": "You have three users named User1, User2, and User3. You have the Fabric workspaces shown in the following table: Workspace1 has User1 as workspace admin. Workspace2 has User2 as workspace admin. You have a security group named Group1 that contains User1 and User3. The Fabric admin creates the domains shown in the following table: Domain1 has User1 as domain admin. Domain2 has User2 as domain admin. User1 creates a new workspace named Workspace3. You add Group1 to the default domain of Domain1. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "statements": [
+        {
+          "statement": "User3 has Viewer role access to Workspace3.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "User3 has Domain contributor access to Domain1.",
+          "answer": "No"
+        },
+        {
+          "statement": "User2 has Contributor role access to Workspace3.",
+          "answer": "No"
+        }
+      ]
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.15.png",
+      "question_id": null,
+      "question_type": "drag_drop_order",
+      "question_text": "Your company has a team of developers. The team creates Python libraries of reusable code that is used to transform data. You create a Fabric workspace named Workspace1 that will be used to develop extract, transform, and load (ETL) solutions by using notebooks. You need to ensure that the libraries are available by default to new notebooks in Workspace1. Which three actions should you perform in sequence?",
+      "option_pool": [
+        "Change the runtime version.",
+        "Install the libraries.",
+        "Create a pool.",
+        "Create an environment.",
+        "Set the default environment."
+      ],
+      "answer_sequence": [
+        "Create an environment.",
+        "Install the libraries.",
+        "Set the default environment."
+      ]
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.26.png",
+      "question_id": null,
+      "question_type": "drag_drop_order",
+      "question_text": "You have a Fabric workspace that contains a warehouse named Warehouse1. In Warehouse1, you create a table named DimCustomer by running the following statement: CREATE TABLE dbo.DimCustomer ( CustomerKey VARCHAR(255) NOT NULL, Name VARCHAR(255) NOT NULL, Email VARCHAR(255) NOT NULL ). You need to set the CustomerKey column as a primary key of the DimCustomer table. Which three code segments should you run in sequence?",
+      "option_pool": [
+        "DROP CONSTRAINT PK_DimCustomer",
+        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+        "NOT ENFORCED",
+        "ALTER TABLE dbo.DimCustomer",
+        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY CLUSTERED (CustomerKey)",
+        "ENFORCED"
+      ],
+      "answer_sequence": [
+        "ALTER TABLE dbo.DimCustomer",
+        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+        "NOT ENFORCED"
+      ]
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.40.png",
+      "question_id": 33,
+      "question_type": "single_choice",
+      "question_text": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. You have a Fabric eventstream that loads data into a table named Bike_Location in a KQL database. The table contains the following columns: BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. You need to apply transformation and filter logic to prepare the data for consumption. The solution must return data for a neighbourhood named Sands End when No_Bikes is at least 15. The results must be ordered by No_Bikes in ascending order. Solution: bike_location | filter Neighbourhood == \"Sands End\" and No_Bikes >= 15 | sort by No_Bikes | project BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp | project BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. Does this meet the goal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes"
+        },
+        {
+          "id": "B",
+          "text": "No"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["B"]
+      }
+    },
+    {
+      "source_file": "Bildschirmfoto 2026-03-08 um 08.17.47.png",
+      "question_id": 34,
+      "question_type": "single_choice",
+      "question_text": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. You have a Fabric eventstream that loads data into a table named Bike_Location in a KQL database. The table contains the following columns: BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. You need to apply transformation and filter logic to prepare the data for consumption. The solution must return data for a neighbourhood named Sands End when No_Bikes is at least 15. The results must be ordered by No_Bikes in ascending order. Solution: bike_location | filter Neighbourhood == \"Sands End\" and No_Bikes >= 15 | order by No_Bikes | project BikepointID, Street, Neighbourhood, No_Bikes, No_Empty_Docks, Timestamp. Does this meet the goal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes"
+        },
+        {
+          "id": "B",
+          "text": "No"
+        }
+      ],
+      "answer": {
+        "correct_option_ids": ["B"]
+      }
+    }
+  ]
+}
