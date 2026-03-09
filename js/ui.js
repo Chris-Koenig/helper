@@ -149,9 +149,12 @@ class UIManager {
             
             qaSection = `
                 <div style="margin-bottom: 25px; padding: 15px; background: rgba(26, 26, 26, 0.5); border-radius: 8px; border-left: 3px solid ${qaColor};">
-                    <strong>${qaIcon} JSON Database:</strong><br>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <strong>${qaIcon} JSON Database:</strong>
+                        <span style="font-size: 11px; padding: 4px 8px; background: rgba(100, 100, 100, 0.3); border-radius: 4px; color: #aaa;">📚 Source: JSON Knowledge Base</span>
+                    </div>
                     <span style="color: ${qaColor};">Question ${isFound ? 'found' : 'not found'}</span><br>
-                    ${isFound ? `<div style="margin-top: 10px; font-size: 48px; color: ${qaColor}; font-weight: 700;">${qaAnswer}</div>` : ''}
+                    ${isFound ? `<div style="margin-top: 10px; color: ${qaColor}; font-weight: 600;">${qaAnswer}</div>` : ''}
                 </div>
             `;
         }
@@ -159,8 +162,11 @@ class UIManager {
         const html = `
             ${qaSection}
             <div style="margin-bottom: 20px; padding: 15px; background: rgba(26, 26, 26, 0.5); border-radius: 8px; border-left: 3px solid #10a37f;">
-                <strong>🤖 AI Answer:</strong><br>
-                <span style="font-size: 72px; color: #10a37f; font-weight: 700;">${answer}</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <strong>🤖 AI Answer:</strong>
+                    <span style="font-size: 11px; padding: 4px 8px; background: rgba(16, 163, 127, 0.2); border-radius: 4px; color: #10a37f;">🧠 Source: AI Prompting</span>
+                </div>
+                <span style="color: #10a37f; font-weight: 600;">${answer}</span>
             </div>
             <div style="border-top: 1px solid #333; padding-top: 15px;">
                 <strong>📝 Extracted Text:</strong><br>
