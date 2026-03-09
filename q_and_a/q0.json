@@ -26,9 +26,18 @@
       "type": "yes_no_matrix",
       "question": "Evaluate deployment pipeline behavior.",
       "statements": [
-        { "statement": "Semantic model data will deploy.", "answer": "No" },
-        { "statement": "Dataflow Gen1 deploys.", "answer": "Yes" },
-        { "statement": "Scheduled refresh policies deploy.", "answer": "No" }
+        {
+          "statement": "Semantic model data will deploy.",
+          "answer": "No"
+        },
+        {
+          "statement": "Dataflow Gen1 deploys.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "Scheduled refresh policies deploy.",
+          "answer": "No"
+        }
       ]
     },
     {
@@ -84,93 +93,87 @@
     },
     {
       "id": 8,
-      "type": "drag_drop_order",
-      "question": "Define primary key for DimCustomer.",
-      "sequence": [
-        "ALTER TABLE dbo.DimCustomer",
-        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
-        "NOT ENFORCED"
+      "type": "hotspot",
+      "question": "You have an Azure Event Hubs data source that contains weather data. You ingest the data from the source by using an eventstream named Eventstream1. Eventstream1 uses a lakehouse as the destination. You need to batch ingest only rows where the City attribute has a value of Kansas. The filter must be added before the destination. The solution must minimize development effort. What should you use for the data processor and filtering?",
+      "fields": [
+        {
+          "name": "Data processor",
+          "options": [
+            "A data pipeline",
+            "A Dataflow Gen2 dataflow",
+            "An eventstream with a custom endpoint",
+            "An eventstream with an external data source"
+          ],
+          "answer": "A Dataflow Gen2 dataflow"
+        },
+        {
+          "name": "Filtering",
+          "options": [
+            "A Filter activity in a data pipeline",
+            "A filter in a Dataflow Gen2 dataflow",
+            "A KQL statement",
+            "An eventstream processor"
+          ],
+          "answer": "A filter in a Dataflow Gen2 dataflow"
+        }
       ]
     },
     {
       "id": 9,
       "type": "single_choice",
-      "question": "Does the KQL code correctly filter and sort results?",
-      "options": { "A": "Yes", "B": "No" },
+      "question": "You have a Fabric workspace that contains an eventstream named Eventstream1. Eventstream1 processes data from a thermal sensor and stores the data in a lakehouse. You need to modify Eventstream1 to include the standard deviation of the temperature.",
+      "options": {
+        "A": "Expand",
+        "B": "Group by",
+        "C": "Union",
+        "D": "Aggregate"
+      },
       "answer": ["B"]
     },
     {
       "id": 10,
       "type": "single_choice",
-      "question": "Does the KQL code using 'order by' meet the goal?",
-      "options": { "A": "Yes", "B": "No" },
+      "question": "You have an Azure event hub that sends events with Street, Neighbourhood, Latitude, Longitude, No_Bikes, and No_Empty_Docks. You need to retain only events where Neighbourhood = Chelsea and store them in a Fabric lakehouse.",
+      "options": {
+        "A": "A KQL queryset",
+        "B": "An eventstream",
+        "C": "A streaming dataset",
+        "D": "Apache Spark Structured Streaming"
+      },
       "answer": ["B"]
     },
-
     {
       "id": 11,
-      "type": "single_choice",
-      "question": "Store semi-structured data readable by T-SQL, KQL, and Spark but written only by Spark.",
-      "options": {
-        "A": "Lakehouse",
-        "B": "Eventhouse",
-        "C": "Datamart",
-        "D": "Warehouse"
-      },
-      "answer": ["A"]
-    },
-
-    {
-      "id": 12,
-      "type": "single_choice",
-      "question": "Copy data from on-prem SQL Server to Fabric warehouse.",
-      "options": {
-        "A": "Dataflow Gen1",
-        "B": "Data pipeline",
-        "C": "KQL queryset",
-        "D": "Notebook"
-      },
-      "answer": ["B"]
-    },
-
-    {
-      "id": 13,
-      "type": "single_choice",
-      "question": "Copy SQL Server data to warehouse.",
-      "options": {
-        "A": "Spark job",
-        "B": "Data pipeline",
-        "C": "Dataflow Gen1",
-        "D": "Eventstream"
-      },
-      "answer": ["B"]
-    },
-
-    {
-      "id": 14,
-      "type": "yes_no_matrix",
-      "question": "Evaluate Delta merge behavior.",
+      "type": "true_false_matrix",
+      "question": "Determine whether each statement about the Delta loading pattern is true.",
       "statements": [
-        { "statement": "Target table always overwritten", "answer": "No" },
-        { "statement": "Merge always runs", "answer": "No" },
-        { "statement": "Supports full and incremental load", "answer": "Yes" }
+        {
+          "statement": "The target table will always be overwritten.",
+          "answer": "No"
+        },
+        {
+          "statement": "The merge operation will always run.",
+          "answer": "No"
+        },
+        {
+          "statement": "The loading pattern supports both full and incremental loading requirements.",
+          "answer": "Yes"
+        }
       ]
     },
-
     {
-      "id": 15,
+      "id": 12,
       "type": "dropdown",
-      "question": "SCD Type 2 join conditions.",
+      "question": "Complete the SCD Type 2 join conditions.",
       "answers": {
         "Condition1": "o.OrderDate >= c.valid_from_datetime",
         "Condition2": "o.OrderDate < c.valid_to_datetime"
       }
     },
-
     {
-      "id": 16,
+      "id": 13,
       "type": "single_choice",
-      "question": "Ingest 500GB files daily with trigger and high throughput.",
+      "question": "You have a Fabric workspace that contains a lakehouse named Lakehouse1. In an external data source, you have data files that are 500 GB each. A new file is added every day. You need to ingest the data into Lakehouse1 without applying any transformations. The solution must trigger when a new file is added and provide the highest throughput.",
       "options": {
         "A": "Eventstream",
         "B": "Dataflow Gen2",
@@ -179,11 +182,10 @@
       },
       "answer": ["D"]
     },
-
     {
-      "id": 17,
+      "id": 14,
       "type": "multi_select",
-      "question": "Update policy records loaded.",
+      "question": "You have an eventhouse and a KQL database named Database1. An update policy sends data from Table1 to Table2. Which two records will load from Table1 to Table2?",
       "options": {
         "A": "Record A",
         "B": "Record B",
@@ -192,73 +194,191 @@
       },
       "answer": ["A", "D"]
     },
-
     {
-      "id": 18,
+      "id": 15,
       "type": "dropdown",
-      "question": "Fix conversion issues in SQL.",
+      "question": "Fix the conversion logic in the SQL statement.",
       "answers": {
-        "ItemName": "try_cast(item_name as varchar(20))",
-        "PurchaseDate": "convert(varchar, purchase_date, 7)"
+        "ItemNameConversion": "try_cast(item_name as varchar(20))",
+        "PurchaseDateConversion": "convert(varchar, purchase_date, 7)"
       }
     },
-
     {
-      "id": 19,
+      "id": 16,
       "type": "single_choice",
-      "question": "Snowflake → Fabric copy pipeline setting.",
+      "question": "You are developing a data pipeline named Pipeline1. You need to add a Copy data activity that will copy data from a Snowflake data source to a Fabric warehouse.",
       "options": {
-        "A": "Parallelism",
+        "A": "Degree of copy parallelism",
         "B": "Fault tolerance",
         "C": "Enable staging",
-        "D": "Logging"
+        "D": "Enable logging"
       },
       "answer": ["C"]
     },
-
     {
-      "id": 20,
-      "type": "multi_select",
-      "question": "Populate MAR1 bronze layer.",
-      "options": {
-        "A": "ForEach",
-        "B": "Copy data",
-        "C": "WebHook",
-        "D": "Stored procedure"
-      },
-      "answer": ["A", "B"]
-    },
-
-    {
-      "id": 21,
+      "id": 17,
       "type": "single_choice",
-      "question": "Least-privilege role for viewing workspace and updating DW tables.",
+      "question": "You have a Fabric workspace. You have semi-structured data. You need to read the data by using T-SQL, KQL, and Apache Spark. The data will only be written by using Spark. What should you use to store the data?",
       "options": {
-        "A": "Admin",
-        "B": "Member",
-        "C": "Viewer",
-        "D": "Contributor"
-      },
-      "answer": ["D"]
-    },
-
-    {
-      "id": 22,
-      "type": "single_choice",
-      "question": "User must query lakehouse tables using SQL only.",
-      "options": {
-        "A": "Share lakehouse with SQL endpoint read",
-        "B": "Viewer role",
-        "C": "Build reports",
-        "D": "Member role"
+        "A": "a lakehouse",
+        "B": "an eventhouse",
+        "C": "a datamart",
+        "D": "a warehouse"
       },
       "answer": ["A"]
     },
-
+    {
+      "id": 18,
+      "type": "single_choice",
+      "question": "You need to copy data from an on-premises Microsoft SQL Server database to a Fabric warehouse.",
+      "options": {
+        "A": "a Dataflow Gen1 dataflow",
+        "B": "a data pipeline",
+        "C": "a KQL queryset",
+        "D": "a notebook"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 19,
+      "type": "single_choice",
+      "question": "You need to copy data from an on-premises SQL Server database to a Fabric warehouse.",
+      "options": {
+        "A": "an Apache Spark job definition",
+        "B": "a data pipeline",
+        "C": "a Dataflow Gen1 dataflow",
+        "D": "an eventstream"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 20,
+      "type": "true_false_matrix",
+      "question": "Evaluate the following statements about the Delta loading pattern.",
+      "statements": [
+        {
+          "statement": "The target table will always be overwritten.",
+          "answer": "No"
+        },
+        {
+          "statement": "The merge operation will always run.",
+          "answer": "No"
+        },
+        {
+          "statement": "The loading pattern supports both full and incremental loading requirements.",
+          "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "dropdown",
+      "question": "Complete the SCD Type 2 join conditions.",
+      "answers": {
+        "Condition1": "o.OrderDate >= c.valid_from_datetime",
+        "Condition2": "o.OrderDate < c.valid_to_datetime"
+      }
+    },
+    {
+      "id": 22,
+      "type": "single_choice",
+      "question": "Choose the best ingestion item for 500 GB files arriving daily with high throughput and event-based triggering.",
+      "options": {
+        "A": "Eventstream",
+        "B": "Dataflow Gen2",
+        "C": "Streaming dataset",
+        "D": "Data pipeline"
+      },
+      "answer": ["D"]
+    },
     {
       "id": 23,
+      "type": "multi_select",
+      "question": "Which two records will load due to the update policy?",
+      "options": {
+        "A": "Record A",
+        "B": "Record B",
+        "C": "Record C",
+        "D": "Record D"
+      },
+      "answer": ["A", "D"]
+    },
+    {
+      "id": 24,
+      "type": "dropdown",
+      "question": "Fix the SQL conversion expressions.",
+      "answers": {
+        "ItemNameConversion": "try_cast(item_name as varchar(20))",
+        "PurchaseDateConversion": "convert(varchar, purchase_date, 7)"
+      }
+    },
+    {
+      "id": 25,
+      "type": "single_choice",
+      "question": "Configure Copy data activity from Snowflake to Fabric warehouse.",
+      "options": {
+        "A": "Degree of copy parallelism",
+        "B": "Fault tolerance",
+        "C": "Enable staging",
+        "D": "Enable logging"
+      },
+      "answer": ["C"]
+    },
+    {
+      "id": 26,
+      "type": "single_choice",
+      "question": "You need to ensure that data analysts can access the gold layer lakehouse.",
+      "options": {
+        "A": "Add the DataAnalyst group to the Viewer role for WorkspaceA.",
+        "B": "Share the lakehouse and grant Build reports permission.",
+        "C": "Share the lakehouse and grant Read all SQL Endpoint data permission.",
+        "D": "Share the lakehouse and grant Read all Apache Spark permission."
+      },
+      "answer": ["C"]
+    },
+    {
+      "id": 27,
+      "type": "dropdown",
+      "question": "Summarize order quantities by year and product including yearly totals.",
+      "answers": {
+        "SelectExpression": "SELECT YEAR",
+        "GroupByExpression": "ROLLUP(YEAR(SO.ModifiedDate), P.Name)"
+      }
+    },
+    {
+      "id": 28,
+      "type": "yes_no_matrix",
+      "question": "Evaluate deployment pipeline statements.",
+      "statements": [
+        {
+          "statement": "Data from semantic models will be deployed to the target stage.",
+          "answer": "No"
+        },
+        {
+          "statement": "The Dataflow Gen1 dataflows will be deployed to the target stage.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "The scheduled refresh policies will be deployed to the target stage.",
+          "answer": "No"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "dropdown",
+      "question": "Configure execution orchestration for notebooks, pipeline, and model.",
+      "answers": {
+        "Notebook1": "Add Notebook1 to Pipeline1",
+        "Notebook2": "From Real-Time hub configure execution",
+        "Pipeline1": "Configure execution using a schedule",
+        "Model1": "Add Model1 to Pipeline1"
+      }
+    },
+    {
+      "id": 30,
       "type": "drag_drop",
-      "question": "Endorsement mapping.",
+      "question": "Apply endorsement badges to the entities.",
       "answers": {
         "Entity1": "Master data",
         "Entity2": "Certified",
@@ -266,503 +386,420 @@
         "Entity4": "Cannot be endorsed"
       }
     },
-
-    {
-      "id": 24,
-      "type": "yes_no_matrix",
-      "question": "Permissions scenario.",
-      "statements": [
-        { "statement": "User3 viewer Workspace3", "answer": "Yes" },
-        { "statement": "User3 domain contributor Domain1", "answer": "No" },
-        { "statement": "User2 contributor Workspace3", "answer": "No" }
-      ]
-    },
-
-    {
-      "id": 25,
-      "type": "single_choice",
-      "question": "Overwrite paired items using deployment pipeline.",
-      "options": {
-        "A": "Delete items",
-        "B": "Rename items",
-        "C": "Backup items",
-        "D": "Run pipeline"
-      },
-      "answer": ["D"]
-    },
-
-    {
-      "id": 26,
-      "type": "single_choice",
-      "question": "Deploy workspace with folder change.",
-      "options": {
-        "A": "Folder created and items moved",
-        "B": "Only items deploy",
-        "C": "Everything moved",
-        "D": "Folder only"
-      },
-      "answer": ["A"]
-    },
-
-    {
-      "id": 27,
-      "type": "drag_drop_order",
-      "question": "Environment setup sequence.",
-      "sequence": [
-        "Create environment",
-        "Install libraries",
-        "Set default environment"
-      ]
-    },
-
-    {
-      "id": 28,
-      "type": "single_choice",
-      "question": "Consolidate Delta parquet files.",
-      "options": {
-        "A": "VACUUM",
-        "B": "BROADCAST",
-        "C": "OPTIMIZE",
-        "D": "CACHE"
-      },
-      "answer": ["C"]
-    },
-
-    {
-      "id": 29,
-      "type": "single_choice",
-      "question": "Identify workspace of running job in Monitoring Hub.",
-      "options": {
-        "A": "Start time",
-        "B": "Capacity",
-        "C": "Activity name",
-        "D": "Submitter",
-        "E": "Item type",
-        "F": "Job type",
-        "G": "Location"
-      },
-      "answer": ["G"]
-    },
-
-    {
-      "id": 30,
-      "type": "single_choice",
-      "question": "Identify Delta version used by notebook.",
-      "options": {
-        "A": "Real-Time hub",
-        "B": "OneLake hub",
-        "C": "Admin monitoring",
-        "D": "Fabric Monitor",
-        "E": "Capacity Metrics"
-      },
-      "answer": ["D"]
-    },
-
     {
       "id": 31,
+      "type": "yes_no_matrix",
+      "question": "Evaluate permissions for users and domains.",
+      "statements": [
+        {
+          "statement": "User3 has Viewer role access to Workspace3.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "User3 has Domain contributor access to Domain1.",
+          "answer": "No"
+        },
+        {
+          "statement": "User2 has Contributor role access to Workspace3.",
+          "answer": "No"
+        }
+      ]
+    },
+    {
+      "id": 32,
       "type": "drag_drop_order",
-      "question": "Define primary key sequence.",
+      "question": "Ensure Python libraries are available by default to new notebooks.",
+      "sequence": [
+        "Create an environment",
+        "Install the libraries",
+        "Set the default environment"
+      ]
+    },
+    {
+      "id": 33,
+      "type": "drag_drop_order",
+      "question": "Set CustomerKey as the primary key of DimCustomer.",
       "sequence": [
         "ALTER TABLE dbo.DimCustomer",
         "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
         "NOT ENFORCED"
       ]
     },
-
-    {
-      "id": 32,
-      "type": "single_choice",
-      "question": "Monitor semantic model refresh using code.",
-      "options": {
-        "A": "SSMS DMV",
-        "B": "Monitoring hub",
-        "C": "Azure Data Studio DMV",
-        "D": "Semantic link notebook"
-      },
-      "answer": ["D"]
-    },
-
-    {
-      "id": 33,
-      "type": "single_choice",
-      "question": "KQL solution scenario.",
-      "options": { "A": "Yes", "B": "No" },
-      "answer": ["B"]
-    },
-
     {
       "id": 34,
       "type": "single_choice",
-      "question": "Alternative KQL solution scenario.",
-      "options": { "A": "Yes", "B": "No" },
+      "question": "Does the provided KQL code meet the filtering and sorting goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
       "answer": ["B"]
     },
-
     {
       "id": 35,
       "type": "single_choice",
-      "question": "Third KQL solution scenario.",
-      "options": { "A": "Yes", "B": "No" },
+      "question": "Does the alternative KQL code meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
       "answer": ["B"]
     },
-
     {
       "id": 36,
       "type": "single_choice",
-      "question": "SQL solution scenario.",
-      "options": { "A": "Yes", "B": "No" },
-      "answer": ["A"]
+      "question": "Does the KQL code using 'sort by No_Bikes asc' meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
     },
-
     {
       "id": 37,
       "type": "single_choice",
-      "question": "Isolate Spark workloads.",
+      "question": "Does the SQL solution meet the goal?",
       "options": {
-        "A": "Disable concurrency",
-        "B": "Custom pool",
-        "C": "Executors",
-        "D": "Default env"
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["A"]
+    },
+    {
+      "id": 38,
+      "type": "single_choice",
+      "question": "How should you configure Apache Spark settings so bronze and silver layers run in isolation?",
+      "options": {
+        "A": "Disable high concurrency",
+        "B": "Create a custom pool",
+        "C": "Modify the number of executors",
+        "D": "Set the default environment"
       },
       "answer": ["B"]
     },
-
-    {
-      "id": 38,
-      "type": "drag_drop",
-      "question": "RLS implementation.",
-      "answers": {
-        "Function": "SCHEMABINDING",
-        "Where": "USER_NAME()",
-        "Table": "AuthorSales"
-      }
-    },
-
     {
       "id": 39,
-      "type": "single_choice",
-      "question": "KeyVault getSecret solution.",
-      "options": { "A": "Yes", "B": "No" },
-      "answer": ["B"]
+      "type": "drag_drop",
+      "question": "Complete the row-level security implementation for authors.",
+      "answers": {
+        "FunctionOption": "SCHEMABINDING",
+        "WhereClause": "USER_NAME()",
+        "TargetTable": "AuthorSales"
+      }
     },
-
     {
       "id": 40,
       "type": "single_choice",
-      "question": "KeyVault putSecret solution.",
-      "options": { "A": "Yes", "B": "No" },
+      "question": "Use notebookutils.credentials.getSecret with key vault URL and secret. Does this meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
       "answer": ["B"]
     },
-
     {
       "id": 41,
       "type": "single_choice",
-      "question": "getSecret with linked service.",
-      "options": { "A": "Yes", "B": "No" },
+      "question": "Use notebookutils.credentials.putSecret with key vault URL and secret. Does this meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
       "answer": ["B"]
     },
-
     {
       "id": 42,
-      "type": "drag_drop",
-      "question": "Notebook DAG configuration.",
-      "answers": {
-        "Collection": "activities",
-        "Dependency": "dependencies",
-        "Execution": "runMultiple"
-      }
+      "type": "single_choice",
+      "question": "Use notebookutils.credentials.getSecret with key vault URL and linked service name. Does this meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
     },
-
     {
       "id": 43,
-      "type": "dropdown",
-      "question": "Pipeline table iteration.",
+      "type": "drag_drop",
+      "question": "Complete the notebook DAG pattern.",
       "answers": {
-        "Activity": "Lookup Schema and Table",
-        "Property": "output.value"
+        "DAGRootCollection": "activities",
+        "DependencyProperty": "dependencies",
+        "ExecutionMethod": "runMultiple"
       }
     },
-
     {
       "id": 44,
       "type": "dropdown",
-      "question": "Dynamic data masking.",
+      "question": "Complete the pipeline expression for the ForEach items list.",
       "answers": {
-        "BirthDate": "random(1900-01-01,1900-01-01)",
-        "Email": "partial(1,\"@\",5)"
+        "ActivityName": "Lookup Schema and Table",
+        "OutputProperty": "output.value"
       }
     },
-
     {
       "id": 45,
-      "type": "single_choice",
-      "question": "Items that can be endorsed.",
-      "options": {
-        "A": "Lakehouse, Model, Dashboard",
-        "B": "All",
-        "C": "Reports only",
-        "D": "Model Report Dashboard",
-        "E": "Lakehouse Model Report"
-      },
-      "answer": ["E"]
+      "type": "dropdown",
+      "question": "Complete the dynamic data masking functions.",
+      "answers": {
+        "BirthDateMask": "random(1900-01-01, 1900-01-01)",
+        "EmailMask": "partial(1,\"@\",5)"
+      }
     },
-
     {
       "id": 46,
       "type": "single_choice",
-      "question": "GitHub permissions for commit.",
+      "question": "Which items can you endorse in Fabric?",
       "options": {
-        "A": "Actions+Contents",
-        "B": "Actions only",
-        "C": "Contents read/write",
-        "D": "Read contents"
+        "A": "Lakehouse1, Model1, and Dashboard1 only",
+        "B": "Lakehouse1, Model1, Report1 and Dashboard1",
+        "C": "Report1 and Dashboard1 only",
+        "D": "Model1, Report1 and Dashboard1 only",
+        "E": "Lakehouse1, Model1, and Report1 only"
       },
-      "answer": ["C"]
+      "answer": ["E"]
     },
-
     {
       "id": 47,
       "type": "single_choice",
-      "question": "Azure DevOps Git integration details.",
+      "question": "Which GitHub permissions are required to commit code with least privilege?",
       "options": {
-        "A": "Org project repo branch",
-        "B": "PAT URL",
-        "C": "Project repo branch folder",
-        "D": "URL folder"
+        "A": "Actions (Read and write) and Contents (Read and write)",
+        "B": "Actions (Read and write) only",
+        "C": "Contents (Read and write) only",
+        "D": "Contents (Read) and Commit statuses (Read and write)"
+      },
+      "answer": ["C"]
+    },
+    {
+      "id": 48,
+      "type": "single_choice",
+      "question": "Which Azure DevOps details are required for Git integration?",
+      "options": {
+        "A": "Organization, project, Git repository, and branch",
+        "B": "PAT token and repository URL",
+        "C": "Project, repository, branch, and folder",
+        "D": "Repository URL and folder"
       },
       "answer": ["A"]
     },
-
     {
-      "id": 48,
+      "id": 49,
       "type": "multi_select",
-      "question": "Pipeline schedule + retry + refresh.",
+      "question": "Which three actions are required to schedule notebook execution, retries, and semantic model refresh?",
       "options": {
-        "A": "On success link",
-        "B": "UTC timezone",
-        "C": "Retry=2",
-        "D": "Notebook timezone",
-        "E": "Refresh retry",
-        "F": "On completion"
+        "A": "Place refresh activity after notebook using On success",
+        "B": "Set pipeline timezone to UTC",
+        "C": "Set notebook retry to 2",
+        "D": "Set notebook schedule timezone to UTC",
+        "E": "Set semantic model refresh retry to 2",
+        "F": "Place refresh activity after notebook using On completion"
       },
       "answer": ["A", "B", "C"]
     },
-
-    {
-      "id": 49,
-      "type": "single_choice",
-      "question": "Return integer pipeline parameter.",
-      "options": {
-        "A": "@pipeline().parameters.param1",
-        "B": "@{pipeline().parameters.param1}",
-        "C": "@(pipeline...)",
-        "D": "@@{...}"
-      },
-      "answer": ["A"]
-    },
-
     {
       "id": 50,
       "type": "single_choice",
-      "question": "Orchestrate tasks every 15 minutes.",
+      "question": "How should you reference an int pipeline parameter?",
+      "options": {
+        "A": "@pipeline().parameters.param1",
+        "B": "@{pipeline().parameters.param1}",
+        "C": "@(pipeline().parameters.[param1])",
+        "D": "@@{pipeline().parameters.param1}"
+      },
+      "answer": ["A"]
+    },
+    {
+      "id": 51,
+      "type": "single_choice",
+      "question": "Which item should orchestrate sequential loads every 15 minutes?",
       "options": {
         "A": "Notebook",
         "B": "Warehouse",
-        "C": "Dataflow",
-        "D": "Pipeline"
+        "C": "Dataflow Gen2",
+        "D": "Data pipeline"
       },
       "answer": ["D"]
     },
-
     {
-      "id": 51,
+      "id": 52,
       "type": "multi_select",
-      "question": "Notebook DAG order actions.",
+      "question": "Which two actions enforce notebook execution order in the DAG?",
       "options": {
-        "A": "Move Notebook_02",
-        "B": "Add dependencies Notebook_03",
-        "C": "Split DAG",
-        "D": "Add dependencies Notebook_02",
-        "E": "Concurrency 3",
-        "F": "Move Notebook_03"
+        "A": "Move Notebook_02 to bottom",
+        "B": "Add dependencies to Notebook_03",
+        "C": "Split DAG into three",
+        "D": "Add dependencies to Notebook_02",
+        "E": "Change concurrency to 3",
+        "F": "Move Notebook_03 to top"
       },
       "answer": ["D", "F"]
     },
-
     {
-      "id": 52,
+      "id": 53,
       "type": "single_choice",
-      "question": "Pipeline execution result.",
+      "question": "What will happen when Pipeline1 runs next?",
       "options": {
-        "A": "Copy then Execute",
-        "B": "Execute then Copy",
-        "C": "Execute only",
-        "D": "Copy only",
-        "E": "Parallel",
-        "F": "None"
+        "A": "Copy_kdi runs first then Execute procedure1",
+        "B": "Execute procedure1 runs first then Copy_kdi",
+        "C": "Execute procedure1 runs and Copy_kdi is skipped",
+        "D": "Copy_kdi runs and Execute procedure1 is skipped",
+        "E": "Both run simultaneously",
+        "F": "Both are skipped"
       },
       "answer": ["D"]
     },
-
     {
-      "id": 53,
+      "id": 54,
       "type": "multi_select",
-      "question": "Enable source control.",
+      "question": "Which two actions enable WorkspaceA source control?",
       "options": {
-        "A": "Enable Git tenant setting",
-        "B": "Enable GitHub tenant setting",
-        "C": "Use PPU",
-        "D": "Assign capacity"
+        "A": "Enable Users can synchronize workspace items with their Git repositories",
+        "B": "Enable Users can sync workspace items with GitHub repositories",
+        "C": "Use Premium Per User license",
+        "D": "Assign WorkspaceA to Cap1"
       },
       "answer": ["A", "D"]
     },
-
-    {
-      "id": 54,
-      "type": "dropdown",
-      "question": "Grant table access but hide column.",
-      "answers": { "Permission": "SELECT", "Principal": "[User1]" }
-    },
-
     {
       "id": 55,
+      "type": "dropdown",
+      "question": "Grant access to Customer table while hiding CreditCard column.",
+      "answers": {
+        "Permission": "SELECT",
+        "Principal": "[User1]"
+      }
+    },
+    {
+      "id": 56,
       "type": "single_choice",
-      "question": "Deploy Eventhouse.",
+      "question": "What should you use to add the Eventhouse to the deployment process?",
       "options": {
-        "A": "Azure DevOps pipeline",
-        "B": "Eventstream",
+        "A": "An Azure DevOps pipeline",
+        "B": "An eventstream",
         "C": "GitHub Actions"
       },
       "answer": ["A"]
     },
-
-    {
-      "id": 56,
-      "type": "single_choice",
-      "question": "Object required for RLS.",
-      "options": {
-        "A": "Trigger",
-        "B": "Schema",
-        "C": "Function",
-        "D": "Database role"
-      },
-      "answer": ["C"]
-    },
-
     {
       "id": 57,
       "type": "single_choice",
-      "question": "Object defining RLS policy.",
+      "question": "Which warehouse object do you require to implement RLS?",
       "options": {
-        "A": "Security policy",
-        "B": "Table",
-        "C": "Trigger",
-        "D": "Stored procedure"
+        "A": "TRIGGER",
+        "B": "SCHEMA",
+        "C": "FUNCTION",
+        "D": "DATABASE ROLE"
       },
-      "answer": ["A"]
+      "answer": ["C"]
     },
-
     {
       "id": 58,
       "type": "single_choice",
-      "question": "Improve Direct Lake performance.",
+      "question": "Which warehouse object is required to implement RLS?",
       "options": {
-        "A": "Views",
-        "B": "Change key type",
-        "C": "SHA256",
+        "A": "SECURITY POLICY",
+        "B": "TABLE",
+        "C": "TRIGGER",
+        "D": "STORED PROCEDURE"
+      },
+      "answer": ["A"]
+    },
+    {
+      "id": 59,
+      "type": "single_choice",
+      "question": "How should you resolve the Direct Lake performance issues?",
+      "options": {
+        "A": "Create views",
+        "B": "Modify surrogate keys to another data type",
+        "C": "Change MD5 to SHA256",
         "D": "Increase capacity",
         "E": "Disable V-Order"
       },
       "answer": ["D"]
     },
-
-    {
-      "id": 59,
-      "type": "single_choice",
-      "question": "Detect invalid references during deployment.",
-      "options": {
-        "A": "dbt",
-        "B": "Deployment pipeline",
-        "C": "Python",
-        "D": "Database project"
-      },
-      "answer": ["B"]
-    },
-
     {
       "id": 60,
-      "type": "drag_drop_order",
-      "question": "Deploy feature using pipeline.",
-      "sequence": [
-        "Select pipeline",
-        "Select Test stage",
-        "Deploy from Development",
-        "Deploy"
-      ]
-    },
-
-    {
-      "id": 61,
       "type": "single_choice",
-      "question": "Access S3 data without copying.",
+      "question": "What should you use to verify invalid references during warehouse deployment?",
       "options": {
-        "A": "Dataflow",
-        "B": "Shortcut",
-        "C": "External sharing",
-        "D": "Pipeline"
+        "A": "A dbt project",
+        "B": "A deployment pipeline",
+        "C": "A Python script",
+        "D": "A database project"
       },
       "answer": ["B"]
     },
-
+    {
+      "id": 61,
+      "type": "drag_drop_order",
+      "question": "Deploy Feature1 so that only the pipeline is deployed.",
+      "sequence": [
+        "Select pipeline1",
+        "Select the Test stage",
+        "From Deploy from, select Development",
+        "Select Deploy"
+      ]
+    },
     {
       "id": 62,
       "type": "single_choice",
-      "question": "Minimize transferred data.",
+      "question": "What should you do for the book reviews requirement?",
       "options": {
-        "A": "Split dataflow",
-        "B": "Scheduled refresh",
-        "C": "Incremental store month",
-        "D": "Incremental refresh year",
-        "E": "Incremental refresh month"
+        "A": "Create a Dataflow Gen2 dataflow",
+        "B": "Create a shortcut",
+        "C": "Enable external data sharing",
+        "D": "Create a data pipeline"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 63,
+      "type": "single_choice",
+      "question": "How should you minimize the amount of data transferred?",
+      "options": {
+        "A": "Split the dataflow into two dataflows",
+        "B": "Configure scheduled refresh",
+        "C": "Set Store rows from past month",
+        "D": "Set Refresh rows from past year",
+        "E": "Set Refresh rows from past month"
       },
       "answer": ["E"]
     },
-
-    {
-      "id": 63,
-      "type": "dropdown",
-      "question": "Medallion ingestion method.",
-      "answers": { "Bronze": "Pipeline Copy activity", "Silver": "Notebook" }
-    },
-
     {
       "id": 64,
+      "type": "dropdown",
+      "question": "Recommend methods for bronze and silver layers.",
+      "answers": {
+        "BronzeLayer": "A pipeline Copy activity",
+        "SilverLayer": "A notebook"
+      }
+    },
+    {
+      "id": 65,
       "type": "single_choice",
-      "question": "Use Amazon S3 data with minimal egress.",
+      "question": "How should S3 data usage be configured?",
       "options": {
-        "A": "Workspace identity + concurrency",
-        "B": "Shortcut disable cache",
-        "C": "Workspace identity pipeline",
-        "D": "Shortcut enable cache"
+        "A": "Create workspace identity and enable high concurrency",
+        "B": "Create shortcut and disable caching",
+        "C": "Create workspace identity and use it in a data pipeline",
+        "D": "Create shortcut and ensure caching is enabled"
       },
       "answer": ["D"]
     },
-
     {
-      "id": 65,
+      "id": 66,
       "type": "dropdown",
-      "question": "Spark SQL joins for product dimension.",
+      "question": "Complete the Apache Spark SQL for the product dimension.",
       "answers": {
         "Join1": "INNER JOIN",
         "Join2": "INNER JOIN",
         "Filter": "IsActive = 1"
       }
     },
-
     {
-      "id": 66,
+      "id": 67,
       "type": "multi_select",
-      "question": "Pipeline activities for MAR1 bronze layer.",
+      "question": "Which two activity types should you include in the pipeline for MAR1 bronze ingestion?",
       "options": {
         "A": "ForEach",
         "B": "Copy data",
@@ -770,17 +807,6 @@
         "D": "Stored procedure"
       },
       "answer": ["A", "B"]
-    },
-
-    {
-      "id": 67,
-      "type": "dropdown",
-      "question": "SQL denormalization query.",
-      "answers": {
-        "StartDate": "CAST",
-        "Join": "LEFT OUTER JOIN",
-        "GroupClause": "HAVING"
-      }
     }
   ]
 }
