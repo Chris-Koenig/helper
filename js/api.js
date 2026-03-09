@@ -131,15 +131,23 @@ class APIService {
         const url = this.providers[provider];
         const model = this.models[provider];
 
-        const prompt = `You are a question matcher. Compare the extracted text with the questions in the JSON database.
+        const prompt = `You are a question matcher. Compare the extracted text with the questions in the JSON database and extract the correct answer.
 
 Your task:
 1. Check if the extracted text matches or is very similar to any question in the database
 2. Consider the question similar if the core question text matches (exact or paraphrased)
 3. Ignore minor differences in formatting or wording
+4. Extract the answer_text field which contains the normalized answer
+
+Answer Formats by Question Type:
+- single_choice / multi_select: Comma-separated option letters (e.g., "A, B")
+- yes_no_matrix: Semicolon-separated Yes/No values (e.g., "No; No; Yes")
+- hotspot: Semicolon-separated code/field values (e.g., "SELECT YEAR; ROLLUP(...)")
+- drag_drop: Entity to badge mappings (e.g., "Entity1→Badge1; Entity2→Badge2")
+- drag_drop_order: Ordered steps with arrows (e.g., "Step1 → Step2 → Step3")
 
 Respond in this exact format:
-- If question found: "FOUND: [correct_answer_from_json]"
+- If question found: "FOUND: [answer_text_from_json]"
 - If question not found: "NOT FOUND"
 
 Extracted Text:

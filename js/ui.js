@@ -136,9 +136,58 @@ class UIManager {
     }
 
     /**
+     * Format answer text based on question type
+     * @private
+     */
+    _formatAnswerByType(answerText, questionType) {
+        // If no answer text, return as-is
+        if (!answerText) return answerText;
+
+        switch (questionType) {
+            case 'single_choice':
+                return `Option(s): ${answerText}`;
+            
+            case 'multi_select':
+                return `Options: ${answerText}`;
+            
+            case 'yes_no_matrix':
+                const matrixAnswers = answerText.split(';').map(a => a.trim());
+                return `<div style="margin-top: 5px; font-size: 14px;">
+                    ${matrixAnswers.map((answer, i) => 
+                        `<div>Statement ${i + 1}: <strong>${answer}</strong></div>`
+                    ).join('')}
+                </div>`;
+            
+            case 'hotspot':
+                const fieldAnswers = answerText.split(';').map(a => a.trim());
+                return `<div style="margin-top: 5px; font-size: 14px;">
+                    ${fieldAnswers.map((answer, i) => 
+                        `<div>Field ${i + 1}: <strong>${answer}</strong></div>`
+                    ).join('')}
+                </div>`;
+            
+            case 'drag_drop':
+                const mappings = answerText.split(';').map(a => a.trim());
+                return `<div style="margin-top: 5px; font-size: 14px;">
+                    ${mappings.map(mapping => 
+                        `<div>${mapping}</div>`
+                    ).join('')}
+                </div>`;
+            
+            case 'drag_drop_order':
+                return `<div style="margin-top: 5px; font-size: 14px;">
+                    <strong>${answerText}</strong>
+                </div>`;
+            
+            default:
+                return answerText;
+        }
+    }
+
+    /**
      * Show complete result with Q&A database check, AI answer, and extracted text
      */
-    showCompleteResult(qaResult, answer, extractedText) {
+    showCompleteResult(qaResult, answer, extractedText, questionType = null) {
         let qaSection = '';
         
         if (qaResult) {
@@ -147,6 +196,9 @@ class UIManager {
             const qaIcon = isFound ? '✅' : '❌';
             const qaColor = isFound ? '#10a37f' : '#ff6b6b';
             
+            // Format answer based on question type
+            const formattedAnswer = isFound ? this._formatAnswerByType(qaAnswer, questionType) : '';
+            
             qaSection = `
                 <div style="margin-bottom: 25px; padding: 15px; background: rgba(26, 26, 26, 0.5); border-radius: 8px; border-left: 3px solid ${qaColor};">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -154,7 +206,7 @@ class UIManager {
                         <span style="font-size: 11px; padding: 4px 8px; background: rgba(100, 100, 100, 0.3); border-radius: 4px; color: #aaa;">📚 Source: JSON Knowledge Base</span>
                     </div>
                     <span style="color: ${qaColor};">Question ${isFound ? 'found' : 'not found'}</span><br>
-                    ${isFound ? `<div style="margin-top: 10px; color: ${qaColor}; font-weight: 600;">${qaAnswer}</div>` : ''}
+                    ${isFound ? `<div style="margin-top: 10px; color: ${qaColor}; font-weight: 600;">${formattedAnswer}</div>` : ''}
                 </div>
             `;
         }
