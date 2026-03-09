@@ -45,9 +45,9 @@ class QAManager {
      */
     async _discoverQuestionFiles() {
         const files = [];
-        const maxProbe = 200;
+        const maxProbe = 20;
 
-        for (let i = 0; i <= maxProbe; i += 1) {
+        for (let i = 1; i <= maxProbe; i += 1) {
             const file = `q${i}.json`;
             try {
                 const response = await fetch(`q_and_a/${file}`, { method: 'HEAD' });
