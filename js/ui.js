@@ -136,6 +136,41 @@ class UIManager {
     }
 
     /**
+     * Show complete result with Q&A database check, AI answer, and extracted text
+     */
+    showCompleteResult(qaResult, answer, extractedText) {
+        let qaSection = '';
+        
+        if (qaResult) {
+            const isFound = qaResult.toUpperCase().startsWith('FOUND');
+            const qaAnswer = isFound ? qaResult.replace(/^FOUND:\s*/i, '').trim() : 'Not found';
+            const qaIcon = isFound ? '✅' : '❌';
+            const qaColor = isFound ? '#10a37f' : '#ff6b6b';
+            
+            qaSection = `
+                <div style="margin-bottom: 25px; padding: 15px; background: rgba(26, 26, 26, 0.5); border-radius: 8px; border-left: 3px solid ${qaColor};">
+                    <strong>${qaIcon} JSON Database:</strong><br>
+                    <span style="color: ${qaColor};">Question ${isFound ? 'found' : 'not found'}</span><br>
+                    ${isFound ? `<div style="margin-top: 10px; font-size: 48px; color: ${qaColor}; font-weight: 700;">${qaAnswer}</div>` : ''}
+                </div>
+            `;
+        }
+
+        const html = `
+            ${qaSection}
+            <div style="margin-bottom: 20px; padding: 15px; background: rgba(26, 26, 26, 0.5); border-radius: 8px; border-left: 3px solid #10a37f;">
+                <strong>🤖 AI Answer:</strong><br>
+                <span style="font-size: 72px; color: #10a37f; font-weight: 700;">${answer}</span>
+            </div>
+            <div style="border-top: 1px solid #333; padding-top: 15px;">
+                <strong>📝 Extracted Text:</strong><br>
+                ${extractedText}
+            </div>
+        `;
+        this.showResult(html, 'success');
+    }
+
+    /**
      * Show status message (when validation returns status instead of question)
      */
     showStatus(statusMessage) {

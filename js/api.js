@@ -121,6 +121,54 @@ class APIService {
     }
 
     /**
+     * Check if extracted text matches any question in the Q&A database
+     * @param {string} extractedText - Text extracted from image
+     * @param {string} questionsJSON - JSON string of all questions
+     * @param {string} provider - 'openai' or 'perplexity'
+     * @param {string} apiKey - API key
+     */
+    async checkQuestionSimilarity(extractedText, questionsJSON, provider, apiKey) {
+        const url = this.providers[provider];
+        const model = this.models[provider];
+
+        const prompt = `You are a question matcher. Compare the extracted text with the questions in the JSON database.
+
+Your task:
+1. Check if the extracted text matches or is very similar to any question in the database
+2. Consider the question similar if the core question text matches (exact or paraphrased)
+3. Ignore minor differences in formatting or wording
+
+Respond in this exact format:
+- If question found: "FOUND: [correct_answer_from_json]"
+- If question not found: "NOT FOUND"
+
+Extracted Text:
+${extractedText}
+
+Question Database:
+${questionsJSON}
+
+Response:`;
+
+        const requestBody = {
+            model,
+            messages: [
+                {
+                    role: 'user',
+                    content: prompt
+                }
+            ]
+        };
+
+        if (provider === 'openai') {
+            requestBody.max_completion_tokens = 200;
+        }
+
+        const response = await this._makeRequest(url, requestBody, apiKey);
+        return response.choices[0].message.content.trim();
+    }
+
+    /**
      * Make API request
      * @private
      */

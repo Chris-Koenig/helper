@@ -7,6 +7,7 @@ import CameraService from './camera.js';
 import APIService from './api.js';
 import UIManager from './ui.js';
 import PromptsManager from './prompts.js';
+import QAManager from './qa.js';
 
 class App {
     constructor() {
@@ -14,6 +15,7 @@ class App {
         this.api = new APIService();
         this.ui = new UIManager();
         this.prompts = new PromptsManager();
+        this.qa = new QAManager();
     }
 
     /**
@@ -21,8 +23,11 @@ class App {
      */
     async init() {
         try {
-            // Load prompts first
-            await this.prompts.loadAll();
+            // Load prompts and Q&A database
+            await Promise.all([
+                this.prompts.loadAll(),
+                this.qa.loadAll()
+            ]);
 
             // Initialize camera
             const videoElement = document.getElementById('video');
@@ -65,7 +70,21 @@ class App {
                 apiKey
             );
 
-            // Step 2: Validate if it's a question or status message
+            // Step 2: Check Q&A database for similar questions
+            let qaResult = null;
+            const questionsJSON = this.qa.getAllQuestionsJSON();
+            if (questionsJSON) {
+                this.ui.showLoading('Checking Q&A database...');
+                qaResult = await this.api.checkQuestionSimilarity(
+                    extractedText,
+                    questionsJSON,
+                    provider,
+                    apiKey
+                );
+            }
+
+            // Step 3: Validate if it's a question or status message
+            this.ui.showLoading('Validating text...');
             const validationResult = await this.api.validateText(
                 extractedText,
                 this.prompts.validation,
@@ -81,7 +100,8 @@ class App {
                 return;
             }
 
-            // Step 3: Get the answer
+            // Step 4: Get the answer from AI
+            this.ui.showLoading('Getting AI answer...');
             const answer = await this.api.getAnswer(
                 extractedText,
                 this.prompts.answer,
@@ -89,8 +109,8 @@ class App {
                 apiKey
             );
 
-            // Display results
-            this.ui.showAnswerResult(answer, extractedText);
+            // Display all results
+            this.ui.showCompleteResult(qaResult, answer, extractedText);
 
         } catch (error) {
             this.ui.showError(error.message);

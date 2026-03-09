@@ -1,0 +1,109 @@
+{
+  "batch": 4,
+  "questions": [
+    {
+      "id": 31,
+      "type": "drag_drop_order",
+      "question": "You have a Fabric workspace that contains a warehouse named Warehouse1. In Warehouse1 you create a table named DimCustomer. You need to set the CustomerKey column as a primary key of the DimCustomer table. Which three code segments should you run in sequence?",
+      "sequence": [
+        "ALTER TABLE dbo.DimCustomer",
+        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+        "NOT ENFORCED"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "single_choice",
+      "question": "You have a Fabric workspace that contains a semantic model named Model1. You need to dynamically execute and monitor the refresh progress of Model1. What should you use?",
+      "options": {
+        "A": "Dynamic management views in SQL Server Management Studio",
+        "B": "Monitoring hub",
+        "C": "Dynamic management views in Azure Data Studio",
+        "D": "A semantic link in a notebook"
+      },
+      "answer": ["D"]
+    },
+    {
+      "id": 33,
+      "type": "single_choice",
+      "question": "You have a Fabric eventstream that loads data into a table named Bike_Location in a KQL database. The solution must return data for neighbourhood 'Sands End' when No_Bikes >= 15 and order results by No_Bikes ascending. Does the provided code meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 34,
+      "type": "single_choice",
+      "question": "You have a Fabric eventstream loading data into Bike_Location in a KQL database. The code uses 'order by No_Bikes'. Does this meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 35,
+      "type": "single_choice",
+      "question": "You modify the query to use 'sort by No_Bikes asc'. Does this meet the requirement to filter and sort results correctly?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 36,
+      "type": "single_choice",
+      "question": "You use a SQL query to filter neighbourhood 'Sands End' where No_Bikes >= 15 and order results by No_Bikes. Does this meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["A"]
+    },
+    {
+      "id": 37,
+      "type": "single_choice",
+      "question": "You must configure Apache Spark settings so that bronze and silver layer processes run in isolation. What should you configure?",
+      "options": {
+        "A": "Disable high concurrency",
+        "B": "Create a custom pool",
+        "C": "Modify number of executors",
+        "D": "Set the default environment"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 38,
+      "type": "drag_drop",
+      "question": "Complete the row-level security implementation for authors so that they can only see their own sales.",
+      "answers": {
+        "FunctionOption": "SCHEMABINDING",
+        "WhereClause": "USER_NAME()",
+        "TargetTable": "AuthorSales"
+      }
+    },
+    {
+      "id": 39,
+      "type": "single_choice",
+      "question": "You must retrieve the registered application ID and secret from Azure Key Vault in a Fabric notebook. Solution: Use notebookutils.credentials.getSecret and specify the key vault URL and secret. Does this meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 40,
+      "type": "single_choice",
+      "question": "Solution: Use notebookutils.credentials.putSecret with the key vault URL and secret. Does this meet the goal?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
+    }
+  ]
+}

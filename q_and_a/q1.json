@@ -1,0 +1,126 @@
+{
+  "batch": 1,
+  "questions": [
+    {
+      "id": 1,
+      "type": "single_choice",
+      "question": "Security in Fabric must meet the following requirements: Data engineers must have read and write access to all lakehouses including underlying files. Data analysts must only have read access to Delta tables in the gold layer and must not access bronze or silver layers. You must ensure that analysts can access the gold layer lakehouse.",
+      "options": {
+        "A": "Add the DataAnalyst group to the Viewer role for WorkspaceA.",
+        "B": "Share the lakehouse with the DataAnalysts group and grant the Build reports on the default semantic model permission.",
+        "C": "Share the lakehouse with the DataAnalysts group and grant the Read all SQL Endpoint data permission.",
+        "D": "Share the lakehouse with the DataAnalysts group and grant the Read all Apache Spark permission."
+      },
+      "answer": ["C"]
+    },
+    {
+      "id": 2,
+      "type": "hotspot",
+      "question": "You have a Fabric workspace with a warehouse DW1 containing SalesOrderDetail and Product tables. You need summarized order quantities by year and product including yearly totals for all products. Complete the code.",
+      "answers": {
+        "OrderDateExpression": "SELECT YEAR",
+        "GroupByExpression": "ROLLUP(YEAR(SO.ModifiedDate), P.Name)"
+      }
+    },
+    {
+      "id": 3,
+      "type": "yes_no_matrix",
+      "question": "You deploy all items from Workspace1_DEV to Workspace1_TEST using a deployment pipeline. Determine whether each statement is true.",
+      "statements": [
+        {
+          "statement": "Data from semantic models will be deployed to the target stage.",
+          "answer": "No"
+        },
+        {
+          "statement": "Dataflow Gen1 dataflows will be deployed to the target stage.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "Scheduled refresh policies will be deployed to the target stage.",
+          "answer": "No"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "dropdown",
+      "question": "You must orchestrate execution of notebooks and a semantic model in a Fabric workspace to meet scheduling and triggering requirements.",
+      "answers": {
+        "Notebook1": "Add Notebook1 to Pipeline1",
+        "Notebook2": "From Real-Time hub configure execution",
+        "Pipeline1": "Configure execution using a schedule",
+        "Model1": "Add Model1 to Pipeline1"
+      }
+    },
+    {
+      "id": 5,
+      "type": "drag_drop",
+      "question": "Apply endorsement badges based on the entity use case.",
+      "answers": {
+        "Entity1": "Master data",
+        "Entity2": "Certified",
+        "Entity3": "Promoted",
+        "Entity4": "Cannot be endorsed"
+      }
+    },
+    {
+      "id": 6,
+      "type": "yes_no_matrix",
+      "question": "Evaluate permissions and access roles for users and domains in Fabric.",
+      "statements": [
+        {
+          "statement": "User3 has Viewer role access to Workspace3.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "User3 has Domain contributor access to Domain1.",
+          "answer": "No"
+        },
+        {
+          "statement": "User2 has Contributor role access to Workspace3.",
+          "answer": "No"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "drag_drop_order",
+      "question": "Ensure Python libraries are available by default to new notebooks.",
+      "sequence": [
+        "Create an environment",
+        "Install the libraries",
+        "Set the default environment"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "drag_drop_order",
+      "question": "Set CustomerKey as the primary key of the DimCustomer table.",
+      "sequence": [
+        "ALTER TABLE dbo.DimCustomer",
+        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+        "NOT ENFORCED"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "single_choice",
+      "question": "Does the provided KQL code correctly filter for neighbourhood 'Sands End' with No_Bikes >= 15 and order results by No_Bikes?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 10,
+      "type": "single_choice",
+      "question": "Does the provided KQL code using order by instead of sort by meet the requirements?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": ["B"]
+    }
+  ]
+}

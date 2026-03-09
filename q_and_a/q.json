@@ -1,0 +1,786 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "type": "single_choice",
+      "question": "Security in Fabric must meet the following requirements: Data engineers must have read and write access to all lakehouses including underlying files. Data analysts must only have read access to Delta tables in the gold layer and must not access bronze or silver layers. You must ensure analysts can access the gold layer lakehouse.",
+      "options": {
+        "A": "Add the DataAnalyst group to the Viewer role for WorkspaceA.",
+        "B": "Share the lakehouse and grant Build reports permission.",
+        "C": "Share the lakehouse and grant Read all SQL Endpoint data permission.",
+        "D": "Share the lakehouse and grant Read all Apache Spark permission."
+      },
+      "answer": ["C"]
+    },
+    {
+      "id": 2,
+      "type": "dropdown",
+      "question": "Summarize order quantities by year and product.",
+      "answers": {
+        "SelectExpression": "SELECT YEAR",
+        "GroupBy": "ROLLUP(YEAR(SO.ModifiedDate), P.Name)"
+      }
+    },
+    {
+      "id": 3,
+      "type": "yes_no_matrix",
+      "question": "Evaluate deployment pipeline behavior.",
+      "statements": [
+        { "statement": "Semantic model data will deploy.", "answer": "No" },
+        { "statement": "Dataflow Gen1 deploys.", "answer": "Yes" },
+        { "statement": "Scheduled refresh policies deploy.", "answer": "No" }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "dropdown",
+      "question": "Configure orchestration of notebooks and model.",
+      "answers": {
+        "Notebook1": "Add Notebook1 to Pipeline1",
+        "Notebook2": "Configure execution from Real-Time hub",
+        "Pipeline1": "Schedule Pipeline1",
+        "Model1": "Add Model1 to Pipeline1"
+      }
+    },
+    {
+      "id": 5,
+      "type": "drag_drop",
+      "question": "Apply endorsement badges.",
+      "answers": {
+        "Entity1": "Master data",
+        "Entity2": "Certified",
+        "Entity3": "Promoted",
+        "Entity4": "Cannot be endorsed"
+      }
+    },
+    {
+      "id": 6,
+      "type": "yes_no_matrix",
+      "question": "Evaluate workspace/domain permissions.",
+      "statements": [
+        {
+          "statement": "User3 has Viewer role in Workspace3.",
+          "answer": "Yes"
+        },
+        {
+          "statement": "User3 has Domain contributor access to Domain1.",
+          "answer": "No"
+        },
+        {
+          "statement": "User2 has Contributor role in Workspace3.",
+          "answer": "No"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "drag_drop_order",
+      "question": "Make Python libraries available by default in notebooks.",
+      "sequence": [
+        "Create an environment",
+        "Install the libraries",
+        "Set the default environment"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "drag_drop_order",
+      "question": "Define primary key for DimCustomer.",
+      "sequence": [
+        "ALTER TABLE dbo.DimCustomer",
+        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+        "NOT ENFORCED"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "single_choice",
+      "question": "Does the KQL code correctly filter and sort results?",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+    {
+      "id": 10,
+      "type": "single_choice",
+      "question": "Does the KQL code using 'order by' meet the goal?",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 11,
+      "type": "single_choice",
+      "question": "Store semi-structured data readable by T-SQL, KQL, and Spark but written only by Spark.",
+      "options": {
+        "A": "Lakehouse",
+        "B": "Eventhouse",
+        "C": "Datamart",
+        "D": "Warehouse"
+      },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 12,
+      "type": "single_choice",
+      "question": "Copy data from on-prem SQL Server to Fabric warehouse.",
+      "options": {
+        "A": "Dataflow Gen1",
+        "B": "Data pipeline",
+        "C": "KQL queryset",
+        "D": "Notebook"
+      },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 13,
+      "type": "single_choice",
+      "question": "Copy SQL Server data to warehouse.",
+      "options": {
+        "A": "Spark job",
+        "B": "Data pipeline",
+        "C": "Dataflow Gen1",
+        "D": "Eventstream"
+      },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 14,
+      "type": "yes_no_matrix",
+      "question": "Evaluate Delta merge behavior.",
+      "statements": [
+        { "statement": "Target table always overwritten", "answer": "No" },
+        { "statement": "Merge always runs", "answer": "No" },
+        { "statement": "Supports full and incremental load", "answer": "Yes" }
+      ]
+    },
+
+    {
+      "id": 15,
+      "type": "dropdown",
+      "question": "SCD Type 2 join conditions.",
+      "answers": {
+        "Condition1": "o.OrderDate >= c.valid_from_datetime",
+        "Condition2": "o.OrderDate < c.valid_to_datetime"
+      }
+    },
+
+    {
+      "id": 16,
+      "type": "single_choice",
+      "question": "Ingest 500GB files daily with trigger and high throughput.",
+      "options": {
+        "A": "Eventstream",
+        "B": "Dataflow Gen2",
+        "C": "Streaming dataset",
+        "D": "Data pipeline"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 17,
+      "type": "multi_select",
+      "question": "Update policy records loaded.",
+      "options": {
+        "A": "Record A",
+        "B": "Record B",
+        "C": "Record C",
+        "D": "Record D"
+      },
+      "answer": ["A", "D"]
+    },
+
+    {
+      "id": 18,
+      "type": "dropdown",
+      "question": "Fix conversion issues in SQL.",
+      "answers": {
+        "ItemName": "try_cast(item_name as varchar(20))",
+        "PurchaseDate": "convert(varchar, purchase_date, 7)"
+      }
+    },
+
+    {
+      "id": 19,
+      "type": "single_choice",
+      "question": "Snowflake → Fabric copy pipeline setting.",
+      "options": {
+        "A": "Parallelism",
+        "B": "Fault tolerance",
+        "C": "Enable staging",
+        "D": "Logging"
+      },
+      "answer": ["C"]
+    },
+
+    {
+      "id": 20,
+      "type": "multi_select",
+      "question": "Populate MAR1 bronze layer.",
+      "options": {
+        "A": "ForEach",
+        "B": "Copy data",
+        "C": "WebHook",
+        "D": "Stored procedure"
+      },
+      "answer": ["A", "B"]
+    },
+
+    {
+      "id": 21,
+      "type": "single_choice",
+      "question": "Least-privilege role for viewing workspace and updating DW tables.",
+      "options": {
+        "A": "Admin",
+        "B": "Member",
+        "C": "Viewer",
+        "D": "Contributor"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 22,
+      "type": "single_choice",
+      "question": "User must query lakehouse tables using SQL only.",
+      "options": {
+        "A": "Share lakehouse with SQL endpoint read",
+        "B": "Viewer role",
+        "C": "Build reports",
+        "D": "Member role"
+      },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 23,
+      "type": "drag_drop",
+      "question": "Endorsement mapping.",
+      "answers": {
+        "Entity1": "Master data",
+        "Entity2": "Certified",
+        "Entity3": "Promoted",
+        "Entity4": "Cannot be endorsed"
+      }
+    },
+
+    {
+      "id": 24,
+      "type": "yes_no_matrix",
+      "question": "Permissions scenario.",
+      "statements": [
+        { "statement": "User3 viewer Workspace3", "answer": "Yes" },
+        { "statement": "User3 domain contributor Domain1", "answer": "No" },
+        { "statement": "User2 contributor Workspace3", "answer": "No" }
+      ]
+    },
+
+    {
+      "id": 25,
+      "type": "single_choice",
+      "question": "Overwrite paired items using deployment pipeline.",
+      "options": {
+        "A": "Delete items",
+        "B": "Rename items",
+        "C": "Backup items",
+        "D": "Run pipeline"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 26,
+      "type": "single_choice",
+      "question": "Deploy workspace with folder change.",
+      "options": {
+        "A": "Folder created and items moved",
+        "B": "Only items deploy",
+        "C": "Everything moved",
+        "D": "Folder only"
+      },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 27,
+      "type": "drag_drop_order",
+      "question": "Environment setup sequence.",
+      "sequence": [
+        "Create environment",
+        "Install libraries",
+        "Set default environment"
+      ]
+    },
+
+    {
+      "id": 28,
+      "type": "single_choice",
+      "question": "Consolidate Delta parquet files.",
+      "options": {
+        "A": "VACUUM",
+        "B": "BROADCAST",
+        "C": "OPTIMIZE",
+        "D": "CACHE"
+      },
+      "answer": ["C"]
+    },
+
+    {
+      "id": 29,
+      "type": "single_choice",
+      "question": "Identify workspace of running job in Monitoring Hub.",
+      "options": {
+        "A": "Start time",
+        "B": "Capacity",
+        "C": "Activity name",
+        "D": "Submitter",
+        "E": "Item type",
+        "F": "Job type",
+        "G": "Location"
+      },
+      "answer": ["G"]
+    },
+
+    {
+      "id": 30,
+      "type": "single_choice",
+      "question": "Identify Delta version used by notebook.",
+      "options": {
+        "A": "Real-Time hub",
+        "B": "OneLake hub",
+        "C": "Admin monitoring",
+        "D": "Fabric Monitor",
+        "E": "Capacity Metrics"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 31,
+      "type": "drag_drop_order",
+      "question": "Define primary key sequence.",
+      "sequence": [
+        "ALTER TABLE dbo.DimCustomer",
+        "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+        "NOT ENFORCED"
+      ]
+    },
+
+    {
+      "id": 32,
+      "type": "single_choice",
+      "question": "Monitor semantic model refresh using code.",
+      "options": {
+        "A": "SSMS DMV",
+        "B": "Monitoring hub",
+        "C": "Azure Data Studio DMV",
+        "D": "Semantic link notebook"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 33,
+      "type": "single_choice",
+      "question": "KQL solution scenario.",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 34,
+      "type": "single_choice",
+      "question": "Alternative KQL solution scenario.",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 35,
+      "type": "single_choice",
+      "question": "Third KQL solution scenario.",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 36,
+      "type": "single_choice",
+      "question": "SQL solution scenario.",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 37,
+      "type": "single_choice",
+      "question": "Isolate Spark workloads.",
+      "options": {
+        "A": "Disable concurrency",
+        "B": "Custom pool",
+        "C": "Executors",
+        "D": "Default env"
+      },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 38,
+      "type": "drag_drop",
+      "question": "RLS implementation.",
+      "answers": {
+        "Function": "SCHEMABINDING",
+        "Where": "USER_NAME()",
+        "Table": "AuthorSales"
+      }
+    },
+
+    {
+      "id": 39,
+      "type": "single_choice",
+      "question": "KeyVault getSecret solution.",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 40,
+      "type": "single_choice",
+      "question": "KeyVault putSecret solution.",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 41,
+      "type": "single_choice",
+      "question": "getSecret with linked service.",
+      "options": { "A": "Yes", "B": "No" },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 42,
+      "type": "drag_drop",
+      "question": "Notebook DAG configuration.",
+      "answers": {
+        "Collection": "activities",
+        "Dependency": "dependencies",
+        "Execution": "runMultiple"
+      }
+    },
+
+    {
+      "id": 43,
+      "type": "dropdown",
+      "question": "Pipeline table iteration.",
+      "answers": {
+        "Activity": "Lookup Schema and Table",
+        "Property": "output.value"
+      }
+    },
+
+    {
+      "id": 44,
+      "type": "dropdown",
+      "question": "Dynamic data masking.",
+      "answers": {
+        "BirthDate": "random(1900-01-01,1900-01-01)",
+        "Email": "partial(1,\"@\",5)"
+      }
+    },
+
+    {
+      "id": 45,
+      "type": "single_choice",
+      "question": "Items that can be endorsed.",
+      "options": {
+        "A": "Lakehouse, Model, Dashboard",
+        "B": "All",
+        "C": "Reports only",
+        "D": "Model Report Dashboard",
+        "E": "Lakehouse Model Report"
+      },
+      "answer": ["E"]
+    },
+
+    {
+      "id": 46,
+      "type": "single_choice",
+      "question": "GitHub permissions for commit.",
+      "options": {
+        "A": "Actions+Contents",
+        "B": "Actions only",
+        "C": "Contents read/write",
+        "D": "Read contents"
+      },
+      "answer": ["C"]
+    },
+
+    {
+      "id": 47,
+      "type": "single_choice",
+      "question": "Azure DevOps Git integration details.",
+      "options": {
+        "A": "Org project repo branch",
+        "B": "PAT URL",
+        "C": "Project repo branch folder",
+        "D": "URL folder"
+      },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 48,
+      "type": "multi_select",
+      "question": "Pipeline schedule + retry + refresh.",
+      "options": {
+        "A": "On success link",
+        "B": "UTC timezone",
+        "C": "Retry=2",
+        "D": "Notebook timezone",
+        "E": "Refresh retry",
+        "F": "On completion"
+      },
+      "answer": ["A", "B", "C"]
+    },
+
+    {
+      "id": 49,
+      "type": "single_choice",
+      "question": "Return integer pipeline parameter.",
+      "options": {
+        "A": "@pipeline().parameters.param1",
+        "B": "@{pipeline().parameters.param1}",
+        "C": "@(pipeline...)",
+        "D": "@@{...}"
+      },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 50,
+      "type": "single_choice",
+      "question": "Orchestrate tasks every 15 minutes.",
+      "options": {
+        "A": "Notebook",
+        "B": "Warehouse",
+        "C": "Dataflow",
+        "D": "Pipeline"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 51,
+      "type": "multi_select",
+      "question": "Notebook DAG order actions.",
+      "options": {
+        "A": "Move Notebook_02",
+        "B": "Add dependencies Notebook_03",
+        "C": "Split DAG",
+        "D": "Add dependencies Notebook_02",
+        "E": "Concurrency 3",
+        "F": "Move Notebook_03"
+      },
+      "answer": ["D", "F"]
+    },
+
+    {
+      "id": 52,
+      "type": "single_choice",
+      "question": "Pipeline execution result.",
+      "options": {
+        "A": "Copy then Execute",
+        "B": "Execute then Copy",
+        "C": "Execute only",
+        "D": "Copy only",
+        "E": "Parallel",
+        "F": "None"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 53,
+      "type": "multi_select",
+      "question": "Enable source control.",
+      "options": {
+        "A": "Enable Git tenant setting",
+        "B": "Enable GitHub tenant setting",
+        "C": "Use PPU",
+        "D": "Assign capacity"
+      },
+      "answer": ["A", "D"]
+    },
+
+    {
+      "id": 54,
+      "type": "dropdown",
+      "question": "Grant table access but hide column.",
+      "answers": { "Permission": "SELECT", "Principal": "[User1]" }
+    },
+
+    {
+      "id": 55,
+      "type": "single_choice",
+      "question": "Deploy Eventhouse.",
+      "options": {
+        "A": "Azure DevOps pipeline",
+        "B": "Eventstream",
+        "C": "GitHub Actions"
+      },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 56,
+      "type": "single_choice",
+      "question": "Object required for RLS.",
+      "options": {
+        "A": "Trigger",
+        "B": "Schema",
+        "C": "Function",
+        "D": "Database role"
+      },
+      "answer": ["C"]
+    },
+
+    {
+      "id": 57,
+      "type": "single_choice",
+      "question": "Object defining RLS policy.",
+      "options": {
+        "A": "Security policy",
+        "B": "Table",
+        "C": "Trigger",
+        "D": "Stored procedure"
+      },
+      "answer": ["A"]
+    },
+
+    {
+      "id": 58,
+      "type": "single_choice",
+      "question": "Improve Direct Lake performance.",
+      "options": {
+        "A": "Views",
+        "B": "Change key type",
+        "C": "SHA256",
+        "D": "Increase capacity",
+        "E": "Disable V-Order"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 59,
+      "type": "single_choice",
+      "question": "Detect invalid references during deployment.",
+      "options": {
+        "A": "dbt",
+        "B": "Deployment pipeline",
+        "C": "Python",
+        "D": "Database project"
+      },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 60,
+      "type": "drag_drop_order",
+      "question": "Deploy feature using pipeline.",
+      "sequence": [
+        "Select pipeline",
+        "Select Test stage",
+        "Deploy from Development",
+        "Deploy"
+      ]
+    },
+
+    {
+      "id": 61,
+      "type": "single_choice",
+      "question": "Access S3 data without copying.",
+      "options": {
+        "A": "Dataflow",
+        "B": "Shortcut",
+        "C": "External sharing",
+        "D": "Pipeline"
+      },
+      "answer": ["B"]
+    },
+
+    {
+      "id": 62,
+      "type": "single_choice",
+      "question": "Minimize transferred data.",
+      "options": {
+        "A": "Split dataflow",
+        "B": "Scheduled refresh",
+        "C": "Incremental store month",
+        "D": "Incremental refresh year",
+        "E": "Incremental refresh month"
+      },
+      "answer": ["E"]
+    },
+
+    {
+      "id": 63,
+      "type": "dropdown",
+      "question": "Medallion ingestion method.",
+      "answers": { "Bronze": "Pipeline Copy activity", "Silver": "Notebook" }
+    },
+
+    {
+      "id": 64,
+      "type": "single_choice",
+      "question": "Use Amazon S3 data with minimal egress.",
+      "options": {
+        "A": "Workspace identity + concurrency",
+        "B": "Shortcut disable cache",
+        "C": "Workspace identity pipeline",
+        "D": "Shortcut enable cache"
+      },
+      "answer": ["D"]
+    },
+
+    {
+      "id": 65,
+      "type": "dropdown",
+      "question": "Spark SQL joins for product dimension.",
+      "answers": {
+        "Join1": "INNER JOIN",
+        "Join2": "INNER JOIN",
+        "Filter": "IsActive = 1"
+      }
+    },
+
+    {
+      "id": 66,
+      "type": "multi_select",
+      "question": "Pipeline activities for MAR1 bronze layer.",
+      "options": {
+        "A": "ForEach",
+        "B": "Copy data",
+        "C": "WebHook",
+        "D": "Stored procedure"
+      },
+      "answer": ["A", "B"]
+    },
+
+    {
+      "id": 67,
+      "type": "dropdown",
+      "question": "SQL denormalization query.",
+      "answers": {
+        "StartDate": "CAST",
+        "Join": "LEFT OUTER JOIN",
+        "GroupClause": "HAVING"
+      }
+    }
+  ]
+}

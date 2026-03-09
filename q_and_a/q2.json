@@ -1,0 +1,126 @@
+{
+  "batch": 2,
+  "questions": [
+    {
+      "id": 11,
+      "type": "single_choice",
+      "question": "You have a Fabric workspace. You have semi-structured data. You need to read the data by using T-SQL, KQL, and Apache Spark. The data will only be written by using Spark. What should you use to store the data?",
+      "options": {
+        "A": "a lakehouse",
+        "B": "an eventhouse",
+        "C": "a datamart",
+        "D": "a warehouse"
+      },
+      "answer": ["A"]
+    },
+    {
+      "id": 12,
+      "type": "single_choice",
+      "question": "You have a Fabric workspace that contains a warehouse named Warehouse1. You have an on-premises Microsoft SQL Server database named Database1 accessed by using an on-premises data gateway. You need to copy data from Database1 to Warehouse1. Which item should you use?",
+      "options": {
+        "A": "a Dataflow Gen1 dataflow",
+        "B": "a data pipeline",
+        "C": "a KQL queryset",
+        "D": "a notebook"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 13,
+      "type": "single_choice",
+      "question": "You have a Fabric workspace that contains a warehouse named Warehouse1 and an on-premises SQL Server database named Database1 accessed via a data gateway. You need to copy data from Database1 to Warehouse1. Which item should you use?",
+      "options": {
+        "A": "an Apache Spark job definition",
+        "B": "a data pipeline",
+        "C": "a Dataflow Gen1 dataflow",
+        "D": "an eventstream"
+      },
+      "answer": ["B"]
+    },
+    {
+      "id": 14,
+      "type": "yes_no_matrix",
+      "question": "Evaluate the following statements regarding Delta Lake operations.",
+      "statements": [
+        {
+          "statement": "The target table will always be overwritten.",
+          "answer": "No"
+        },
+        {
+          "statement": "The merge operation will always run.",
+          "answer": "No"
+        },
+        {
+          "statement": "The loading pattern supports both full and incremental loading requirements.",
+          "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "dropdown",
+      "question": "You have a Fabric workspace with Lakehouse1 and Lakehouse2. Lakehouse2 contains a Type 2 SCD dimension named Dim_Customer. You must combine Orderlines with Dim_Customer to create Fact_Orders.",
+      "answers": {
+        "Condition1": "o.OrderDate >= c.valid_from_datetime",
+        "Condition2": "o.OrderDate < c.valid_to_datetime"
+      }
+    },
+    {
+      "id": 16,
+      "type": "single_choice",
+      "question": "You have a Fabric workspace that contains a lakehouse named Lakehouse1. External data files of 500 GB are added daily. You must ingest the files without transformation and trigger ingestion when new files arrive while providing highest throughput.",
+      "options": {
+        "A": "Eventstream",
+        "B": "Dataflow Gen2",
+        "C": "Streaming dataset",
+        "D": "Data pipeline"
+      },
+      "answer": ["D"]
+    },
+    {
+      "id": 17,
+      "type": "multi_select",
+      "question": "You have a Fabric workspace that contains an eventhouse and a KQL database named Database1. An update policy sends data from Table1 to Table2. Recently changes were made to Table1. Which two records will load from Table1 to Table2?",
+      "options": {
+        "A": "Record A",
+        "B": "Record B",
+        "C": "Record C",
+        "D": "Record D"
+      },
+      "answer": ["A", "D"]
+    },
+    {
+      "id": 18,
+      "type": "dropdown",
+      "question": "You are debugging a statement that sometimes fails to return expected rows. The PurchaseDate column must appear in the expected format while retaining data types.",
+      "answers": {
+        "ItemNameConversion": "try_cast(item_name as varchar(20))",
+        "PurchaseDateConversion": "convert(varchar, purchase_date, 7)"
+      }
+    },
+    {
+      "id": 19,
+      "type": "single_choice",
+      "question": "You are developing a data pipeline that copies data from Snowflake to a Fabric warehouse. What should you configure?",
+      "options": {
+        "A": "Degree of copy parallelism",
+        "B": "Fault tolerance",
+        "C": "Enable staging",
+        "D": "Enable logging"
+      },
+      "answer": ["C"]
+    },
+    {
+      "id": 20,
+      "type": "multi_select",
+      "question": "You need to populate MAR1 data in the bronze layer. Which two activities should be included in the pipeline?",
+      "options": {
+        "A": "ForEach",
+        "B": "Copy data",
+        "C": "WebHook",
+        "D": "Stored procedure"
+      },
+      "answer": ["A", "B"]
+    }
+  ]
+}
